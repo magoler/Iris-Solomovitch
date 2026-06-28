@@ -4,14 +4,31 @@
    The whole spread is scaled to fit the viewport via transform: scale().
    ========================================================================= */
 
+/* ---------- Ploni (licensed web font) ---------- */
+@font-face { font-family:"Ploni"; font-weight:200; font-style:normal; font-display:swap;
+  src:url("../assets/fonts/ploni-ultralight-aaa.woff2") format("woff2"); }
+@font-face { font-family:"Ploni"; font-weight:300; font-style:normal; font-display:swap;
+  src:url("../assets/fonts/ploni-light-aaa.woff2") format("woff2"); }
+@font-face { font-family:"Ploni"; font-weight:400; font-style:normal; font-display:swap;
+  src:url("../assets/fonts/ploni-regular-aaa.woff2") format("woff2"); }
+@font-face { font-family:"Ploni"; font-weight:500; font-style:normal; font-display:swap;
+  src:url("../assets/fonts/ploni-medium-aaa.woff2") format("woff2"); }
+@font-face { font-family:"Ploni"; font-weight:600; font-style:normal; font-display:swap;
+  src:url("../assets/fonts/ploni-demibold-aaa.woff2") format("woff2"); }
+@font-face { font-family:"Ploni"; font-weight:700; font-style:normal; font-display:swap;
+  src:url("../assets/fonts/ploni-bold-aaa.woff2") format("woff2"); }
+@font-face { font-family:"Ploni"; font-weight:800; font-style:normal; font-display:swap;
+  src:url("../assets/fonts/ploni-black-aaa.woff2") format("woff2"); }
+@font-face { font-family:"Ploni"; font-weight:900; font-style:normal; font-display:swap;
+  src:url("../assets/fonts/ploni-ultrabold-aaa.woff2") format("woff2"); }
+
 :root {
   --page-w: 1240px;
   --page-h: 877px;
   --ink: #111111;
   --paper: #ffffff;
   --hair: #d9d9d9;
-  --font: "Heebo", "Assistant", system-ui, "Helvetica Neue", Arial, sans-serif;
-  /* swap the line above for real Ploni: --font: "Ploni", "Heebo", sans-serif; */
+  --font: "Ploni", "Heebo", "Assistant", system-ui, "Helvetica Neue", Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
