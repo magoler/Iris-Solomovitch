@@ -42,9 +42,9 @@ images drop straight in.
    A missing image degrades gracefully to a placeholder, so nothing ever looks broken.
 
 ## Fonts
-Hebrew text uses **Heebo** (Google Fonts) as a license-safe stand-in for **Ploni**.
-To use the real Ploni, add your licensed web-font files and change `--font` at the top of
-`css/styles.css` to `--font: "Ploni", "Heebo", sans-serif;`.
+Hebrew text uses the licensed **Ploni** web font (8 weights, self-hosted WOFF2 in
+`assets/fonts/`, declared via `@font-face` and referenced through the `--font` variable at the top
+of `css/styles.css`). No external font CDN is loaded.
 
 ## Run locally
 ```

@@ -28,7 +28,7 @@
   --ink: #111111;
   --paper: #ffffff;
   --hair: #d9d9d9;
-  --font: "Ploni", "Heebo", "Assistant", system-ui, "Helvetica Neue", Arial, sans-serif;
+  --font: "Ploni", system-ui, "Helvetica Neue", Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
