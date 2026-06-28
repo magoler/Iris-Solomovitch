@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="877" viewBox="0 0 1240 877" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f4f4f2"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#000000" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="vignette" cx="50%" cy="42%" r="75%">
+      <stop offset="0" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.05"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1240" height="877" fill="url(#paper)"/>
+  <rect width="1240" height="877" fill="url(#grid)"/>
+
+  <!-- faint architectural contour / topography lines -->
+  <g fill="none" stroke="#000000" stroke-opacity="0.05" stroke-width="1.4">
+    <path d="M-40 700 C 220 640, 380 760, 640 690 S 1040 600, 1300 680"/>
+    <path d="M-40 740 C 240 690, 420 800, 700 730 S 1060 650, 1300 720"/>
+    <path d="M-40 660 C 200 600, 360 720, 600 650 S 1020 560, 1300 640"/>
+    <path d="M-40 780 C 260 740, 460 840, 760 770 S 1080 700, 1300 760"/>
+  </g>
+
+  <!-- thin orthographic linework, top -->
+  <g fill="none" stroke="#000000" stroke-opacity="0.045" stroke-width="1.4">
+    <path d="M120 70 H 1120 V 250"/>
+    <path d="M120 70 V 250 H 1120"/>
+    <path d="M300 70 V 250 M520 70 V 250 M740 70 V 250 M960 70 V 250"/>
+    <circle cx="1040" cy="150" r="56"/>
+    <path d="M984 150 H 1096 M1040 94 V 206"/>
+  </g>
+
+  <!-- inner frame hairline -->
+  <rect x="46" y="46" width="1148" height="785" fill="none" stroke="#000000" stroke-opacity="0.10" stroke-width="1.2"/>
+  <rect width="1240" height="877" fill="url(#vignette)"/>
+</svg>

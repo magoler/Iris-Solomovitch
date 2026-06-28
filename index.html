@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>איריס שגיא סולומוביץ' · Portfolio</title>
+  <meta name="description" content="תיק עבודות אדריכלות — איריס שגיא סולומוביץ'" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=2" />
+</head>
+<body>
+  <main class="viewport" id="viewport">
+    <div class="stage" id="stage" aria-live="polite"></div>
+  </main>
+
+  <!-- bottom-center control bar: arrows flank the Table of Contents -->
+  <nav class="navbar" aria-label="ניווט בספר">
+    <button class="nav-arrow" id="nav-prev" aria-label="העמוד הקודם">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <div class="navcenter">
+      <button class="toc-toggle" id="toc-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="toc-panel">
+        תוכן עניינים
+      </button>
+      <span class="counter" id="counter"></span>
+    </div>
+
+    <button class="nav-arrow" id="nav-next" aria-label="העמוד הבא">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </nav>
+
+  <div class="toc-panel" id="toc-panel" role="menu" aria-label="תוכן עניינים"></div>
+
+  <script src="js/content.js?v=2"></script>
+  <script src="js/book.js?v=2"></script>
+</body>
+</html>

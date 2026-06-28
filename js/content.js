@@ -1,0 +1,359 @@
+/*
+ * content.js — single source of truth for the portfolio book.
+ *
+ * The book is a sequence of SPREADS. Each interior spread shows two A3-landscape
+ * pages side by side; the cover and back are single centered pages.
+ * Reading order is RTL (Hebrew): the lower page number sits on the RIGHT,
+ * the higher page number on the LEFT.
+ *
+ * To add a project's real images later: drop files into
+ *   assets/projects/<key>/   and replace the placeholder page builders below.
+ */
+(function () {
+  "use strict";
+
+  const NAME = "איריס שגיא סולומוביץ'";
+  const BG = "assets/backgrounds/bw.svg";
+  const SEA = "assets/projects/seeing-the-sea/";
+
+  /* ---------- small HTML builders ---------- */
+
+  const esc = (s) => s; // text is trusted (authored here)
+
+  // A figure: real image if src given, else an on-brand placeholder slot.
+  function fig(src, caption, cls = "", accent) {
+    const cap = caption
+      ? `<figcaption class="caption">${caption}</figcaption>`
+      : "";
+    if (src) {
+      return `<figure class="figure ${cls}">
+        <div class="figure__img"><img src="${src}" alt="${caption || ""}" loading="lazy"
+          onerror="this.closest('.figure').classList.add('figure--missing')"></div>
+        ${cap}
+      </figure>`;
+    }
+    const style = accent ? ` style="--slot-accent:${accent}"` : "";
+    return `<figure class="figure figure--placeholder ${cls}"${style}>
+      <div class="figure__img"><span class="slot-mark">${caption || "תוכן"}</span></div>
+      ${cap}
+    </figure>`;
+  }
+
+  // Project cover — image page (full bleed)
+  function coverImage(src, caption, accent) {
+    if (src) {
+      return `<div class="page page--coverimg" style="--accent:${accent}">
+        <img class="bleed" src="${src}" alt="${caption || ""}">
+      </div>`;
+    }
+    return `<div class="page page--coverimg page--coverimg-empty" style="--accent:${accent}">
+      <div class="bleed slot"><span class="slot-mark">${caption}</span></div>
+    </div>`;
+  }
+
+  // Project cover — title over hero
+  function coverTitle(title, sub, src, accent) {
+    const bg = src
+      ? `style="--accent:${accent};background-image:linear-gradient(0deg,rgba(255,255,255,.10),rgba(255,255,255,.10)),url('${src}')"`
+      : `style="--accent:${accent}"`;
+    const cls = src ? "" : "page--covertitle-empty";
+    return `<div class="page page--covertitle ${cls}" ${bg}>
+      <div class="covertitle__inner">
+        <h2 class="covertitle__title">${title}</h2>
+        ${sub ? `<p class="covertitle__sub">${sub}</p>` : ""}
+      </div>
+    </div>`;
+  }
+
+  // Standard content page: top-right project title + body
+  function contentPage(title, bodyHTML, accent, extraCls = "") {
+    return `<div class="page page--content ${extraCls}" style="--accent:${accent}">
+      <header class="content__head"><h3 class="content__title">${title}</h3></header>
+      <div class="content__body">${bodyHTML}</div>
+    </div>`;
+  }
+
+  function placeholderBadge() {
+    return `<div class="wip"><span>בקרוב</span></div>`;
+  }
+
+  /* ---------- projects (for Table of Contents) ---------- */
+
+  const projects = [
+    { key: "urban",  title: "מדרחוב נווה שאנן", sub: "סטודיו אורבני", accent: "#6E4FA2" },
+    { key: "sea",    title: "לראות את הים",      sub: "סטודיו שימור · פארק מדרון יפו", accent: "#1E7E8C" },
+    { key: "time",   title: "Time · Space",      sub: "סטודיו דיור", accent: "#2F5DA8" },
+    { key: "maryam", title: "מרים",              sub: "עיצוב פנים", accent: "#A6794B" },
+    { key: "tech",   title: "סטודיו טכנולוגי",   sub: "מבנה ומעטפת", accent: "#6B7079" },
+  ];
+  const accent = Object.fromEntries(projects.map((p) => [p.key, p.accent]));
+
+  /* ---------- page 1 — Cover ---------- */
+  const coverPage = `<div class="page page--cover" style="background-image:url('${BG}')">
+      <div class="cover__inner">
+        <div class="cover__kicker">Portfolio</div>
+        <h1 class="cover__name">${NAME}</h1>
+        <div class="cover__rule"></div>
+        <div class="cover__role">אדריכלות · Architecture</div>
+      </div>
+    </div>`;
+
+  /* ---------- page 2 — Table of Contents ---------- */
+  const tocRows = projects
+    .map(
+      (p, i) => `<li class="toc__item" data-jump="${p.key}">
+        <span class="toc__num">${String(i + 1).padStart(2, "0")}</span>
+        <span class="toc__txt"><b>${p.title}</b><em>${p.sub}</em></span>
+        <span class="toc__dot" style="background:${p.accent}"></span>
+      </li>`
+    )
+    .join("");
+  const tocPage = `<div class="page page--toc" style="background-image:url('${BG}')">
+      <header class="sheet__head"><h2 class="sheet__title">תוכן עניינים</h2></header>
+      <ul class="toc__list">${tocRows}</ul>
+      <button class="toc__resume" data-jump="resume">קורות חיים — ${NAME}</button>
+    </div>`;
+
+  /* ---------- page 3 — Resume ---------- */
+  const resumePage = `<div class="page page--resume" style="background-image:url('${BG}')">
+      <header class="cv__head">
+        <h2 class="cv__name">${NAME}</h2>
+        <div class="cv__contact">רחובות · ש.לידה 2001 · iris.solomovitch59@gmail.com · 050-7200198</div>
+        <p class="cv__lead">סטודנטית לתואר ראשון באדריכלות (B.Arch) ולתואר שני באדריכלות (M.A) באוניברסיטת תל אביב.
+          בעלת ניסיון בפרויקטים אדריכליים מורכבים, לצד רקע טכנולוגי ופיקודי משמעותי, חשיבה אנליטית ויכולת למידה גבוהה.</p>
+      </header>
+      <div class="cv__cols">
+        <section class="cv__col">
+          <h3 class="cv__sec">השכלה</h3>
+          <div class="cv__item"><span class="cv__yr">2026—הווה</span><div><b>תואר שני באדריכלות M.A</b>, אוניברסיטת תל אביב</div></div>
+          <div class="cv__item"><span class="cv__yr">2022—הווה</span><div><b>תואר ראשון באדריכלות B.Arch</b>, אוניברסיטת תל אביב
+            <ul><li>מועמדות לפרס מישל גלרובין — פרויקט סטודיו אורבני, מדרחוב נווה שאנן</li>
+            <li>מקום שני בתחרות בית־ספרית בנושא "חיבור" — פרויקט סטודיו שימור, פארק מדרון יפו</li></ul></div></div>
+          <div class="cv__item"><span class="cv__yr">2017—2018</span><div>בית הספר לאסטרונאוטים צעירים, מכון דוידסון (מכון ויצמן למדע)
+            <ul><li>ראש צוות habitat — תכנון ראשוני של מבנה מגורים לחיים על מאדים</li></ul></div></div>
+          <div class="cv__item"><span class="cv__yr">2016—2019</span><div>בגרות טכנולוגית מלאה, מגמת הנדסת תוכנה, תיכון דה־שליט, רחובות
+            <ul><li>כיתת מופ"ת מדעית: 5 יח"ל מתמטיקה · 5 אנגלית · 5 פיזיקה · 10 מחשבים</li>
+            <li>תעודת בגרות בהצטיינות חברתית</li></ul></div></div>
+        </section>
+        <section class="cv__col">
+          <h3 class="cv__sec">ניסיון תעסוקתי</h3>
+          <div class="cv__item"><span class="cv__yr">2021—2022</span><div><b>אחראית הטמעת מערכת מידע</b>, ג'ון ברייס
+            <ul><li>הובלת תהליכי הטמעה בארגונים, הדרכות ופיתוח אמצעי הדרכה</li>
+            <li>ניהול והכשרת צוות מטמיעים</li></ul></div></div>
+          <h3 class="cv__sec">שירות צבאי</h3>
+          <div class="cv__item"><span class="cv__yr">2019—2021</span><div><b>מפקדת ומדריכת תקשו"ב</b>, לוחמה מבוססת רשת וסייבר, בה"ד 7 (שחרור בדרגת סמל)
+            <ul><li>פיתוח והובלת מערכי הדרכה טכנולוגיים למגוון יחידות צה"ל</li>
+            <li>פיקוד על חיילים, ניהול אירועים מקצועיים</li></ul></div></div>
+          <h3 class="cv__sec">יישומי מחשב</h3>
+          <ul class="cv__skills">
+            <li><b>BIM:</b> Revit · AutoCAD</li>
+            <li><b>פרמטרי:</b> Rhino · Grasshopper</li>
+            <li><b>גרפיקה:</b> Illustrator · Photoshop · Lumion · D5</li>
+            <li><b>תכנות:</b> Python · C#</li>
+          </ul>
+          <h3 class="cv__sec">שפות</h3>
+          <p class="cv__lang">עברית — שפת אם · אנגלית — גבוהה מאוד · רומנית — גבוהה מאוד</p>
+        </section>
+      </div>
+    </div>`;
+
+  /* ---------- page 24 — Back (mirror of cover) ---------- */
+  const backPage = `<div class="page page--back" style="background-image:url('${BG}')">
+      <div class="cover__inner cover__inner--mirror">
+        <div class="cover__role">אדריכלות · Architecture</div>
+        <div class="cover__rule"></div>
+        <h1 class="cover__name">${NAME}</h1>
+        <div class="cover__kicker">Portfolio · 2026</div>
+      </div>
+    </div>`;
+
+  /* =====================================================================
+   *  PROJECT 1 — Urban (placeholder)
+   * =================================================================== */
+  const urban_cover_img = coverImage(null, "תכנית גגות — מדרחוב נווה שאנן", accent.urban);
+  const urban_cover_title = coverTitle("מדרחוב נווה שאנן", "סטודיו אורבני", null, accent.urban);
+  const urban_c1 = contentPage(
+    "מדרחוב נווה שאנן",
+    `${placeholderBadge()}
+     <p class="proj-desc">מחקר על המרחב הציבורי, רוח המקום והחיבור שבין הקהילה, הסביבה והמסחר.
+       דגש על מפת נולי, תכניות, חזיתות ועקרונות התכנון.</p>
+     <div class="grid grid--urban6">
+       ${fig(null, "מפת נולי", "fig--wide", accent.urban)}
+       ${fig(null, "תכנית קומת קרקע", "fig--big", accent.urban)}
+       ${fig(null, "חזית", "", accent.urban)}
+       ${fig(null, "עקרונות תכנון", "", accent.urban)}
+     </div>`,
+    accent.urban
+  );
+  const urban_c2 = contentPage(
+    "",
+    `<div class="grid grid--urban7">
+       ${fig(null, "הדמיה — רחוב", "fig--hero", accent.urban)}
+       ${fig(null, "הדמיה — כיכר", "", accent.urban)}
+       ${fig(null, "סופרפוזיציה מרחבית", "", accent.urban)}
+     </div>`,
+    accent.urban,
+    "page--content-flush"
+  );
+
+  /* =====================================================================
+   *  PROJECT 2 — Seeing the Sea (REAL)  pages 8–11
+   * =================================================================== */
+  const sea_cover_img = coverImage(SEA + "birdseye.jpg", "מבט על — הלגונה", accent.sea);
+  const sea_cover_title = coverTitle("לראות את הים", "סטודיו שימור · פארק מדרון יפו", SEA + "hero.jpg", accent.sea);
+
+  const sea_c1 = contentPage(
+    "לראות את הים",
+    `<div class="sea1-grid">
+       <div class="sea1-right">
+         <p class="proj-desc">פרויקט שימור במדרון יפו, על קו התפר שבין העיר לים. הפרויקט מבקש לרפא צלקת
+           היסטורית בחזית הימית ולשוב ולחבר בין התושבים, הזיכרון המקומי והמים. הלגונה נולדת מתוך תהליך
+           הדרגתי — חשיפה, ניקוז, עיצוב גדות וקליטת מי הים — עד להיווצרות מרחב ציבורי חדש שממנו אפשר שוב
+           לראות את הים.</p>
+         ${fig(SEA + "process.jpg", "מבט הקשר — הלגונה והעיר", "fig--ctx", accent.sea)}
+       </div>
+       <div class="stage-strip" aria-label="שישה שלבי יצירת הלגונה">
+         ${[1, 2, 3, 4, 5, 6]
+           .map((n) => fig(SEA + "stage-" + n + ".jpg", "שלב " + n, "scell", accent.sea))
+           .join("")}
+       </div>
+     </div>`,
+    accent.sea,
+    "page--sea-c1"
+  );
+
+  const sea_c2 = contentPage(
+    "",
+    `<div class="sea-grid">
+       <div class="sea-plans">
+         ${fig(SEA + "plan-1.jpg", "תכנית — מפלס עליון", "", accent.sea)}
+         ${fig(SEA + "plan-2.jpg", "תכנית — מפלס ביניים", "", accent.sea)}
+         ${fig(SEA + "plan-3.jpg", "תכנית — מפלס הלגונה", "", accent.sea)}
+       </div>
+       <div class="sea-extra">
+         ${fig(SEA + "render-1.jpg", "הדמיה — גדות הלגונה", "", accent.sea)}
+         ${fig(SEA + "section-1.jpg", "חתך", "", accent.sea)}
+         ${fig(SEA + "render-2.jpg", "הדמיה — מבט מהים", "", accent.sea)}
+       </div>
+     </div>`,
+    accent.sea,
+    "page--content-flush page--sea-c2"
+  );
+
+  /* =====================================================================
+   *  PROJECT 3 — Time · Space Housing (placeholder, blue)
+   * =================================================================== */
+  const time_cover_img = coverImage(null, "הדמיה — מקבץ דיור", accent.time);
+  const time_cover_title = coverTitle("Time · Space", "סטודיו דיור", null, accent.time);
+  const time_c1 = contentPage(
+    "Time · Space",
+    `${placeholderBadge()}
+     <p class="proj-desc">פרויקט דיור החוקר את היחס בין סטראוטומיה (גזירה ממסה) לבין טקטוניקה (הרכבה),
+       ואת התפתחות המבנה בזמן. למטה: דיאגרמת שלבי העבודה.</p>
+     <div class="stage-strip stage-strip--diagram">
+       ${[1, 2, 3, 4].map((n) => fig(null, "שלב " + n, "scell", accent.time)).join("")}
+     </div>
+     <div class="grid grid--time">
+       ${fig(null, "תכנית", "fig--big", accent.time)}
+       ${fig(null, "חתך", "", accent.time)}
+     </div>`,
+    accent.time,
+    "page--time-c1"
+  );
+  const time_c2 = contentPage(
+    "",
+    `<div class="time-grid">
+       <div class="elev-strip">
+         ${[1, 2, 3].map((n) => fig(null, "חזית " + n, "elev", accent.time)).join("")}
+       </div>
+       ${fig(null, "הדמיה", "fig--hero", accent.time)}
+       <div class="gh-box">${fig(null, "Grasshopper — הערכה מחדש", "", accent.time)}</div>
+     </div>`,
+    accent.time,
+    "page--content-flush"
+  );
+
+  /* =====================================================================
+   *  PROJECT 4 — Maryam interior (placeholder, warm)
+   * =================================================================== */
+  const maryam_cover_img = coverImage(null, "מלון אלמה", accent.maryam);
+  const maryam_cover_title = coverTitle("מרים", "עיצוב פנים", null, accent.maryam);
+  const maryam_c1 = contentPage(
+    "מרים",
+    `${placeholderBadge()}
+     <p class="proj-desc">פרויקט עיצוב פנים לדירה. דגש על תכניות, חתכים ופרטים, כשכל הדמיה ממוקמת
+       לצד הציור או הפרט שאליו היא מתייחסת.</p>
+     <div class="grid grid--maryam">
+       ${fig(null, "תכנית", "fig--big", accent.maryam)}
+       ${fig(null, "הדמיה — סלון", "", accent.maryam)}
+       ${fig(null, "פרט", "", accent.maryam)}
+     </div>`,
+    accent.maryam
+  );
+  const maryam_c2 = contentPage(
+    "",
+    `<div class="grid grid--maryam2">
+       ${fig(null, "חתך", "", accent.maryam)}
+       ${fig(null, "הדמיה — חדר", "", accent.maryam)}
+       ${fig(null, "פרט נגרות", "", accent.maryam)}
+       ${fig(null, "הדמיה — מטבח", "", accent.maryam)}
+     </div>`,
+    accent.maryam,
+    "page--content-flush"
+  );
+
+  /* =====================================================================
+   *  PROJECT 5 — Technological studio (placeholder, gray)
+   * =================================================================== */
+  const tech_cover_img = coverImage(null, "דיאגרמה מבנית", accent.tech);
+  const tech_cover_title = coverTitle("סטודיו טכנולוגי", "מבנה ומעטפת", null, accent.tech);
+  const tech_c1 = contentPage(
+    "סטודיו טכנולוגי",
+    `${placeholderBadge()}
+     <p class="proj-desc">פרויקט בדגש מבני: תכניות מפורטות, דיאגרמות קונסטרוקציה והדמיות — ללא חזיתות.</p>
+     <div class="grid grid--tech">
+       ${fig(null, "תכנית מפורטת", "fig--big", accent.tech)}
+       ${fig(null, "דיאגרמה מבנית", "", accent.tech)}
+       ${fig(null, "הדמיה", "", accent.tech)}
+     </div>`,
+    accent.tech
+  );
+  const tech_c2 = contentPage(
+    "",
+    `<div class="grid grid--tech2">
+       ${fig(null, "חתך", "fig--big", accent.tech)}
+       ${fig(null, "פרט קונסטרוקציה", "", accent.tech)}
+       ${fig(null, "פרט מעטפת", "", accent.tech)}
+     </div>`,
+    accent.tech,
+    "page--content-flush"
+  );
+
+  /* =====================================================================
+   *  ASSEMBLE SPREADS  (RTL: right = lower page no., left = higher)
+   * =================================================================== */
+  const P = (no, html, acc) => ({ no, html, accent: acc || null });
+
+  const spreads = [
+    { single: true, page: P(1, coverPage) },                       // cover
+    { right: P(2, tocPage), left: P(3, resumePage) },              // TOC + Resume
+    { right: P(4, urban_cover_img, accent.urban), left: P(5, urban_cover_title, accent.urban) },
+    { right: P(6, urban_c1, accent.urban), left: P(7, urban_c2, accent.urban) },
+    { right: P(8, sea_cover_img, accent.sea), left: P(9, sea_cover_title, accent.sea) },
+    { right: P(10, sea_c1, accent.sea), left: P(11, sea_c2, accent.sea) },
+    { right: P(12, time_cover_img, accent.time), left: P(13, time_cover_title, accent.time) },
+    { right: P(14, time_c1, accent.time), left: P(15, time_c2, accent.time) },
+    { right: P(16, maryam_cover_img, accent.maryam), left: P(17, maryam_cover_title, accent.maryam) },
+    { right: P(18, maryam_c1, accent.maryam), left: P(19, maryam_c2, accent.maryam) },
+    { right: P(20, tech_cover_img, accent.tech), left: P(21, tech_cover_title, accent.tech) },
+    { right: P(22, tech_c1, accent.tech), left: P(23, tech_c2, accent.tech) },
+    { single: true, page: P(24, backPage) },                       // back
+  ];
+
+  // jump targets: project key -> spread index of its cover; "resume" -> spread 1
+  const jumps = { resume: 1 };
+  const coverByKey = { urban: 2, sea: 4, time: 6, maryam: 8, tech: 10 };
+  Object.assign(jumps, coverByKey);
+
+  window.BOOK = { name: NAME, projects, spreads, jumps };
+})();
