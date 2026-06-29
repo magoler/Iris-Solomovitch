@@ -19,21 +19,29 @@ assets/backgrounds/     black-and-white background (SVG) for cover / TOC / résu
 assets/projects/<key>/  per-project images
 ```
 
-## The book (24 pages)
-| Spread | Pages | Content |
-|---|---|---|
-| 1 | 1 | Cover |
-| 2 | 3 · 2 | Résumé · Table of Contents |
-| 3 | 5 · 4 | **Urban** — מדרחוב נווה שאנן *(placeholder)* |
-| 4 | 7 · 6 | Urban content *(placeholder)* |
-| 5 | 9 · 8 | **Seeing the Sea** — לראות את הים ✅ real |
-| 6 | 11 · 10 | Seeing the Sea content ✅ real |
-| 7–11 | 12–23 | Time·Space / Maryam / Technological *(placeholders)* |
-| 12 | 24 | Back |
+## The book (34 pages)
+Every project spans **3 spreads** — a cover spread plus **two** content spreads.
+Page numbers are assigned automatically in `js/content.js`, so adding/removing spreads never
+needs hand-renumbering.
 
-Only **Seeing the Sea** and the **résumé** have real material so far; the other four studios are
-on-brand placeholder spreads. Each keeps the correct accent colour and caption slots so real
-images drop straight in.
+| Spread | Content |
+|---|---|
+| 1 | Cover |
+| 2 | Résumé · Table of Contents |
+| 3–5 | **Urban** — מדרחוב נווה שאנן *(placeholder)* |
+| 6–8 | **Seeing the Sea** — לראות את הים ✅ real |
+| 9–11 | **Time·Space** — סטודיו דיור *(placeholder)* |
+| 12–14 | **Maryam** — מרים · עיצוב פנים ✅ real |
+| 15–17 | **Technological studio** *(placeholder)* |
+| 18 | Back |
+
+**Seeing the Sea**, **Maryam** and the **résumé** have real material; the other three studios are
+on-brand placeholder spreads with the correct accent colour and caption slots so real images
+drop straight in.
+
+**Never crop:** every image is shown whole (`object-fit: contain`, including the project covers),
+letterboxed on a neutral or accent field rather than cut. Real renders are extracted as whole,
+uncropped source images.
 
 ## Adding a project's real images
 1. Put the images in `assets/projects/<key>/` (e.g. `assets/projects/urban/`).

@@ -164,8 +164,9 @@ html, body {
 .cv__lang { font-size: 15px; color: #222; margin: 4px 0 0; }
 
 /* ============================ PROJECT COVERS ========================== */
-.page--coverimg { background: #111; }
-.page--coverimg .bleed { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.page--coverimg { background: var(--accent, #111); }
+/* never crop: show the whole image, letterboxed on the accent field */
+.page--coverimg .bleed { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 .page--coverimg-empty .slot,
 .figure--placeholder .figure__img,
 .page--covertitle-empty {
@@ -180,7 +181,8 @@ html, body {
 .slot-mark { font-size: 18px; color: #9a9a9a; letter-spacing: .04em; }
 
 .page--covertitle {
-  background-size: cover; background-position: center;
+  background-size: contain; background-repeat: no-repeat; background-position: center;
+  background-color: #ece9e4;
   display: grid; place-items: center;
 }
 .page--covertitle::after {
@@ -228,7 +230,8 @@ html, body {
   position: relative; flex: 1; min-height: 0; border-radius: 2px; overflow: hidden;
   background: #f3f3f1; display: grid; place-items: center;
 }
-.figure__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* never crop: every content image is shown whole (letterboxed if needed) */
+.figure__img img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .figure--placeholder .figure__img { border: 1px dashed rgba(0,0,0,.16); }
 .figure--placeholder .figure__img::after {
   content: ""; position: absolute; inset: 8px; border: 1px solid rgba(0,0,0,.05);
@@ -241,7 +244,17 @@ html, body {
 }
 
 /* generic grid for placeholder/standard content */
-.grid { display: grid; gap: 18px; height: 100%; }
+.grid { display: grid; gap: 18px; height: 100%; grid-auto-rows: 1fr; }
+/* reusable column layouts */
+.grid--2 { grid-template-columns: 1fr 1fr; }
+.grid--3 { grid-template-columns: 1fr 1fr 1fr; }
+/* two on top, one wide below */
+.g-2up1 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+.g-2up1 > :nth-child(3) { grid-column: 1 / -1; }
+/* one wide on top, two below */
+.g-1up2 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+.g-1up2 > :nth-child(1) { grid-column: 1 / -1; }
+.grid > .figure { min-height: 0; height: 100%; }
 .grid--urban6 { grid-template-columns: 1fr 1fr; grid-template-rows: 1.3fr 1fr;
   grid-template-areas: "nolli plan" "elev princ"; }
 .grid--urban6 .fig--wide { grid-area: nolli; } .grid--urban6 .fig--big { grid-area: plan; }
@@ -286,6 +299,19 @@ html, body {
 .sea-extra { display: grid; grid-template-rows: 1.35fr 0.7fr 1.35fr; gap: 14px; min-height: 0; }
 .sea-plans .figure, .sea-extra .figure { min-height: 0; }
 
+/* ---------- Seeing the Sea v2 — concept + masterplan (c1) ---------- */
+.page--sea2-c1 .content__body { inset: 56px 70px 48px; }
+.sea2-c1-grid {
+  display: grid; grid-template-columns: 1fr 1.15fr; gap: 26px; height: 100%;
+}
+.sea2-c1-text { display: flex; flex-direction: column; min-height: 0; padding-top: 96px; }
+.sea2-c1-text .proj-desc { margin: 0 0 18px; max-width: none; }
+.sea2-c1-text .figure { flex: 1; min-height: 0; }
+.sea2-c1-grid > .figure { min-height: 0; }            /* masterplan fills right column */
+
+/* plans/section page — give the wide section a shorter band */
+.sea2-plans { grid-template-rows: 1.5fr 0.7fr; }
+
 /* time-space page 15 */
 .time-grid { display: grid; grid-template-columns: 150px 1fr; grid-template-rows: 1fr 1fr;
   grid-template-areas: "elev hero" "elev gh"; gap: 16px; height: 100%; }
@@ -300,23 +326,35 @@ html, body {
 .fig--sect .figure__img { background: #111; }
 .fig--sect .figure__img img { object-fit: contain; }
 
-/* ---------- Maryam interior — page 18 (concept + drawings) ---------- */
+/* ---------- Maryam interior — page 18 (concept + axon | proposed plan) ----------
+   Right half: paragraph + whole-apartment axon. Left half (toward the spine):
+   the colored "private/public" plan, spanning the full page height. */
 .page--maryam-c1 .content__body { inset: 56px 70px 48px; }
-.maryam-c1-grid {
+.mc1-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 26px; height: 100%;
 }
-.mc1-text { display: flex; flex-direction: column; min-height: 0; padding-top: 96px; }
-.mc1-text .proj-desc { margin: 0 0 18px; max-width: none; }
-.mc1-text .figure { flex: 1; min-height: 0; }
-.mc1-draw { display: grid; grid-template-rows: 1fr 1fr; gap: 22px; min-height: 0; }
-.mc1-draw .figure { min-height: 0; }
+.mc1-side { display: flex; flex-direction: column; min-height: 0; padding-top: 96px; }
+.mc1-side .proj-desc { margin: 0 0 18px; max-width: none; }
+.mc1-side .figure { flex: 1; min-height: 0; }
+.mc1-plan { min-height: 0; height: 100%; }
 
-/* ---------- Maryam interior — page 19 (render ↔ detail pairs) ---------- */
-.page--maryam-c2 .maryam-c2-grid {
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; height: 100%;
+/* ---------- Maryam interior — page 19 (dimensioned plan | render + detail) ----------
+   Right half (toward the spine): the dimensioned plan, full height.
+   Left half: living-room render (top) + floating-cabinet detail (bottom). */
+.page--maryam-c2 .mc2-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 26px; height: 100%;
 }
-.mc2-pair { display: grid; grid-template-rows: 1.5fr 1fr; gap: 12px; min-height: 0; }
-.mc2-pair .figure { min-height: 0; }
+.mc2-plan { min-height: 0; height: 100%; }
+.mc2-side { display: grid; grid-template-rows: 1fr 1.15fr; gap: 18px; min-height: 0; }
+.mc2-side .figure { min-height: 0; }
+
+/* ---------- Maryam interior — pages 20–21 (render reveals detail + adjacent render) ---- */
+.page--maryam-detail .mc-detail {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 26px; height: 100%;
+}
+.mc-pair { display: grid; grid-template-rows: 1.45fr 1fr; gap: 14px; min-height: 0; }
+.mc-pair .figure { min-height: 0; }
+.mc-aside { min-height: 0; height: 100%; }
 
 /* ============================ NAVBAR ================================== */
 .navbar {

@@ -196,49 +196,87 @@
     accent.urban,
     "page--content-flush"
   );
-
-  /* =====================================================================
-   *  PROJECT 2 — Seeing the Sea (REAL)  pages 8–11
-   * =================================================================== */
-  const sea_cover_img = coverImage(SEA + "birdseye.jpg", "מבט על — הלגונה", accent.sea);
-  const sea_cover_title = coverTitle("לראות את הים", "סטודיו שימור · פארק מדרון יפו", SEA + "hero.jpg", accent.sea);
-
-  const sea_c1 = contentPage(
-    "לראות את הים",
-    `<div class="sea1-grid">
-       <div class="sea1-right">
-         <p class="proj-desc">פרויקט שימור במדרון יפו, על קו התפר שבין העיר לים. הפרויקט מבקש לרפא צלקת
-           היסטורית בחזית הימית ולשוב ולחבר בין התושבים, הזיכרון המקומי והמים. הלגונה נולדת מתוך תהליך
-           הדרגתי — חשיפה, ניקוז, עיצוב גדות וקליטת מי הים — עד להיווצרות מרחב ציבורי חדש שממנו אפשר שוב
-           לראות את הים.</p>
-         ${fig(SEA + "process.jpg", "מבט הקשר — הלגונה והעיר", "fig--ctx", accent.sea)}
-       </div>
-       <div class="stage-strip" aria-label="שישה שלבי יצירת הלגונה">
-         ${[1, 2, 3, 4, 5, 6]
-           .map((n) => fig(SEA + "stage-" + n + ".jpg", "שלב " + n, "scell", accent.sea))
-           .join("")}
-       </div>
+  const urban_c3 = contentPage(
+    "",
+    `${placeholderBadge()}
+     <div class="grid grid--2">
+       ${fig(null, "מבט רחוב — לפני", "", accent.urban)}
+       ${fig(null, "מבט רחוב — אחרי", "", accent.urban)}
+       ${fig(null, "חתך רחוב", "", accent.urban)}
+       ${fig(null, "פרט ריצוף וריהוט רחוב", "", accent.urban)}
      </div>`,
-    accent.sea,
-    "page--sea-c1"
+    accent.urban,
+    "page--content-flush"
+  );
+  const urban_c4 = contentPage(
+    "",
+    `<div class="grid g-2up1">
+       ${fig(null, "דיאגרמת תנועה", "", accent.urban)}
+       ${fig(null, "דיאגרמת ירוק", "", accent.urban)}
+       ${fig(null, "הדמיה — מבט כולל", "", accent.urban)}
+     </div>`,
+    accent.urban,
+    "page--content-flush"
   );
 
-  const sea_c2 = contentPage(
-    "",
-    `<div class="sea-grid">
-       <div class="sea-plans">
-         ${fig(SEA + "plan-1.jpg", "תכנית — מפלס עליון", "", accent.sea)}
-         ${fig(SEA + "plan-2.jpg", "תכנית — מפלס ביניים", "", accent.sea)}
-         ${fig(SEA + "plan-3.jpg", "תכנית — מפלס הלגונה", "", accent.sea)}
+  /* =====================================================================
+   *  PROJECT 2 — Seeing the Sea (REAL)  — whole renders, never cropped
+   * =================================================================== */
+  const sea_cover_img = coverImage(SEA + "lagoon-day.jpg", "מבט על — הלגונה והעיר", accent.sea);
+  const sea_cover_title = coverTitle("לראות את הים", "סטודיו שימור · פארק מדרון יפו", SEA + "hero-complex.jpg", accent.sea);
+
+  // c1 — concept + masterplan
+  const sea_c1 = contentPage(
+    "לראות את הים",
+    `<div class="sea2-c1-grid">
+       <div class="sea2-c1-text">
+         <p class="proj-desc">פרויקט שימור במדרון יפו, על קו התפר שבין העיר לים. הפרויקט מבקש לרפא צלקת
+           היסטורית בחזית הימית ולחבר מחדש בין התושבים, הזיכרון המקומי והמים. סביב לגונה חדשה נפרשׂ מרחב
+           ציבורי — רחבה קהילתית, חממת תבלינים, חלל שיח (History-telling), ארכיון וספרייה, סדנאות כתיבה
+           וצילום, תערוכות וקיוסק — שממנו אפשר שוב לראות את הים.</p>
+         ${fig(SEA + "site-aerial.jpg", "מבט על — מתחם המבנים בהקשר העירוני", "", accent.sea)}
        </div>
-       <div class="sea-extra">
-         ${fig(SEA + "render-1.jpg", "הדמיה — גדות הלגונה", "", accent.sea)}
-         ${fig(SEA + "section-1.jpg", "חתך", "", accent.sea)}
-         ${fig(SEA + "render-2.jpg", "הדמיה — מבט מהים", "", accent.sea)}
-       </div>
+       ${fig(SEA + "masterplan.jpg", "תוכנית אב — מכלול המבנים והמרחב הציבורי", "", accent.sea)}
      </div>`,
     accent.sea,
-    "page--content-flush page--sea-c2"
+    "page--sea2-c1"
+  );
+
+  // c2 — the buildings from outside (exterior renders)
+  const sea_c2 = contentPage(
+    "",
+    `<div class="grid grid--2">
+       ${fig(SEA + "ext-entrance.jpg", "הדמיה — כניסה למתחם", "", accent.sea)}
+       ${fig(SEA + "ext-pergola.jpg", "הדמיה — רחבה ופרגולה", "", accent.sea)}
+       ${fig(SEA + "ext-aerial.jpg", "הדמיה — מבט אווירי על המבנים", "", accent.sea)}
+       ${fig(SEA + "ext-street.jpg", "הדמיה — חזית הרחוב", "", accent.sea)}
+     </div>`,
+    accent.sea,
+    "page--content-flush"
+  );
+
+  // c3 — the places, inside (interior renders) — "the missing places"
+  const sea_c3 = contentPage(
+    "",
+    `<div class="grid g-2up1">
+       ${fig(SEA + "int-library.jpg", "ארכיון וספרייה", "", accent.sea)}
+       ${fig(SEA + "int-gallery.jpg", "חלל שיח · History-telling", "", accent.sea)}
+       ${fig(SEA + "int-exhibition.jpg", "תערוכת צילום", "", accent.sea)}
+     </div>`,
+    accent.sea,
+    "page--content-flush"
+  );
+
+  // c4 — plans + section
+  const sea_c4 = contentPage(
+    "",
+    `<div class="grid g-2up1 sea2-plans">
+       ${fig(SEA + "plan-level1.jpg", "תוכנית — מפלס עליון (+15.65 / +13.65)", "fig--draw", accent.sea)}
+       ${fig(SEA + "plan-level2.jpg", "תוכנית — מפלס גלריה וקיוסק (+8.67)", "fig--draw", accent.sea)}
+       ${fig(SEA + "section.jpg", "חתך לאורך המדרון", "fig--draw", accent.sea)}
+     </div>`,
+    accent.sea,
+    "page--content-flush"
   );
 
   /* =====================================================================
@@ -273,6 +311,28 @@
     accent.time,
     "page--content-flush"
   );
+  const time_c3 = contentPage(
+    "",
+    `${placeholderBadge()}
+     <div class="grid g-2up1">
+       ${fig(null, "הדמיה — חלל פנים", "", accent.time)}
+       ${fig(null, "הדמיה — מבט אל הרחוב", "", accent.time)}
+       ${fig(null, "הדמיה — מבואה", "", accent.time)}
+     </div>`,
+    accent.time,
+    "page--content-flush"
+  );
+  const time_c4 = contentPage(
+    "",
+    `<div class="grid grid--2">
+       ${fig(null, "תכנית קומה טיפוסית", "", accent.time)}
+       ${fig(null, "דיאגרמת סטראוטומיה / טקטוניקה", "", accent.time)}
+       ${fig(null, "חתך מפורט", "", accent.time)}
+       ${fig(null, "פרט מעטפת", "", accent.time)}
+     </div>`,
+    accent.time,
+    "page--content-flush"
+  );
 
   /* =====================================================================
    *  PROJECT 4 — Maryam interior (REAL)  pages 16–19
@@ -281,43 +341,67 @@
   const maryam_cover_img = coverImage(MAR + "alma.jpg", "מלון אלמה — מודל העבודה", accent.maryam);
   const maryam_cover_title = coverTitle("מרים", "עיצוב פנים · מגורים בין־דוריים", MAR + "hero.jpg", accent.maryam);
 
+  // c1 (page 18, right) — title + paragraph + whole-apartment axon (right half);
+  //                        proposed colored plan, private/public (left half, toward the spine)
   const maryam_c1 = contentPage(
     "מרים",
-    `<div class="maryam-c1-grid">
-       <div class="mc1-text">
+    `<div class="mc1-grid">
+       <div class="mc1-side">
          <p class="proj-desc">פרויקט עיצוב פנים לדירה בחולון, לסבתא מרים ולנכדתה מרי, החיות כיום
            בשתי קומות נפרדות. התכנון מבקש לבטל את הניתוק שבין הדורות ולייצר קרבה: הקיר שהפריד בין
            שני המודולים הוסר, וקופסאות האור הופכות לאלמנט מכליל המגדיר את המרחב. בהשראת מלון אלמא —
            אורכניות, המשכיות וקירות בטון הזורמים פנימה — והעיקרון המוביל לכל אורך הפרויקט: <b>ריחוף</b>.</p>
-         ${fig(MAR + "plan.jpg", "תכנית מוצעת 1:50 — הפרדה בין הפרטי לציבורי", "fig--draw", accent.maryam)}
+         ${fig(MAR + "axon.jpg", "פרספקטיבה — מבט־על על מכלול הדירה", "fig--draw", accent.maryam)}
        </div>
-       <div class="mc1-draw">
-         ${fig(MAR + "axon.jpg", "פרספקטיבה — מבט־על על מכלול החדרים", "fig--draw", accent.maryam)}
-         ${fig(MAR + "section.jpg", "חתך — ריחוף והמשכיות בין החללים", "fig--sect", accent.maryam)}
-       </div>
+       ${fig(MAR + "plan-zones.jpg", "תכנית מוצעת 1:50 — הפרדה בין הפרטי לציבורי", "fig--draw mc1-plan", accent.maryam)}
      </div>`,
     accent.maryam,
     "page--maryam-c1"
   );
 
+  // c2 (page 19, left) — dimensioned plan (right half, toward the spine);
+  //                       living-room render (top) + floating-cabinet detail (bottom), beside the plan
   const maryam_c2 = contentPage(
     "",
-    `<div class="maryam-c2-grid">
-       <div class="mc2-pair">
-         ${fig(MAR + "render-kitchen.jpg", "הדמיה — מטבח · קופסאות אור", "", accent.maryam)}
-         ${fig(MAR + "detail-lightbox.jpg", "פרט — קופסת אור", "fig--draw", accent.maryam)}
-       </div>
-       <div class="mc2-pair">
-         ${fig(MAR + "render-balcony.jpg", "הדמיה — מטבח מן המרפסת", "", accent.maryam)}
-         ${fig(MAR + "detail-shelf.jpg", "פרט — מדף נירוסטה מרחף", "fig--draw", accent.maryam)}
-       </div>
-       <div class="mc2-pair">
-         ${fig(MAR + "render-miriam.jpg", "הדמיה — חדר מרים", "", accent.maryam)}
-         ${fig(MAR + "detail-cabinet.jpg", "פרט — ארון מרחף", "fig--draw", accent.maryam)}
+    `<div class="mc2-grid">
+       ${fig(MAR + "plan-dim.jpg", "תכנית דירה 1:50 — מידות ופריסת החללים", "fig--draw mc2-plan", accent.maryam)}
+       <div class="mc2-side">
+         ${fig(MAR + "render-living.jpg", "הדמיה — מבט לסלון", "", accent.maryam)}
+         ${fig(MAR + "detail-cabinet.jpg", "פרט — ארון מרחף · מעמד עמודי נירוסטה", "fig--draw", accent.maryam)}
        </div>
      </div>`,
     accent.maryam,
     "page--content-flush page--maryam-c2"
+  );
+
+  // c3 (page 20, right) — render that reveals the detail + the detail beneath it,
+  //                       and an adjacent half-page render
+  const maryam_c3 = contentPage(
+    "",
+    `<div class="mc-detail">
+       <div class="mc-pair">
+         ${fig(MAR + "render-shelfwall.jpg", "הדמיה — קיר המדפים המרחפים", "", accent.maryam)}
+         ${fig(MAR + "detail-shelf.jpg", "פרט — חיבור מדף נירוסטה לקיר גבס 1:10", "fig--draw", accent.maryam)}
+       </div>
+       ${fig(MAR + "render-cabinet.jpg", "הדמיה — קונסולת הסלון המרחפת", "mc-aside", accent.maryam)}
+     </div>`,
+    accent.maryam,
+    "page--content-flush page--maryam-detail"
+  );
+
+  // c4 (page 21, left) — same pattern: render revealing the light-box detail + the detail,
+  //                      with an adjacent half-page render
+  const maryam_c4 = contentPage(
+    "",
+    `<div class="mc-detail">
+       ${fig(MAR + "render-mari.jpg", "הדמיה — חדר מרי", "mc-aside", accent.maryam)}
+       <div class="mc-pair">
+         ${fig(MAR + "render-cove.jpg", "הדמיה — קופסת האור בתקרה", "", accent.maryam)}
+         ${fig(MAR + "detail-lightbox.jpg", "פרט — קופסת אור והנמכת תקרת גבס 1:10", "fig--draw", accent.maryam)}
+       </div>
+     </div>`,
+    accent.maryam,
+    "page--content-flush page--maryam-detail"
   );
 
   /* =====================================================================
@@ -346,31 +430,66 @@
     accent.tech,
     "page--content-flush"
   );
+  const tech_c3 = contentPage(
+    "",
+    `${placeholderBadge()}
+     <div class="grid g-2up1">
+       ${fig(null, "הדמיה — חוץ", "", accent.tech)}
+       ${fig(null, "הדמיה — פנים", "", accent.tech)}
+       ${fig(null, "פיצוץ איזומטרי — מערכות", "", accent.tech)}
+     </div>`,
+    accent.tech,
+    "page--content-flush"
+  );
+  const tech_c4 = contentPage(
+    "",
+    `<div class="grid grid--2">
+       ${fig(null, "תכנית מערכות", "", accent.tech)}
+       ${fig(null, "פרט חיבור", "", accent.tech)}
+       ${fig(null, "פרט מעטפת — הגדלה", "", accent.tech)}
+       ${fig(null, "אנליזה אקלימית", "", accent.tech)}
+     </div>`,
+    accent.tech,
+    "page--content-flush"
+  );
 
   /* =====================================================================
    *  ASSEMBLE SPREADS  (RTL: right = lower page no., left = higher)
    * =================================================================== */
   const P = (no, html, acc) => ({ no, html, accent: acc || null });
 
-  const spreads = [
-    { single: true, page: P(1, coverPage) },                       // cover
-    { right: P(2, tocPage), left: P(3, resumePage) },              // TOC + Resume
-    { right: P(4, urban_cover_img, accent.urban), left: P(5, urban_cover_title, accent.urban) },
-    { right: P(6, urban_c1, accent.urban), left: P(7, urban_c2, accent.urban) },
-    { right: P(8, sea_cover_img, accent.sea), left: P(9, sea_cover_title, accent.sea) },
-    { right: P(10, sea_c1, accent.sea), left: P(11, sea_c2, accent.sea) },
-    { right: P(12, time_cover_img, accent.time), left: P(13, time_cover_title, accent.time) },
-    { right: P(14, time_c1, accent.time), left: P(15, time_c2, accent.time) },
-    { right: P(16, maryam_cover_img, accent.maryam), left: P(17, maryam_cover_title, accent.maryam) },
-    { right: P(18, maryam_c1, accent.maryam), left: P(19, maryam_c2, accent.maryam) },
-    { right: P(20, tech_cover_img, accent.tech), left: P(21, tech_cover_title, accent.tech) },
-    { right: P(22, tech_c1, accent.tech), left: P(23, tech_c2, accent.tech) },
-    { single: true, page: P(24, backPage) },                       // back
+  // Each project = 3 spreads (cover + 2 content). Page numbers auto-increment so
+  // adding/removing spreads never requires hand-renumbering.
+  let _n = 0;
+  const defs = [
+    { single: true, html: coverPage },                              // cover
+    { right: tocPage, left: resumePage },                           // TOC + Resume
+    { right: urban_cover_img, left: urban_cover_title, acc: accent.urban },
+    { right: urban_c1, left: urban_c2, acc: accent.urban },
+    { right: urban_c3, left: urban_c4, acc: accent.urban },
+    { right: sea_cover_img, left: sea_cover_title, acc: accent.sea },
+    { right: sea_c1, left: sea_c2, acc: accent.sea },
+    { right: sea_c3, left: sea_c4, acc: accent.sea },
+    { right: time_cover_img, left: time_cover_title, acc: accent.time },
+    { right: time_c1, left: time_c2, acc: accent.time },
+    { right: time_c3, left: time_c4, acc: accent.time },
+    { right: maryam_cover_img, left: maryam_cover_title, acc: accent.maryam },
+    { right: maryam_c1, left: maryam_c2, acc: accent.maryam },
+    { right: maryam_c3, left: maryam_c4, acc: accent.maryam },
+    { right: tech_cover_img, left: tech_cover_title, acc: accent.tech },
+    { right: tech_c1, left: tech_c2, acc: accent.tech },
+    { right: tech_c3, left: tech_c4, acc: accent.tech },
+    { single: true, html: backPage },                               // back
   ];
+  const spreads = defs.map((d) =>
+    d.single
+      ? { single: true, page: P(++_n, d.html) }
+      : { right: P(++_n, d.right, d.acc), left: P(++_n, d.left, d.acc) }
+  );
 
   // jump targets: project key -> spread index of its cover; "resume" -> spread 1
   const jumps = { resume: 1 };
-  const coverByKey = { urban: 2, sea: 4, time: 6, maryam: 8, tech: 10 };
+  const coverByKey = { urban: 2, sea: 5, time: 8, maryam: 11, tech: 14 };
   Object.assign(jumps, coverByKey);
 
   window.BOOK = { name: NAME, projects, spreads, jumps };
