@@ -15,6 +15,7 @@
   const NAME = "איריס שגיא סולומוביץ'";
   const BG = "assets/backgrounds/bw.svg";
   const SEA = "assets/projects/seeing-the-sea/";
+  const MAR = "assets/projects/maryam/";
 
   /* ---------- small HTML builders ---------- */
 
@@ -274,32 +275,49 @@
   );
 
   /* =====================================================================
-   *  PROJECT 4 — Maryam interior (placeholder, warm)
+   *  PROJECT 4 — Maryam interior (REAL)  pages 16–19
+   *  "מגורים בין־דוריים" — דירה בחולון לסבתא מרים ולנכדתה מרי, בהשראת מלון אלמא.
    * =================================================================== */
-  const maryam_cover_img = coverImage(null, "מלון אלמה", accent.maryam);
-  const maryam_cover_title = coverTitle("מרים", "עיצוב פנים", null, accent.maryam);
+  const maryam_cover_img = coverImage(MAR + "alma.jpg", "מלון אלמה — מודל העבודה", accent.maryam);
+  const maryam_cover_title = coverTitle("מרים", "עיצוב פנים · מגורים בין־דוריים", MAR + "hero.jpg", accent.maryam);
+
   const maryam_c1 = contentPage(
     "מרים",
-    `${placeholderBadge()}
-     <p class="proj-desc">פרויקט עיצוב פנים לדירה. דגש על תכניות, חתכים ופרטים, כשכל הדמיה ממוקמת
-       לצד הציור או הפרט שאליו היא מתייחסת.</p>
-     <div class="grid grid--maryam">
-       ${fig(null, "תכנית", "fig--big", accent.maryam)}
-       ${fig(null, "הדמיה — סלון", "", accent.maryam)}
-       ${fig(null, "פרט", "", accent.maryam)}
-     </div>`,
-    accent.maryam
-  );
-  const maryam_c2 = contentPage(
-    "",
-    `<div class="grid grid--maryam2">
-       ${fig(null, "חתך", "", accent.maryam)}
-       ${fig(null, "הדמיה — חדר", "", accent.maryam)}
-       ${fig(null, "פרט נגרות", "", accent.maryam)}
-       ${fig(null, "הדמיה — מטבח", "", accent.maryam)}
+    `<div class="maryam-c1-grid">
+       <div class="mc1-text">
+         <p class="proj-desc">פרויקט עיצוב פנים לדירה בחולון, לסבתא מרים ולנכדתה מרי, החיות כיום
+           בשתי קומות נפרדות. התכנון מבקש לבטל את הניתוק שבין הדורות ולייצר קרבה: הקיר שהפריד בין
+           שני המודולים הוסר, וקופסאות האור הופכות לאלמנט מכליל המגדיר את המרחב. בהשראת מלון אלמא —
+           אורכניות, המשכיות וקירות בטון הזורמים פנימה — והעיקרון המוביל לכל אורך הפרויקט: <b>ריחוף</b>.</p>
+         ${fig(MAR + "plan.jpg", "תכנית מוצעת 1:50 — הפרדה בין הפרטי לציבורי", "fig--draw", accent.maryam)}
+       </div>
+       <div class="mc1-draw">
+         ${fig(MAR + "axon.jpg", "פרספקטיבה — מבט־על על מכלול החדרים", "fig--draw", accent.maryam)}
+         ${fig(MAR + "section.jpg", "חתך — ריחוף והמשכיות בין החללים", "fig--sect", accent.maryam)}
+       </div>
      </div>`,
     accent.maryam,
-    "page--content-flush"
+    "page--maryam-c1"
+  );
+
+  const maryam_c2 = contentPage(
+    "",
+    `<div class="maryam-c2-grid">
+       <div class="mc2-pair">
+         ${fig(MAR + "render-kitchen.jpg", "הדמיה — מטבח · קופסאות אור", "", accent.maryam)}
+         ${fig(MAR + "detail-lightbox.jpg", "פרט — קופסת אור", "fig--draw", accent.maryam)}
+       </div>
+       <div class="mc2-pair">
+         ${fig(MAR + "render-balcony.jpg", "הדמיה — מטבח מן המרפסת", "", accent.maryam)}
+         ${fig(MAR + "detail-shelf.jpg", "פרט — מדף נירוסטה מרחף", "fig--draw", accent.maryam)}
+       </div>
+       <div class="mc2-pair">
+         ${fig(MAR + "render-miriam.jpg", "הדמיה — חדר מרים", "", accent.maryam)}
+         ${fig(MAR + "detail-cabinet.jpg", "פרט — ארון מרחף", "fig--draw", accent.maryam)}
+       </div>
+     </div>`,
+    accent.maryam,
+    "page--content-flush page--maryam-c2"
   );
 
   /* =====================================================================

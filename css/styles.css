@@ -294,6 +294,30 @@ html, body {
 .gh-box { grid-area: gh; }
 .page--time-c1 .stage-strip--diagram { position: static; }
 
+/* drawing figures: show the whole sheet on white (don't crop) */
+.fig--draw .figure__img { background: #fff; }
+.fig--draw .figure__img img { object-fit: contain; }
+.fig--sect .figure__img { background: #111; }
+.fig--sect .figure__img img { object-fit: contain; }
+
+/* ---------- Maryam interior — page 18 (concept + drawings) ---------- */
+.page--maryam-c1 .content__body { inset: 56px 70px 48px; }
+.maryam-c1-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 26px; height: 100%;
+}
+.mc1-text { display: flex; flex-direction: column; min-height: 0; padding-top: 96px; }
+.mc1-text .proj-desc { margin: 0 0 18px; max-width: none; }
+.mc1-text .figure { flex: 1; min-height: 0; }
+.mc1-draw { display: grid; grid-template-rows: 1fr 1fr; gap: 22px; min-height: 0; }
+.mc1-draw .figure { min-height: 0; }
+
+/* ---------- Maryam interior — page 19 (render ↔ detail pairs) ---------- */
+.page--maryam-c2 .maryam-c2-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; height: 100%;
+}
+.mc2-pair { display: grid; grid-template-rows: 1.5fr 1fr; gap: 12px; min-height: 0; }
+.mc2-pair .figure { min-height: 0; }
+
 /* ============================ NAVBAR ================================== */
 .navbar {
   position: fixed; left: 0; right: 0; bottom: 0; height: 112px;
