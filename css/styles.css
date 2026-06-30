@@ -145,10 +145,10 @@ html, body {
 .page--toc .toc__resume:hover { background: var(--ink); color: #fff; }
 
 /* Resume */
-.page--resume { padding: 64px 84px; }
+.page--resume { padding: 46px 84px; }
 .cv__head {
   display: flex; align-items: center; gap: 30px;
-  border-bottom: 2px solid var(--ink); padding-bottom: 18px; margin-bottom: 22px;
+  border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 16px;
 }
 .cv__headtext { flex: 1; min-width: 0; }
 .cv__photo {
@@ -158,19 +158,19 @@ html, body {
 }
 .cv__name { font-size: 40px; font-weight: 800; margin: 0; }
 .cv__contact { font-size: 15px; color: #555; margin-top: 6px; letter-spacing: .01em; }
-.cv__lead { font-size: 16px; line-height: 1.6; margin: 14px 0 0; max-width: 980px; color: #222; }
+.cv__lead { font-size: 15px; line-height: 1.45; margin: 8px 0 0; max-width: 980px; color: #222; }
 .cv__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; }
 .cv__sec {
-  font-size: 19px; font-weight: 800; margin: 4px 0 12px;
-  padding-bottom: 6px; border-bottom: 1px solid var(--hair);
+  font-size: 19px; font-weight: 800; margin: 2px 0 8px;
+  padding-bottom: 5px; border-bottom: 1px solid var(--hair);
 }
-.cv__col > .cv__sec:not(:first-child) { margin-top: 22px; }
-.cv__item { display: flex; gap: 16px; margin-bottom: 12px; font-size: 15px; line-height: 1.5; break-inside: avoid; }
+.cv__col > .cv__sec:not(:first-child) { margin-top: 14px; }
+.cv__item { display: flex; gap: 16px; margin-bottom: 8px; font-size: 15px; line-height: 1.42; break-inside: avoid; }
 .cv__sec { break-after: avoid; }
 .cv__yr { flex: 0 0 92px; color: #888; font-weight: 500; }
-.cv__item ul { margin: 4px 0 0; padding-inline-start: 18px; }
-.cv__item li { margin: 2px 0; color: #333; }
-.cv__skills { margin: 0; padding-inline-start: 18px; font-size: 15px; line-height: 1.7; }
+.cv__item ul { margin: 3px 0 0; padding-inline-start: 18px; }
+.cv__item li { margin: 1px 0; color: #333; }
+.cv__skills { margin: 0; padding-inline-start: 18px; font-size: 15px; line-height: 1.5; }
 .cv__lang { font-size: 15px; color: #222; margin: 4px 0 0; }
 
 /* Never leave a single word alone on the last line of any prose block */
