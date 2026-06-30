@@ -121,10 +121,13 @@
   /* ---------- page 3 — Resume ---------- */
   const resumePage = `<div class="page page--resume" style="background-image:url('${BG}')">
       <header class="cv__head">
-        <h2 class="cv__name">${NAME}</h2>
-        <div class="cv__contact">רחובות · ש.לידה 2001 · iris.solomovitch59@gmail.com · 050-7200198</div>
-        <p class="cv__lead">סטודנטית לתואר ראשון באדריכלות (B.Arch) ולתואר שני באדריכלות (M.A) באוניברסיטת תל אביב.
-          בעלת ניסיון בפרויקטים אדריכליים מורכבים, לצד רקע טכנולוגי ופיקודי משמעותי, חשיבה אנליטית ויכולת למידה גבוהה.</p>
+        <div class="cv__headtext">
+          <h2 class="cv__name">${NAME}</h2>
+          <div class="cv__contact">רחובות · ש.לידה 2001 · iris.solomovitch59@gmail.com · 050-7200198</div>
+          <p class="cv__lead">סטודנטית לתואר ראשון באדריכלות (B.Arch) ולתואר שני באדריכלות (M.A) באוניברסיטת תל אביב.
+            בעלת ניסיון בפרויקטים אדריכליים מורכבים, לצד רקע טכנולוגי ופיקודי משמעותי, חשיבה אנליטית ויכולת למידה גבוהה.</p>
+        </div>
+        <img class="cv__photo" src="assets/iris.jpg" alt="${NAME}">
       </header>
       <div class="cv__cols">
         <section class="cv__col">
