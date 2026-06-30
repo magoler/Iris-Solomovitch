@@ -165,7 +165,8 @@ html, body {
   padding-bottom: 6px; border-bottom: 1px solid var(--hair);
 }
 .cv__col > .cv__sec:not(:first-child) { margin-top: 22px; }
-.cv__item { display: flex; gap: 16px; margin-bottom: 12px; font-size: 15px; line-height: 1.5; }
+.cv__item { display: flex; gap: 16px; margin-bottom: 12px; font-size: 15px; line-height: 1.5; break-inside: avoid; }
+.cv__sec { break-after: avoid; }
 .cv__yr { flex: 0 0 92px; color: #888; font-weight: 500; }
 .cv__item ul { margin: 4px 0 0; padding-inline-start: 18px; }
 .cv__item li { margin: 2px 0; color: #333; }
