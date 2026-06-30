@@ -387,7 +387,7 @@
 
     // click any figure / cover image to view it large
     stage.addEventListener("click", (e) => {
-      const img = e.target.closest(".figure__img img, .page--coverimg .bleed");
+      const img = e.target.closest(".figure__img img, .page--coverimg .bleed, .pdf-img, .page--sea12 figure img");
       if (!img || img.closest(".figure--missing")) return;
       e.stopPropagation();
       lbOpen(img.currentSrc || img.src, img.alt);

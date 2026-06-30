@@ -411,7 +411,8 @@ html, body {
 
 /* ============================ LIGHTBOX =============================== */
 /* click affordance on every viewable asset */
-.figure__img img, .page--coverimg .bleed { cursor: zoom-in; }
+.figure__img img, .page--coverimg .bleed,
+.pdf-img, .page--sea12 figure img { cursor: zoom-in; }
 .figure--missing .figure__img img { cursor: default; }
 
 .lightbox {
