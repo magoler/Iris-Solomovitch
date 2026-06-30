@@ -244,15 +244,16 @@ html, body {
 .out-cap bdi { unicode-bidi: isolate; }
 
 /* page 13 — 4 interior renders (left) + upper plan (right, by the spine) */
-.sea13 { display: grid; grid-template-columns: 312px 1fr; gap: 26px; padding: 30px 40px;
-  height: 100%; align-items: stretch; direction: ltr; }
-.sea13-renders { display: flex; flex-direction: column; justify-content: space-between; }
+/* flex row, both columns forced to the same height (top & bottom aligned) */
+.sea13 { display: flex; gap: 24px; padding: 44px 40px; height: 100%; box-sizing: border-box;
+  align-items: stretch; direction: ltr; }
+.sea13-renders { flex: 0 0 296px; display: flex; flex-direction: column; justify-content: space-between; }
 .sea13-renders .out img { width: 100%; }
 .sea13-renders .out-cap b { font-size: 11px; }
 .sea13-renders .out-cap span { font-size: 8.5px; }
-.sea13-plan { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.sea13-plan img { width: auto; max-width: 100%; max-height: 768px; }
-.sea13-plan .out-cap { width: 100%; }
+.sea13-plan { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: stretch; }
+.sea13-plan img { width: 100%; height: auto; }
+.sea13-plan .out-cap { width: 100%; margin-top: auto; padding-top: 4px; }
 .sea13-plan .out-cap b { font-size: 13px; }
 
 /* page 14 — 6 intervention panels in a 2×3 grid (captions baked in) */
@@ -284,12 +285,15 @@ html, body {
 .sea15-bottom img { width: 100%; height: auto; display: block; }
 
 /* page 12 — gallery plan beside the 1936 map + top-view render */
-.page--sea12 { background: #fff; padding: 56px 64px; }
+.page--sea12 { background: #fff; padding: 56px 64px 44px; box-sizing: border-box;
+  height: 100%; display: flex; flex-direction: column; }
 .page--sea12 .content__title { border-bottom-color: #1E7E8C; }
 .sea12-lead {
   margin: 86px 0 14px; max-width: 820px; font-size: 16px; line-height: 1.6; color: #1c1c1c;
 }
-.sea12-bottom { display: flex; justify-content: space-between; align-items: flex-start; gap: 26px; }
+/* drop the composition to the bottom so its baseline matches the p.13 columns */
+.sea12-bottom { display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 26px; margin-top: auto; }
 .sea12-gallery { margin: 0; display: flex; flex-direction: column; }
 /* enlarged and height-matched to the topview+map column beside it */
 .sea12-gallery img { height: 432px; width: auto; max-width: 100%; display: block; }
