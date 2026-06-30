@@ -18,6 +18,9 @@
   const tocBtn = document.getElementById("toc-toggle");
   const tocPanel = document.getElementById("toc-panel");
   const counter = document.getElementById("counter");
+  const lightbox = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lightbox-img");
+  const lbCap = document.getElementById("lightbox-cap");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   let idx = 0;
@@ -170,8 +173,25 @@
   function closeToc() { tocPanel.classList.remove("is-open"); tocBtn.setAttribute("aria-expanded", "false"); }
   function toggleToc() { tocPanel.classList.contains("is-open") ? closeToc() : openToc(); }
 
+  /* ---------- image lightbox ---------- */
+  function lbOpen(src, alt) {
+    if (!src) return;
+    lbImg.src = src;
+    lbImg.alt = alt || "";
+    lbCap.textContent = alt || "";
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+  }
+  function lbClose() {
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+    lbImg.removeAttribute("src");
+  }
+  const lbIsOpen = () => lightbox.classList.contains("is-open");
+
   /* ---------- input: keyboard, swipe, wheel-lock-free ---------- */
   function keyHandler(e) {
+    if (lbIsOpen()) { if (e.key === "Escape") lbClose(); return; } // lightbox traps keys
     if (e.key === "ArrowLeft") goNext();      // RTL: left = forward
     else if (e.key === "ArrowRight") goPrev(); // RTL: right = back
     else if (e.key === "Home") jumpTo(0);
@@ -207,6 +227,16 @@
         if (t != null) jumpTo(t);
       }
     });
+
+    // click any figure / cover image to view it large
+    stage.addEventListener("click", (e) => {
+      const img = e.target.closest(".figure__img img, .page--coverimg .bleed");
+      if (!img || img.closest(".figure--missing")) return;
+      e.stopPropagation();
+      lbOpen(img.currentSrc || img.src, img.alt);
+    });
+    // close the lightbox on any click except the image itself
+    lightbox.addEventListener("click", (e) => { if (e.target !== lbImg) lbClose(); });
 
     const start = parseInt(location.hash.replace("#", ""), 10);
     idx = Number.isFinite(start) ? Math.max(0, Math.min(book.spreads.length - 1, start)) : 0;

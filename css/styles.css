@@ -363,6 +363,39 @@ html, body {
 .mc-pair .figure { min-height: 0; }
 .mc-aside { min-height: 0; height: 100%; }
 
+/* ============================ LIGHTBOX =============================== */
+/* click affordance on every viewable asset */
+.figure__img img, .page--coverimg .bleed { cursor: zoom-in; }
+.figure--missing .figure__img img { cursor: default; }
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 100; display: none; place-items: center;
+  padding: 48px; cursor: zoom-out;
+  background: rgba(8, 9, 11, .93); backdrop-filter: blur(5px);
+  opacity: 0; transition: opacity .2s ease;
+}
+.lightbox.is-open { display: grid; opacity: 1; }
+.lightbox__fig {
+  margin: 0; display: flex; flex-direction: column; align-items: center; gap: 14px;
+  max-width: 96vw; max-height: 92vh;
+}
+.lightbox__img {
+  max-width: 96vw; max-height: 84vh; object-fit: contain; cursor: default;
+  background: #fff; border-radius: 3px; box-shadow: 0 30px 90px rgba(0, 0, 0, .6);
+}
+.lightbox__cap {
+  color: #ededed; font-family: var(--font); font-size: 16px; line-height: 1.4;
+  text-align: center; max-width: 80vw; cursor: zoom-out;
+}
+.lightbox__close {
+  position: fixed; top: 18px; left: 22px; width: 46px; height: 46px;
+  display: grid; place-items: center; z-index: 101; cursor: pointer;
+  font-family: var(--font); font-size: 28px; line-height: 1; color: #fff;
+  background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 50%; backdrop-filter: blur(6px); transition: background .2s, transform .15s;
+}
+.lightbox__close:hover { background: rgba(255, 255, 255, .22); transform: scale(1.06); }
+
 /* ============================ NAVBAR ================================== */
 .navbar {
   position: fixed; left: 0; right: 0; bottom: 0; height: 112px;
