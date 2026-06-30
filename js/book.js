@@ -79,7 +79,7 @@
     stage.querySelectorAll(".spread").forEach(fit);
   }
 
-  /* ---------- render with a smooth directional slide ---------- */
+  /* ---------- render with page-turn animation ---------- */
   function render(target, dir) {
     target = Math.max(0, Math.min(book.spreads.length - 1, target));
     if (target === idx && stage.children.length) return;
@@ -88,42 +88,49 @@
     fit(next);
 
     const old = stage.querySelector(".spread.is-current");
-
-    const settle = () => {
-      if (old && old.parentNode) old.remove();
+    const finish = () => {
+      if (old) old.remove();
       next.classList.add("is-current");
       idx = target;
       updateChrome();
       animating = false;
     };
 
-    if (reduceMotion || !old) { settle(); return; }
+    if (reduceMotion || !old) {
+      if (old) old.remove();
+      next.classList.add("is-current");
+      idx = target;
+      updateChrome();
+      animating = false;
+      return;
+    }
 
     animating = true;
-    const dur = 520;
-    const ease = "cubic-bezier(.45, 0, .15, 1)";
-    const sN = next._scale || 1, sO = old._scale || sN;
-    const D = (viewport.clientWidth || window.innerWidth) * 0.62; // slide distance
-    const fwd = dir === FORWARD;          // RTL: forward = the next spread comes from the left
-    const nFrom = fwd ? -D : D;
-    const oTo = fwd ? D : -D;
+    const dur = 640;
+    const ease = "cubic-bezier(.2,.7,.2,1)";
+    // Forward (RTL): new page enters from the left; old swings out to the left.
+    const sIn = dir === FORWARD ? -1 : 1;
+    next.style.zIndex = 2;
+    old.style.zIndex = 1;
+    const sNew = next._scale || 1;
+    const sOld = old._scale || sNew;
 
-    next.style.zIndex = 2; old.style.zIndex = 1;
-    next.animate(
+    old.animate(
       [
-        { transform: `translateX(${nFrom}px) ${BASE} scale(${sN})`, opacity: 0.5 },
-        { transform: `translateX(0px) ${BASE} scale(${sN})`, opacity: 1 },
+        { transform: `${BASE} scale(${sOld}) rotateY(0deg)`, opacity: 1, filter: "brightness(1)" },
+        { transform: `${BASE} scale(${sOld}) rotateY(${sIn * 92}deg)`, opacity: 0.2, filter: "brightness(.8)" },
       ],
       { duration: dur, easing: ease, fill: "forwards" }
     );
-    const a = old.animate(
+    const a = next.animate(
       [
-        { transform: `translateX(0px) ${BASE} scale(${sO})`, opacity: 1 },
-        { transform: `translateX(${oTo}px) ${BASE} scale(${sO})`, opacity: 0.3 },
+        { transform: `${BASE} scale(${sNew}) rotateY(${-sIn * 92}deg)`, opacity: 0.2, filter: "brightness(.8)" },
+        { transform: `${BASE} scale(${sNew}) rotateY(0deg)`, opacity: 1, filter: "brightness(1)" },
       ],
       { duration: dur, easing: ease, fill: "forwards" }
     );
-    a.onfinish = a.oncancel = settle;
+    a.onfinish = finish;
+    a.oncancel = finish;
   }
 
   /* ---------- chrome: counter, arrow state, TOC active ---------- */
