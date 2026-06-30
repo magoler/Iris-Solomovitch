@@ -274,10 +274,11 @@
   const lbIsOpen = () => lightbox.classList.contains("is-open");
 
   function lbWireZoom() {
-    // wheel zoom (desktop)
+    // wheel zoom (desktop) — gentle step
+    const STEP = 1.08;
     lbStage.addEventListener("wheel", (e) => {
       e.preventDefault();
-      zoomAt(e.clientX, e.clientY, zScale * (e.deltaY < 0 ? 1.2 : 1 / 1.2));
+      zoomAt(e.clientX, e.clientY, zScale * (e.deltaY < 0 ? STEP : 1 / STEP));
     }, { passive: false });
     // double-click / double-tap toggles zoom
     lbImg.addEventListener("dblclick", (e) => {
