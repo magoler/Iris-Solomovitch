@@ -100,8 +100,8 @@
     if (reduceMotion || !old) { settle(); return; }
 
     animating = true;
-    const dur = 720;
-    const ease = "cubic-bezier(.22,.61,.30,1)";
+    const dur = 600;
+    const ease = "cubic-bezier(.25,.75,.35,1)";
 
     // single pages (cover / back) can't turn a leaf — cross-fade instead
     if (old.classList.contains("spread--single") || next.classList.contains("spread--single")) {
@@ -120,7 +120,6 @@
 
     // old spread children: [0]=right page, [1]=spine, [2]=left page (RTL)
     const turnSlot = fwd ? old.children[2] : old.children[0];   // the leaf that flips
-    turnSlot.style.visibility = "hidden";   // reveal the new page beneath as the leaf lifts
 
     // a spread-sized 3D layer that carries the turning leaf, scaled like a spread
     const layer = document.createElement("div");
@@ -139,7 +138,7 @@
 
     const front = document.createElement("div");
     front.className = "leaf__face leaf__front";
-    front.innerHTML = turnSlot.innerHTML;
+    front.appendChild(turnSlot);   // move the already-rendered page in (no re-decode → instant)
     const back = document.createElement("div");
     back.className = "leaf__face leaf__back";
     const shade = document.createElement("div");
