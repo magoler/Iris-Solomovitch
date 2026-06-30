@@ -232,59 +232,72 @@
   const sea_cover_img = coverImage(SEA + "lagoon-day.jpg", "מבט על — הלגונה והעיר", accent.sea);
   const sea_cover_title = coverTitle("לראות את הים", "סטודיו שימור · פארק מדרון יפו", SEA + "hero-complex.jpg", accent.sea);
 
-  // c1 — concept + masterplan
-  const sea_c1 = contentPage(
-    "לראות את הים",
-    `<div class="sea2-c1-grid">
-       <div class="sea2-c1-text">
-         <p class="proj-desc">פרויקט שימור במדרון יפו, על קו התפר שבין העיר לים. הפרויקט מבקש לרפא צלקת
-           היסטורית בחזית הימית ולחבר מחדש בין התושבים, הזיכרון המקומי והמים. סביב לגונה חדשה נפרשׂ מרחב
-           ציבורי — רחבה קהילתית, חממת תבלינים, חלל שיח (History-telling), ארכיון וספרייה, סדנאות כתיבה
-           וצילום, תערוכות וקיוסק — שממנו אפשר שוב לראות את הים.</p>
-         ${fig(SEA + "site-aerial.jpg", "מבט על — מתחם המבנים בהקשר העירוני", "", accent.sea)}
-       </div>
-       ${fig(SEA + "masterplan.jpg", "תוכנית אב — מכלול המבנים והמרחב הציבורי", "", accent.sea)}
-     </div>`,
-    accent.sea,
-    "page--sea2-c1"
-  );
+  // --- helpers for the PDF-derived sheets (white background, titles re-set in Ploni) ---
+  // A full-page graphic from the project PDF, with each title re-typeset in Ploni
+  // and positioned (in % of the page) exactly where it sits in the source.
+  const seaTitle = (o) => {
+    const pos = o.r != null ? `right:${o.r}%` : `left:${o.l}%`;
+    const col = o.c ? `;color:${o.c}` : "";
+    const w = o.w ? `;font-weight:${o.w}` : "";
+    return `<div class="pdf-ttl" style="${pos};top:${o.t}%;font-size:${o.s}px${col}${w}">${o.html}</div>`;
+  };
+  const pdfSheet = (img, titles) =>
+    `<div class="page page--sea-pdf"><img class="pdf-img" src="${img}" alt="">${titles
+      .map(seaTitle)
+      .join("")}</div>`;
 
-  // c2 — the buildings from outside (exterior renders)
-  const sea_c2 = contentPage(
-    "",
-    `<div class="grid grid--2">
-       ${fig(SEA + "ext-entrance.jpg", "הדמיה — כניסה למתחם", "", accent.sea)}
-       ${fig(SEA + "ext-pergola.jpg", "הדמיה — רחבה ופרגולה", "", accent.sea)}
-       ${fig(SEA + "ext-aerial.jpg", "הדמיה — מבט אווירי על המבנים", "", accent.sea)}
-       ${fig(SEA + "ext-street.jpg", "הדמיה — חזית הרחוב", "", accent.sea)}
-     </div>`,
-    accent.sea,
-    "page--content-flush"
-  );
+  // c1 (page 12) — concept paragraph (top) + marine-gallery plan beside the
+  // 1936 British map and the top-view render (matched in scale to the upper plan on p.13)
+  const sea_c1 = `<div class="page page--sea12">
+      <header class="content__head"><h3 class="content__title">לראות את הים</h3></header>
+      <p class="proj-desc sea12-lead">פרויקט שימור במדרון יפו, על קו התפר שבין העיר לים. הפרויקט מבקש לרפא צלקת
+        היסטורית בחזית הימית ולחבר מחדש בין התושבים, הזיכרון המקומי והמים. סביב לגונה חדשה נפרשׂ מרחב
+        ציבורי — רחבה קהילתית, חממת תבלינים, חלל שיח (History-telling), ארכיון וספרייה, סדנאות כתיבה
+        וצילום, תערוכות וקיוסק — שממנו אפשר שוב לראות את הים.</p>
+      <div class="sea12-bottom">
+        <figure class="sea12-gallery">
+          <img src="${SEA}g-gallery.jpg" alt="תכנית גלריה ימית">
+          <figcaption>תכנית גלריה ימית וקיוסק הטיילת – מפלס <bdi>8.67+</bdi> | <bdi>1:100</bdi></figcaption>
+        </figure>
+        <div class="sea12-stack">
+          <figure>
+            <img src="${SEA}g-topview.jpg" alt="מבט על — הבנוי בפרויקט">
+            <figcaption>מבט על – הבנוי בפרויקט | <bdi>1:500</bdi></figcaption>
+          </figure>
+          <figure>
+            <img src="${SEA}g-british.jpg" alt="מיפוי בריטי 1936">
+            <figcaption>מיפוי בריטי משנת <bdi>1936</bdi> | <bdi>1:500</bdi></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>`;
 
-  // c3 — the places, inside (interior renders) — "the missing places"
-  const sea_c3 = contentPage(
-    "",
-    `<div class="grid g-2up1">
-       ${fig(SEA + "int-library.jpg", "ארכיון וספרייה", "", accent.sea)}
-       ${fig(SEA + "int-gallery.jpg", "חלל שיח · History-telling", "", accent.sea)}
-       ${fig(SEA + "int-exhibition.jpg", "תערוכת צילום", "", accent.sea)}
-     </div>`,
-    accent.sea,
-    "page--content-flush"
-  );
+  // c2 (page 13) — PDF page 5: interior renders + upper-construction plan
+  const sea_c2 = pdfSheet(SEA + "pdf-p13.jpg", [
+    { r: 70.76, t: 23.42, s: 10.1, w: 700, html: 'ארכיון, ספריה וחללי שיח <bdi>History-telling</bdi>' },
+    { r: 70.76, t: 24.9, s: 7.6, w: 400, html: 'מידע אודות השכונה והעברת שיח חוויתי ולימודי בין עבר-הווה-עתיד' },
+    { r: 70.86, t: 45.21, s: 10.5, w: 700, html: 'רחבה קהילתית' },
+    { r: 70.86, t: 46.7, s: 7.6, w: 400, html: 'אירועים שכונתיים ופעילויות א-פורמליות' },
+    { r: 70.86, t: 69.6, s: 10.1, w: 700, html: 'תערוכת צילום' },
+    { r: 70.86, t: 71.05, s: 7.6, w: 400, html: 'אודות שכונת עג׳מי וג׳בליה' },
+    { r: 70.48, t: 92.69, s: 10.1, w: 700, html: 'תערוכת קבע ימית' },
+    { r: 70.48, t: 94.2, s: 7.6, w: 400, html: 'אודות קו החוף המקורי, בסמוך לטיילת חוף הים' },
+    { r: 4.34, t: 91.89, s: 16.6, w: 500, html: 'תכנית בינוי עליון – מפלסים <bdi>15.65+</bdi>, <bdi>13.65+</bdi> | <bdi>1:100</bdi>' },
+  ]);
 
-  // c4 — plans + section
-  const sea_c4 = contentPage(
-    "",
-    `<div class="grid g-2up1 sea2-plans">
-       ${fig(SEA + "plan-level1.jpg", "תוכנית — מפלס עליון (+15.65 / +13.65)", "fig--draw", accent.sea)}
-       ${fig(SEA + "plan-level2.jpg", "תוכנית — מפלס גלריה וקיוסק (+8.67)", "fig--draw", accent.sea)}
-       ${fig(SEA + "section.jpg", "חתך לאורך המדרון", "fig--draw", accent.sea)}
-     </div>`,
-    accent.sea,
-    "page--content-flush"
-  );
+  // c3 (page 14) — PDF page 2: spatial-intervention sequence
+  const sea_c3 = pdfSheet(SEA + "pdf-p14.jpg", [
+    { r: 3.03, t: 4.37, s: 21.9, w: 500, html: 'ניסוח פעולות ההתערבות במרחב | "פארק מדרון יפו"' },
+  ]);
+
+  // c4 (page 15) — PDF page 3: axonometric, sections & elevations
+  const sea_c4 = pdfSheet(SEA + "pdf-p15.jpg", [
+    { r: 20.74, t: 24.61, s: 9.4, w: 500, c: "#ffffff", html: '<b>מצב קיים</b> | חסימת זרימת המים על ידי המסלעה הקיימת' },
+    { r: 20.74, t: 47.06, s: 9.4, w: 500, c: "#ffffff", html: '<b>מצב חדש</b> | שימור הגשר הקיים ופתיחת המעבר לטובת זרימת המים ויצירת לגונה חדשה הצופה אל יפו' },
+    { r: 3.84, t: 71.4, s: 13.6, w: 500, html: 'חתך א–א | <bdi>1:200</bdi>' },
+    { r: 51.57, t: 93.19, s: 13.6, w: 500, html: 'חזית מזרחית – מרחוב קדם' },
+    { r: 3.84, t: 93.29, s: 13.6, w: 500, html: 'חתך ב–ב | <bdi>1:100</bdi>' },
+  ]);
 
   /* =====================================================================
    *  PROJECT 3 — Time · Space Housing (placeholder, blue)

@@ -234,6 +234,34 @@ html, body {
 }
 .page--content-flush .proj-desc { margin-top: 0; }
 
+/* ===== Seeing-the-Sea — PDF-derived sheets (white bg, Ploni titles) ===== */
+.page--sea-pdf { background: #fff; position: relative; overflow: hidden; }
+.pdf-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.pdf-ttl {
+  position: absolute; direction: rtl; text-align: right; white-space: nowrap;
+  font-family: var(--font); color: #426369; font-weight: 500; line-height: 1.05; z-index: 2;
+}
+.pdf-ttl b { font-weight: 700; }
+.pdf-ttl bdi { unicode-bidi: isolate; }
+
+/* page 12 — gallery plan beside the 1936 map + top-view render */
+.page--sea12 { background: #fff; padding: 56px 64px; }
+.page--sea12 .content__title { border-bottom-color: #1E7E8C; }
+.sea12-lead {
+  margin: 86px 0 14px; max-width: 820px; font-size: 16px; line-height: 1.6; color: #1c1c1c;
+}
+.sea12-bottom { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.sea12-gallery { margin: 0; flex: 0 0 726px; }     /* scale-matched to the p.13 upper plan */
+.sea12-gallery img { width: 726px; height: auto; display: block; }
+.sea12-stack { flex: 0 0 300px; display: flex; flex-direction: column; gap: 14px; }
+.sea12-stack figure { margin: 0; }
+.sea12-stack img { width: 100%; height: auto; display: block; }
+.page--sea12 figcaption {
+  margin-top: 5px; direction: rtl; text-align: right;
+  font-size: 10px; font-weight: 500; color: #426369; line-height: 1.2;
+}
+.page--sea12 figcaption bdi { unicode-bidi: isolate; }
+
 /* real-content c1 pages: short description above a full-height image grid */
 .c1col { display: flex; flex-direction: column; height: 100%; }
 .c1col .proj-desc { margin: 92px 0 16px; max-width: none; }
