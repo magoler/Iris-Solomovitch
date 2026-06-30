@@ -246,16 +246,10 @@
   // c1 (page 12) — concept paragraph (top) + marine-gallery plan beside the
   // 1936 British map and the top-view render (matched in scale to the upper plan on p.13)
   const sea_c1 = `<div class="page page--sea12">
-      <header class="content__head"><h3 class="content__title">לראות את הים</h3></header>
-      <p class="proj-desc sea12-lead">הפרויקט עוסק בחשיפת השכבות הסמויות של פארק המדרון ביפו, ובבחינה מחודשת
-        של המתח בין זיכרון להדחקה במרחב העירוני. מתוך קריאה היסטורית וביקורתית, הפרויקט מבקש להחזיר אל פני
-        השטח את הסיפור המקומי שנדחק, וליצור חיבור מחודש בין שכונות עג׳מי וג׳בליה לבין הים. ההתערבות האדריכלית
-        מציעה מערכת מרחבית המשלבת חינוך, תרבות ופעילות קהילתית, באמצעות מרחבים פתוחים וגמישים המעודדים מפגש,
-        למידה ועשייה משותפת. כך הופך הזיכרון למרכיב פעיל המעצב את חוויית המקום ואת חיי הקהילה.</p>
-      <div class="sea12-bottom">
-        <figure class="sea12-gallery">
-          <img src="${SEA}g-gallery.jpg" alt="תכנית גלריה ימית">
-          <figcaption>תכנית גלריה ימית וקיוסק הטיילת – מפלס <bdi>8.67+</bdi> | <bdi>1:100</bdi></figcaption>
+      <div class="sea12-col sea12-left">
+        <figure class="sea12-model">
+          <img src="${SEA}model.jpg" alt="מודל עבודה — פארק המדרון">
+          <figcaption>מודל עבודה</figcaption>
         </figure>
         <div class="sea12-stack">
           <figure>
@@ -267,6 +261,20 @@
             <figcaption>מיפוי בריטי משנת <bdi>1936</bdi> | <bdi>1:500</bdi></figcaption>
           </figure>
         </div>
+      </div>
+      <div class="sea12-col sea12-right">
+        <div class="sea12-head">
+          <h3 class="content__title">לראות את הים</h3>
+          <p class="proj-desc sea12-lead">הפרויקט עוסק בחשיפת השכבות הסמויות של פארק המדרון ביפו, ובבחינה מחודשת
+            של המתח בין זיכרון להדחקה במרחב העירוני. מתוך קריאה היסטורית וביקורתית, הפרויקט מבקש להחזיר אל פני
+            השטח את הסיפור המקומי שנדחק, וליצור חיבור מחודש בין שכונות עג׳מי וג׳בליה לבין הים. ההתערבות האדריכלית
+            מציעה מערכת מרחבית המשלבת חינוך, תרבות ופעילות קהילתית, באמצעות מרחבים פתוחים וגמישים המעודדים מפגש,
+            למידה ועשייה משותפת. כך הופך הזיכרון למרכיב פעיל המעצב את חוויית המקום ואת חיי הקהילה.</p>
+        </div>
+        <figure class="sea12-gallery">
+          <img src="${SEA}g-gallery.jpg" alt="תכנית גלריה ימית">
+          <figcaption>תכנית גלריה ימית וקיוסק הטיילת – מפלס <bdi>8.67+</bdi> | <bdi>1:100</bdi></figcaption>
+        </figure>
       </div>
     </div>`;
 
