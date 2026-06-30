@@ -395,17 +395,18 @@ html, body {
   color: #ededed; font-family: var(--font); font-size: 16px; line-height: 1.4;
   text-align: center; max-width: 80vw; cursor: zoom-out;
 }
-/* overview minimap — pinned to the image's bottom-left, shown only while zoomed */
+/* overview minimap — pinned to the image's bottom-left, shown only while zoomed.
+   Click or drag on it to move the main view to that region. */
 .lightbox__map {
-  position: absolute; z-index: 3; display: none; overflow: hidden; pointer-events: none;
+  position: absolute; z-index: 3; display: none; overflow: hidden; cursor: pointer;
   background: #000; border: 1px solid rgba(255, 255, 255, .7); border-radius: 3px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, .55), 0 8px 26px rgba(0, 0, 0, .5);
   /* left / bottom / width / height set in JS to match the image footprint */
 }
 .lightbox__map.is-on { display: block; }
-.lightbox__map-img { width: 100%; height: 100%; object-fit: fill; display: block; opacity: .92; }
+.lightbox__map-img { width: 100%; height: 100%; object-fit: fill; display: block; opacity: .92; pointer-events: none; }
 .lightbox__map-view {
-  position: absolute; border: 2px solid #fff; border-radius: 1px;
+  position: absolute; pointer-events: none; border: 2px solid #fff; border-radius: 1px;
   background: rgba(255, 255, 255, .12);
   box-shadow: 0 0 0 9999px rgba(0, 0, 0, .42);   /* dims everything outside the viewport box */
 }

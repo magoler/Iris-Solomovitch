@@ -184,10 +184,30 @@
   const ptrs = new Map();                       // active pointers
   let panStart = null, pinchStart = null, moved = false;
 
+  function clampPan() {
+    const W = lbImg.clientWidth, H = lbImg.clientHeight;
+    const Sw = lbStage.clientWidth, Sh = lbStage.clientHeight;
+    const mx = Math.max(0, (zScale * W - Sw) / 2);
+    const my = Math.max(0, (zScale * H - Sh) / 2);
+    zTx = clamp(zTx, -mx, mx);
+    zTy = clamp(zTy, -my, my);
+  }
   function zApply() {
+    clampPan();
     lbImg.style.transform = `translate(${zTx}px, ${zTy}px) scale(${zScale})`;
     lbImg.classList.toggle("zoomed", zScale > 1.01);
     updateMap();
+  }
+  // move the main view so the image-point under (clientX,clientY) on the minimap is centred
+  function mapNavTo(clientX, clientY) {
+    const r = lbMap.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    const W = lbImg.clientWidth, H = lbImg.clientHeight;
+    const px = clamp((clientX - r.left) / r.width, 0, 1) * W - W / 2;
+    const py = clamp((clientY - r.top) / r.height, 0, 1) * H - H / 2;
+    zTx = -zScale * px;
+    zTy = -zScale * py;
+    zApply();
   }
   // draw the overview minimap + the rectangle marking the currently-visible region
   function updateMap() {
@@ -300,6 +320,29 @@
     };
     lbStage.addEventListener("pointerup", endPtr);
     lbStage.addEventListener("pointercancel", endPtr);
+
+    // minimap is interactive: click / drag on it steers the main view
+    let mapDrag = false;
+    lbMap.addEventListener("pointerdown", (e) => {
+      e.stopPropagation();                       // don't let the stage start a pan/pinch
+      mapDrag = true;
+      try { lbMap.setPointerCapture(e.pointerId); } catch (_) {}
+      mapNavTo(e.clientX, e.clientY);
+    });
+    lbMap.addEventListener("pointermove", (e) => {
+      if (!mapDrag) return;
+      e.stopPropagation();
+      mapNavTo(e.clientX, e.clientY);
+    });
+    const endMap = (e) => {
+      if (!mapDrag) return;
+      mapDrag = false;
+      try { lbMap.releasePointerCapture(e.pointerId); } catch (_) {}
+    };
+    lbMap.addEventListener("pointerup", endMap);
+    lbMap.addEventListener("pointercancel", endMap);
+    lbMap.addEventListener("click", (e) => e.stopPropagation());   // clicking the map never closes
+    lbMap.addEventListener("wheel", (e) => { e.stopPropagation(); }, { passive: true });
   }
 
   /* ---------- input: keyboard, swipe, wheel-lock-free ---------- */
