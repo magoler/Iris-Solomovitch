@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>איריס שגיא סולומוביץ' · Portfolio</title>
   <meta name="description" content="תיק עבודות אדריכלות — איריס שגיא סולומוביץ'" />
-  <link rel="stylesheet" href="css/styles.css?v=6" />
+  <link rel="stylesheet" href="css/styles.css?v=7" />
 </head>
 <body>
   <main class="viewport" id="viewport">
@@ -32,16 +32,16 @@
 
   <div class="toc-panel" id="toc-panel" role="menu" aria-label="תוכן עניינים"></div>
 
-  <!-- image lightbox: click any figure/cover image to view it large -->
+  <!-- image lightbox: click any figure/cover image to view it large; pinch / wheel to zoom, drag to pan -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="תצוגת תמונה" aria-hidden="true">
     <button class="lightbox__close" id="lightbox-close" aria-label="סגירה" type="button">&times;</button>
-    <figure class="lightbox__fig">
-      <img class="lightbox__img" id="lightbox-img" src="" alt="" />
-      <figcaption class="lightbox__cap" id="lightbox-cap"></figcaption>
-    </figure>
+    <div class="lightbox__stage" id="lightbox-stage">
+      <img class="lightbox__img" id="lightbox-img" src="" alt="" draggable="false" />
+    </div>
+    <figcaption class="lightbox__cap" id="lightbox-cap"></figcaption>
   </div>
 
   <script src="js/content.js?v=3"></script>
-  <script src="js/book.js?v=3"></script>
+  <script src="js/book.js?v=4"></script>
 </body>
 </html>

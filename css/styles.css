@@ -369,21 +369,27 @@ html, body {
 .figure--missing .figure__img img { cursor: default; }
 
 .lightbox {
-  position: fixed; inset: 0; z-index: 100; display: none; place-items: center;
+  position: fixed; inset: 0; z-index: 100; display: none;
+  flex-direction: column; align-items: center; justify-content: center; gap: 14px;
   padding: 48px; cursor: zoom-out;
   /* translucent backdrop: the portfolio stays visible behind, not blacked out */
   background: rgba(20, 22, 26, .45); backdrop-filter: blur(3px);
   opacity: 0; transition: opacity .2s ease;
 }
-.lightbox.is-open { display: grid; opacity: 1; }
-.lightbox__fig {
-  margin: 0; display: flex; flex-direction: column; align-items: center; gap: 14px;
-  max-width: 96vw; max-height: 92vh;
+.lightbox.is-open { display: flex; opacity: 1; }
+/* the zoom viewport: clips the panned/scaled image; clicks here (outside the image) close */
+.lightbox__stage {
+  display: flex; align-items: center; justify-content: center;
+  max-width: 96vw; max-height: 84vh; overflow: hidden;
+  touch-action: none;   /* we handle pinch / pan ourselves */
 }
 .lightbox__img {
-  max-width: 96vw; max-height: 84vh; object-fit: contain; cursor: default;
+  max-width: 96vw; max-height: 84vh; object-fit: contain;
   background: #fff; border-radius: 3px; box-shadow: 0 30px 90px rgba(0, 0, 0, .6);
+  transform-origin: center center; will-change: transform;
+  cursor: zoom-in; user-select: none; -webkit-user-drag: none;
 }
+.lightbox__img.zoomed { cursor: grab; }
 .lightbox__cap {
   color: #ededed; font-family: var(--font); font-size: 16px; line-height: 1.4;
   text-align: center; max-width: 80vw; cursor: zoom-out;
