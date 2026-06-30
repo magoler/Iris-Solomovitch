@@ -232,19 +232,16 @@
   const sea_cover_img = coverImage(SEA + "lagoon-day.jpg", "מבט על — הלגונה והעיר", accent.sea);
   const sea_cover_title = coverTitle("לראות את הים", "סטודיו שימור · פארק מדרון יפו", SEA + "hero-complex.jpg", accent.sea);
 
-  // --- helpers for the PDF-derived sheets (white background, titles re-set in Ploni) ---
-  // A full-page graphic from the project PDF, with each title re-typeset in Ploni
-  // and positioned (in % of the page) exactly where it sits in the source.
-  const seaTitle = (o) => {
-    const pos = o.r != null ? `right:${o.r}%` : `left:${o.l}%`;
-    const col = o.c ? `;color:${o.c}` : "";
-    const w = o.w ? `;font-weight:${o.w}` : "";
-    return `<div class="pdf-ttl" style="${pos};top:${o.t}%;font-size:${o.s}px${col}${w}">${o.html}</div>`;
-  };
-  const pdfSheet = (img, titles) =>
-    `<div class="page page--sea-pdf"><img class="pdf-img" src="${img}" alt="">${titles
-      .map(seaTitle)
-      .join("")}</div>`;
+  // --- helpers: each project output is an individual, separately-zoomable tile,
+  //     cut as a rectangle from the source PDF (its own background kept) with the
+  //     matching title from the PDF re-typeset below it in Ploni. ---
+  const outFig = (src, title, sub, cls) =>
+    `<figure class="out${cls ? " " + cls : ""}">
+       <img src="${src}" alt="${(title || "").replace(/<[^>]+>/g, "")}" loading="lazy">
+       ${title ? `<figcaption class="out-cap"><b>${title}</b>${sub ? `<span>${sub}</span>` : ""}</figcaption>` : ""}
+     </figure>`;
+  const panelFig = (src, n) =>
+    `<figure class="out panel"><img src="${SEA + src}" alt="" loading="lazy"><span class="panel-num">${n}</span></figure>`;
 
   // c1 (page 12) — concept paragraph (top) + marine-gallery plan beside the
   // 1936 British map and the top-view render (matched in scale to the upper plan on p.13)
@@ -272,32 +269,47 @@
       </div>
     </div>`;
 
-  // c2 (page 13) — PDF page 5: interior renders + upper-construction plan
-  const sea_c2 = pdfSheet(SEA + "pdf-p13.jpg", [
-    { r: 70.76, t: 23.42, s: 10.1, w: 700, html: 'ארכיון, ספריה וחללי שיח <bdi>History-telling</bdi>' },
-    { r: 70.76, t: 24.9, s: 7.6, w: 400, html: 'מידע אודות השכונה והעברת שיח חוויתי ולימודי בין עבר-הווה-עתיד' },
-    { r: 70.86, t: 45.21, s: 10.5, w: 700, html: 'רחבה קהילתית' },
-    { r: 70.86, t: 46.7, s: 7.6, w: 400, html: 'אירועים שכונתיים ופעילויות א-פורמליות' },
-    { r: 70.86, t: 69.6, s: 10.1, w: 700, html: 'תערוכת צילום' },
-    { r: 70.86, t: 71.05, s: 7.6, w: 400, html: 'אודות שכונת עג׳מי וג׳בליה' },
-    { r: 70.48, t: 92.69, s: 10.1, w: 700, html: 'תערוכת קבע ימית' },
-    { r: 70.48, t: 94.2, s: 7.6, w: 400, html: 'אודות קו החוף המקורי, בסמוך לטיילת חוף הים' },
-    { r: 4.34, t: 91.89, s: 16.6, w: 500, html: 'תכנית בינוי עליון – מפלסים <bdi>15.65+</bdi>, <bdi>13.65+</bdi> | <bdi>1:100</bdi>' },
-  ]);
+  // c2 (page 13) — PDF page 5: interior renders (left) + upper-construction plan (right, by the spine)
+  const sea_c2 = `<div class="page page--sea-out sea13">
+      <div class="sea13-renders">
+        ${outFig(SEA + "s13-r1.jpg", 'ארכיון, ספריה וחללי שיח <bdi>History-telling</bdi>', "מידע אודות השכונה והעברת שיח חוויתי ולימודי בין עבר-הווה-עתיד")}
+        ${outFig(SEA + "s13-r2.jpg", "רחבה קהילתית", "אירועים שכונתיים ופעילויות א-פורמליות")}
+        ${outFig(SEA + "s13-r3.jpg", "תערוכת צילום", "אודות שכונת עג׳מי וג׳בליה")}
+        ${outFig(SEA + "s13-r4.jpg", "תערוכת קבע ימית", "אודות קו החוף המקורי, בסמוך לטיילת חוף הים")}
+      </div>
+      ${outFig(SEA + "s13-plan.jpg", 'תכנית בינוי עליון – מפלסים <bdi>15.65+</bdi>, <bdi>13.65+</bdi> | <bdi>1:100</bdi>', null, "sea13-plan")}
+    </div>`;
 
-  // c3 (page 14) — PDF page 2: spatial-intervention sequence
-  const sea_c3 = pdfSheet(SEA + "pdf-p14.jpg", [
-    { r: 3.03, t: 4.37, s: 21.9, w: 500, html: 'ניסוח פעולות ההתערבות במרחב | "פארק מדרון יפו"' },
-  ]);
+  // c3 (page 14) — PDF page 2: spatial-intervention sequence (6 panels, captions baked in)
+  const sea_c3 = `<div class="page page--sea-out sea14">
+      <div class="sea14-title">ניסוח פעולות ההתערבות במרחב | "פארק מדרון יפו"</div>
+      <div class="sea14-grid">
+        ${panelFig("s14-p1.jpg", 1)}${panelFig("s14-p4.jpg", 4)}
+        ${panelFig("s14-p2.jpg", 2)}${panelFig("s14-p5.jpg", 5)}
+        ${panelFig("s14-p3.jpg", 3)}${panelFig("s14-p6.jpg", 6)}
+      </div>
+    </div>`;
 
-  // c4 (page 15) — PDF page 3: axonometric, sections & elevations
-  const sea_c4 = pdfSheet(SEA + "pdf-p15.jpg", [
-    { r: 20.74, t: 24.61, s: 9.4, w: 500, c: "#ffffff", html: '<b>מצב קיים</b> | חסימת זרימת המים על ידי המסלעה הקיימת' },
-    { r: 20.74, t: 47.06, s: 9.4, w: 500, c: "#ffffff", html: '<b>מצב חדש</b> | שימור הגשר הקיים ופתיחת המעבר לטובת זרימת המים ויצירת לגונה חדשה הצופה אל יפו' },
-    { r: 3.84, t: 71.4, s: 13.6, w: 500, html: 'חתך א–א | <bdi>1:200</bdi>' },
-    { r: 51.57, t: 93.19, s: 13.6, w: 500, html: 'חזית מזרחית – מרחוב קדם' },
-    { r: 3.84, t: 93.29, s: 13.6, w: 500, html: 'חתך ב–ב | <bdi>1:100</bdi>' },
-  ]);
+  // c4 (page 15) — PDF page 3: axonometric, before/after sections, sketches, long section & elevations
+  const sea_c4 = `<div class="page page--sea-out sea15">
+      <div class="sea15-top">
+        <figure class="out sea15-axon"><img src="${SEA}s15-axon.jpg" alt="אקסונומטריה — מבני המכלול" loading="lazy"></figure>
+        <div class="sea15-sections">
+          ${outFig(SEA + "s15-before.jpg", "מצב קיים", "חסימת זרימת המים על ידי המסלעה הקיימת")}
+          ${outFig(SEA + "s15-after.jpg", "מצב חדש", "שימור הגשר הקיים ופתיחת המעבר לטובת זרימת המים ויצירת לגונה חדשה הצופה אל יפו")}
+        </div>
+        <div class="sea15-sketches">
+          <figure class="out"><img src="${SEA}s15-sk1.jpg" alt="" loading="lazy"></figure>
+          <figure class="out"><img src="${SEA}s15-sk2.jpg" alt="" loading="lazy"></figure>
+          <figure class="out"><img src="${SEA}s15-sk3.jpg" alt="" loading="lazy"></figure>
+        </div>
+      </div>
+      ${outFig(SEA + "s15-longsec.jpg", 'חתך א–א | <bdi>1:200</bdi>', null, "sea15-longsec")}
+      <div class="sea15-bottom">
+        ${outFig(SEA + "s15-east.jpg", "חזית מזרחית – מרחוב קדם", null, "sea15-east")}
+        ${outFig(SEA + "s15-bb.jpg", 'חתך ב–ב | <bdi>1:100</bdi>', null, "sea15-bb")}
+      </div>
+    </div>`;
 
   /* =====================================================================
    *  PROJECT 3 — Time · Space Housing (placeholder, blue)
