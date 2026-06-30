@@ -79,7 +79,7 @@
     stage.querySelectorAll(".spread").forEach(fit);
   }
 
-  /* ---------- render with page-turn animation ---------- */
+  /* ---------- render with a CSS3 single-leaf page-turn ---------- */
   function render(target, dir) {
     target = Math.max(0, Math.min(book.spreads.length - 1, target));
     if (target === idx && stage.children.length) return;
@@ -88,49 +88,83 @@
     fit(next);
 
     const old = stage.querySelector(".spread.is-current");
-    const finish = () => {
-      if (old) old.remove();
+
+    const settle = () => {
+      if (old && old.parentNode) old.remove();
       next.classList.add("is-current");
       idx = target;
       updateChrome();
       animating = false;
     };
 
-    if (reduceMotion || !old) {
-      if (old) old.remove();
-      next.classList.add("is-current");
-      idx = target;
-      updateChrome();
-      animating = false;
+    if (reduceMotion || !old) { settle(); return; }
+
+    animating = true;
+    const dur = 720;
+    const ease = "cubic-bezier(.22,.61,.30,1)";
+
+    // single pages (cover / back) can't turn a leaf — cross-fade instead
+    if (old.classList.contains("spread--single") || next.classList.contains("spread--single")) {
+      next.style.zIndex = 1; next.classList.add("is-current");
+      old.style.zIndex = 2;
+      const a = old.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 440, easing: "ease", fill: "forwards" });
+      a.onfinish = a.oncancel = () => { if (old.parentNode) old.remove(); idx = target; updateChrome(); animating = false; };
       return;
     }
 
-    animating = true;
-    const dur = 640;
-    const ease = "cubic-bezier(.2,.7,.2,1)";
-    // Forward (RTL): new page enters from the left; old swings out to the left.
-    const sIn = dir === FORWARD ? -1 : 1;
-    next.style.zIndex = 2;
-    old.style.zIndex = 1;
-    const sNew = next._scale || 1;
-    const sOld = old._scale || sNew;
+    // --- the leaf turn -------------------------------------------------
+    const s = next._scale || 1;
+    const fwd = dir === FORWARD;
+    next.style.zIndex = 1; next.classList.add("is-current");  // destination sits underneath
+    old.style.zIndex = 2;                                     // current stays on top until covered
 
-    old.animate(
-      [
-        { transform: `${BASE} scale(${sOld}) rotateY(0deg)`, opacity: 1, filter: "brightness(1)" },
-        { transform: `${BASE} scale(${sOld}) rotateY(${sIn * 92}deg)`, opacity: 0.2, filter: "brightness(.8)" },
-      ],
+    // old spread children: [0]=right page, [1]=spine, [2]=left page (RTL)
+    const turnSlot = fwd ? old.children[2] : old.children[0];   // the leaf that flips
+    turnSlot.style.visibility = "hidden";   // reveal the new page beneath as the leaf lifts
+
+    // a spread-sized 3D layer that carries the turning leaf, scaled like a spread
+    const layer = document.createElement("div");
+    layer.className = "turn-layer";
+    layer.style.width = (2 * PAGE_W) + "px";
+    layer.style.height = PAGE_H + "px";
+    layer.style.transform = `${BASE} scale(${s})`;
+    layer.style.zIndex = 3;
+
+    const leaf = document.createElement("div");
+    leaf.className = "leaf";
+    leaf.style.left = fwd ? "0px" : PAGE_W + "px";   // physical half being turned
+    leaf.style.width = PAGE_W + "px";
+    leaf.style.height = PAGE_H + "px";
+    leaf.style.transformOrigin = fwd ? "100% 50%" : "0% 50%";   // hinge at the spine
+
+    const front = document.createElement("div");
+    front.className = "leaf__face leaf__front";
+    front.innerHTML = turnSlot.innerHTML;
+    const back = document.createElement("div");
+    back.className = "leaf__face leaf__back";
+    const shade = document.createElement("div");
+    shade.className = "leaf__shade";
+    leaf.append(front, back, shade);
+    layer.appendChild(leaf);
+    stage.appendChild(layer);
+
+    const a = leaf.animate(
+      [{ transform: "rotateY(0deg)" }, { transform: `rotateY(${fwd ? -180 : 180}deg)` }],
       { duration: dur, easing: ease, fill: "forwards" }
     );
-    const a = next.animate(
-      [
-        { transform: `${BASE} scale(${sNew}) rotateY(${-sIn * 92}deg)`, opacity: 0.2, filter: "brightness(.8)" },
-        { transform: `${BASE} scale(${sNew}) rotateY(0deg)`, opacity: 1, filter: "brightness(1)" },
-      ],
-      { duration: dur, easing: ease, fill: "forwards" }
-    );
-    a.onfinish = finish;
-    a.oncancel = finish;
+    shade.animate([{ opacity: 0 }, { opacity: 0.45, offset: 0.5 }, { opacity: 0 }],
+      { duration: dur, easing: ease, fill: "forwards" });
+    layer.animate([{ opacity: 1, offset: 0 }, { opacity: 1, offset: 0.92 }, { opacity: 0, offset: 1 }],
+      { duration: dur, easing: "linear", fill: "forwards" });
+    // swap the non-turning page while it's hidden behind the sweeping leaf
+    setTimeout(() => { if (old && old.parentNode) old.remove(); }, dur * 0.55);
+    a.onfinish = a.oncancel = () => {
+      if (layer.parentNode) layer.remove();
+      if (old && old.parentNode) old.remove();
+      idx = target;
+      updateChrome();
+      animating = false;
+    };
   }
 
   /* ---------- chrome: counter, arrow state, TOC active ---------- */

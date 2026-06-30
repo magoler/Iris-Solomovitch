@@ -477,6 +477,27 @@ html, body {
 .tocp__t em { font-style: normal; font-size: 13px; color: rgba(255,255,255,.5); }
 .tocp__dot { width: 12px; height: 12px; border-radius: 50%; }
 
+/* ---------- CSS3 single-leaf page turn ---------- */
+.turn-layer {
+  position: absolute; left: 50%; top: 50%;
+  transform-origin: 50% 50%; transform-style: preserve-3d;
+  pointer-events: none; will-change: transform, opacity;
+}
+.leaf {
+  position: absolute; top: 0; transform-style: preserve-3d; will-change: transform;
+}
+.leaf__face {
+  position: absolute; inset: 0; overflow: hidden; background: #fff;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, .45);
+}
+.leaf__back { transform: rotateY(180deg); background: linear-gradient(90deg, #ededec, #fbfbfa); }
+/* soft fold shadow that swells through the turn */
+.leaf__shade {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .32), rgba(0, 0, 0, 0) 65%);
+}
+
 /* ---------- loading fade-in ---------- */
 .stage { opacity: 0; transition: opacity .5s ease; }
 body.ready .stage { opacity: 1; }
