@@ -79,7 +79,7 @@
     stage.querySelectorAll(".spread").forEach(fit);
   }
 
-  /* ---------- render with a CSS3 single-leaf page-turn ---------- */
+  /* ---------- render with a smooth directional slide ---------- */
   function render(target, dir) {
     target = Math.max(0, Math.min(book.spreads.length - 1, target));
     if (target === idx && stage.children.length) return;
@@ -100,70 +100,30 @@
     if (reduceMotion || !old) { settle(); return; }
 
     animating = true;
-    const dur = 600;
-    const ease = "cubic-bezier(.25,.75,.35,1)";
+    const dur = 520;
+    const ease = "cubic-bezier(.45, 0, .15, 1)";
+    const sN = next._scale || 1, sO = old._scale || sN;
+    const D = (viewport.clientWidth || window.innerWidth) * 0.62; // slide distance
+    const fwd = dir === FORWARD;          // RTL: forward = the next spread comes from the left
+    const nFrom = fwd ? -D : D;
+    const oTo = fwd ? D : -D;
 
-    // single pages (cover / back) can't turn a leaf — cross-fade instead
-    if (old.classList.contains("spread--single") || next.classList.contains("spread--single")) {
-      next.style.zIndex = 1; next.classList.add("is-current");
-      old.style.zIndex = 2;
-      const a = old.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 440, easing: "ease", fill: "forwards" });
-      a.onfinish = a.oncancel = () => { if (old.parentNode) old.remove(); idx = target; updateChrome(); animating = false; };
-      return;
-    }
-
-    // --- the leaf turn -------------------------------------------------
-    const s = next._scale || 1;
-    const fwd = dir === FORWARD;
-    next.style.zIndex = 1; next.classList.add("is-current");  // destination sits underneath
-    old.style.zIndex = 2;                                     // current stays on top until covered
-
-    // old spread children: [0]=right page, [1]=spine, [2]=left page (RTL)
-    const turnSlot = fwd ? old.children[2] : old.children[0];   // the leaf that flips
-
-    // a spread-sized 3D layer that carries the turning leaf, scaled like a spread
-    const layer = document.createElement("div");
-    layer.className = "turn-layer";
-    layer.style.width = (2 * PAGE_W) + "px";
-    layer.style.height = PAGE_H + "px";
-    layer.style.transform = `${BASE} scale(${s})`;
-    layer.style.zIndex = 3;
-
-    const leaf = document.createElement("div");
-    leaf.className = "leaf";
-    leaf.style.left = fwd ? "0px" : PAGE_W + "px";   // physical half being turned
-    leaf.style.width = PAGE_W + "px";
-    leaf.style.height = PAGE_H + "px";
-    leaf.style.transformOrigin = fwd ? "100% 50%" : "0% 50%";   // hinge at the spine
-
-    const front = document.createElement("div");
-    front.className = "leaf__face leaf__front";
-    front.appendChild(turnSlot);   // move the already-rendered page in (no re-decode → instant)
-    const back = document.createElement("div");
-    back.className = "leaf__face leaf__back";
-    const shade = document.createElement("div");
-    shade.className = "leaf__shade";
-    leaf.append(front, back, shade);
-    layer.appendChild(leaf);
-    stage.appendChild(layer);
-
-    const a = leaf.animate(
-      [{ transform: "rotateY(0deg)" }, { transform: `rotateY(${fwd ? -180 : 180}deg)` }],
+    next.style.zIndex = 2; old.style.zIndex = 1;
+    next.animate(
+      [
+        { transform: `translateX(${nFrom}px) ${BASE} scale(${sN})`, opacity: 0.5 },
+        { transform: `translateX(0px) ${BASE} scale(${sN})`, opacity: 1 },
+      ],
       { duration: dur, easing: ease, fill: "forwards" }
     );
-    shade.animate([{ opacity: 0 }, { opacity: 0.45, offset: 0.5 }, { opacity: 0 }],
-      { duration: dur, easing: ease, fill: "forwards" });
-    layer.animate([{ opacity: 1, offset: 0 }, { opacity: 1, offset: 0.92 }, { opacity: 0, offset: 1 }],
-      { duration: dur, easing: "linear", fill: "forwards" });
-    // swap the non-turning page while it's hidden behind the sweeping leaf
-    setTimeout(() => { if (old && old.parentNode) old.remove(); }, dur * 0.55);
-    a.onfinish = a.oncancel = () => {
-      if (layer.parentNode) layer.remove();
-      if (old && old.parentNode) old.remove();
-      idx = target;
-      updateChrome();
-      animating = false;
-    };
+    const a = old.animate(
+      [
+        { transform: `translateX(0px) ${BASE} scale(${sO})`, opacity: 1 },
+        { transform: `translateX(${oTo}px) ${BASE} scale(${sO})`, opacity: 0.3 },
+      ],
+      { duration: dur, easing: ease, fill: "forwards" }
+    );
+    a.onfinish = a.oncancel = settle;
   }
 
   /* ---------- chrome: counter, arrow state, TOC active ---------- */
