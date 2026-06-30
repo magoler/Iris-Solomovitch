@@ -379,6 +379,7 @@ html, body {
 .lightbox.is-open { display: flex; opacity: 1; }
 /* the zoom viewport: clips the panned/scaled image; clicks here (outside the image) close */
 .lightbox__stage {
+  position: relative;   /* anchors the overview minimap */
   display: flex; align-items: center; justify-content: center;
   max-width: 96vw; max-height: 84vh; overflow: hidden;
   touch-action: none;   /* we handle pinch / pan ourselves */
@@ -386,7 +387,7 @@ html, body {
 .lightbox__img {
   max-width: 96vw; max-height: 84vh; object-fit: contain;
   background: #fff; border-radius: 3px; box-shadow: 0 30px 90px rgba(0, 0, 0, .6);
-  transform-origin: center center; will-change: transform;
+  transform-origin: center center;            /* no will-change: keeps zoom crisp (browser repaints) */
   cursor: zoom-in; user-select: none; -webkit-user-drag: none;
 }
 .lightbox__img.zoomed { cursor: grab; }
@@ -394,21 +395,20 @@ html, body {
   color: #ededed; font-family: var(--font); font-size: 16px; line-height: 1.4;
   text-align: center; max-width: 80vw; cursor: zoom-out;
 }
-/* overview minimap — shown only while zoomed, marks the visible region */
+/* overview minimap — pinned to the image's bottom-left, shown only while zoomed */
 .lightbox__map {
-  position: fixed; left: 22px; top: 50%; transform: translateY(-50%);
-  z-index: 101; display: none; overflow: hidden; pointer-events: none;
-  background: #000; border: 1px solid rgba(255, 255, 255, .55); border-radius: 3px;
-  box-shadow: 0 10px 34px rgba(0, 0, 0, .55);
+  position: absolute; z-index: 3; display: none; overflow: hidden; pointer-events: none;
+  background: #000; border: 1px solid rgba(255, 255, 255, .7); border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .55), 0 8px 26px rgba(0, 0, 0, .5);
+  /* left / bottom / width / height set in JS to match the image footprint */
 }
 .lightbox__map.is-on { display: block; }
-.lightbox__map-img { width: 100%; height: 100%; object-fit: fill; display: block; opacity: .9; }
+.lightbox__map-img { width: 100%; height: 100%; object-fit: fill; display: block; opacity: .92; }
 .lightbox__map-view {
   position: absolute; border: 2px solid #fff; border-radius: 1px;
   background: rgba(255, 255, 255, .12);
-  box-shadow: 0 0 0 9999px rgba(0, 0, 0, .4);   /* dims everything outside the viewport box */
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, .42);   /* dims everything outside the viewport box */
 }
-@media (max-width: 640px) { .lightbox__map { left: 12px; } }
 .lightbox__close {
   position: fixed; top: 18px; left: 22px; width: 46px; height: 46px;
   display: grid; place-items: center; z-index: 101; cursor: pointer;

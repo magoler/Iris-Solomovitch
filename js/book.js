@@ -195,11 +195,14 @@
     const W = lbImg.clientWidth, H = lbImg.clientHeight;      // base (contain) size
     const Sw = lbStage.clientWidth, Sh = lbStage.clientHeight;
     if (!W || !H) return;
-    const MAXW = 160, MAXH = 200;
+    // minimap sized to the image aspect, capped, and pinned to the image's bottom-left corner
+    const MAXW = 150, MAXH = 170, INSET = 12;
     let mW = MAXW, mH = MAXW * H / W;
     if (mH > MAXH) { mH = MAXH; mW = MAXH * W / H; }
     lbMap.style.width = mW + "px";
     lbMap.style.height = mH + "px";
+    lbMap.style.left = ((Sw - W) / 2 + INSET) + "px";       // image's left edge within the stage
+    lbMap.style.bottom = ((Sh - H) / 2 + INSET) + "px";     // image's bottom edge within the stage
     // visible window in base image coords (origin = image centre)
     const pxMin = clamp((-Sw / 2 - zTx) / zScale, -W / 2, W / 2);
     const pxMax = clamp(( Sw / 2 - zTx) / zScale, -W / 2, W / 2);
