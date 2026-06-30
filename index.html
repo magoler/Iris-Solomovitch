@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>איריס שגיא סולומוביץ' · Portfolio</title>
   <meta name="description" content="תיק עבודות אדריכלות — איריס שגיא סולומוביץ'" />
-  <link rel="stylesheet" href="css/styles.css?v=7" />
+  <link rel="stylesheet" href="css/styles.css?v=8" />
 </head>
 <body>
   <main class="viewport" id="viewport">
@@ -35,6 +35,11 @@
   <!-- image lightbox: click any figure/cover image to view it large; pinch / wheel to zoom, drag to pan -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="תצוגת תמונה" aria-hidden="true">
     <button class="lightbox__close" id="lightbox-close" aria-label="סגירה" type="button">&times;</button>
+    <!-- overview minimap (left): shows the visible region while zoomed -->
+    <div class="lightbox__map" id="lightbox-map" aria-hidden="true">
+      <img class="lightbox__map-img" id="lightbox-map-img" alt="" draggable="false" />
+      <div class="lightbox__map-view" id="lightbox-map-view"></div>
+    </div>
     <div class="lightbox__stage" id="lightbox-stage">
       <img class="lightbox__img" id="lightbox-img" src="" alt="" draggable="false" />
     </div>
@@ -42,6 +47,6 @@
   </div>
 
   <script src="js/content.js?v=3"></script>
-  <script src="js/book.js?v=4"></script>
+  <script src="js/book.js?v=5"></script>
 </body>
 </html>

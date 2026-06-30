@@ -22,6 +22,9 @@
   const lbStage = document.getElementById("lightbox-stage");
   const lbImg = document.getElementById("lightbox-img");
   const lbCap = document.getElementById("lightbox-cap");
+  const lbMap = document.getElementById("lightbox-map");
+  const lbMapImg = document.getElementById("lightbox-map-img");
+  const lbView = document.getElementById("lightbox-map-view");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   let idx = 0;
@@ -184,6 +187,29 @@
   function zApply() {
     lbImg.style.transform = `translate(${zTx}px, ${zTy}px) scale(${zScale})`;
     lbImg.classList.toggle("zoomed", zScale > 1.01);
+    updateMap();
+  }
+  // draw the overview minimap + the rectangle marking the currently-visible region
+  function updateMap() {
+    if (zScale <= 1.01) { lbMap.classList.remove("is-on"); return; }
+    const W = lbImg.clientWidth, H = lbImg.clientHeight;      // base (contain) size
+    const Sw = lbStage.clientWidth, Sh = lbStage.clientHeight;
+    if (!W || !H) return;
+    const MAXW = 160, MAXH = 200;
+    let mW = MAXW, mH = MAXW * H / W;
+    if (mH > MAXH) { mH = MAXH; mW = MAXH * W / H; }
+    lbMap.style.width = mW + "px";
+    lbMap.style.height = mH + "px";
+    // visible window in base image coords (origin = image centre)
+    const pxMin = clamp((-Sw / 2 - zTx) / zScale, -W / 2, W / 2);
+    const pxMax = clamp(( Sw / 2 - zTx) / zScale, -W / 2, W / 2);
+    const pyMin = clamp((-Sh / 2 - zTy) / zScale, -H / 2, H / 2);
+    const pyMax = clamp(( Sh / 2 - zTy) / zScale, -H / 2, H / 2);
+    lbView.style.left = ((pxMin + W / 2) / W * mW) + "px";
+    lbView.style.top = ((pyMin + H / 2) / H * mH) + "px";
+    lbView.style.width = ((pxMax - pxMin) / W * mW) + "px";
+    lbView.style.height = ((pyMax - pyMin) / H * mH) + "px";
+    lbMap.classList.add("is-on");
   }
   function zReset() { zScale = 1; zTx = 0; zTy = 0; zApply(); }
   function stageCenter() {
@@ -207,6 +233,7 @@
     if (!src) return;
     lbImg.src = src;
     lbImg.alt = alt || "";
+    lbMapImg.src = src;
     lbCap.textContent = alt || "";
     zReset();
     lightbox.classList.add("is-open");
@@ -216,6 +243,8 @@
     lightbox.classList.remove("is-open");
     lightbox.setAttribute("aria-hidden", "true");
     lbImg.removeAttribute("src");
+    lbMapImg.removeAttribute("src");
+    lbMap.classList.remove("is-on");
     ptrs.clear(); panStart = pinchStart = null;
     zReset();
   }
