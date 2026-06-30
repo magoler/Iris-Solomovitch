@@ -216,6 +216,13 @@ html, body {
 }
 .page--content-flush .proj-desc { margin-top: 0; }
 
+/* real-content c1 pages: short description above a full-height image grid */
+.c1col { display: flex; flex-direction: column; height: 100%; }
+.c1col .proj-desc { margin: 92px 0 16px; max-width: none; }
+.c1col .grid { flex: 1; height: auto; min-height: 0; }
+/* two stacked wide drawings (street elevation over section) */
+.grid.stack-2 { grid-template-columns: 1fr; grid-template-rows: 2fr 1fr; }
+
 .wip {
   position: absolute; top: 64px; left: 70px; z-index: 4;
 }

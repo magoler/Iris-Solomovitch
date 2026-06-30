@@ -16,6 +16,9 @@
   const BG = "assets/backgrounds/bw.svg";
   const SEA = "assets/projects/seeing-the-sea/";
   const MAR = "assets/projects/maryam/";
+  const URB = "assets/projects/urban/";
+  const TIM = "assets/projects/time/";
+  const TEC = "assets/projects/tech/";
 
   /* ---------- small HTML builders ---------- */
 
@@ -171,49 +174,47 @@
   /* =====================================================================
    *  PROJECT 1 — Urban (placeholder)
    * =================================================================== */
-  const urban_cover_img = coverImage(null, "תכנית גגות — מדרחוב נווה שאנן", accent.urban);
-  const urban_cover_title = coverTitle("מדרחוב נווה שאנן", "סטודיו אורבני", null, accent.urban);
+  const urban_cover_img = coverImage(URB + "render-street.jpg", "מדרחוב נווה שאנן — הדמיית רחוב", accent.urban);
+  const urban_cover_title = coverTitle("מדרחוב נווה שאנן", "סטודיו אורבני", URB + "model.jpg", accent.urban);
   const urban_c1 = contentPage(
     "מדרחוב נווה שאנן",
-    `${placeholderBadge()}
-     <p class="proj-desc">מחקר על המרחב הציבורי, רוח המקום והחיבור שבין הקהילה, הסביבה והמסחר.
-       דגש על מפת נולי, תכניות, חזיתות ועקרונות התכנון.</p>
-     <div class="grid grid--urban6">
-       ${fig(null, "מפת נולי", "fig--wide", accent.urban)}
-       ${fig(null, "תכנית קומת קרקע", "fig--big", accent.urban)}
-       ${fig(null, "חזית", "", accent.urban)}
-       ${fig(null, "עקרונות תכנון", "", accent.urban)}
+    `<div class="c1col">
+       <p class="proj-desc">מחקר על המרחב הציבורי, רוח המקום והחיבור שבין הקהילה, הסביבה והמסחר ברחוב
+         נווה שאנן. מפת הנולי ותכנית האב מציבות מבנה חדש לאורך הציר, לצד עקרונות תכנון להשבת החיים אל המדרחוב.</p>
+       <div class="grid grid--urban6">
+         ${fig(URB + "map-5000.jpg", "מפת המתחם 1:5,000", "fig--wide", accent.urban)}
+         ${fig(URB + "concept-2500.jpg", "מצב מוצע — תכנית אב 1:2,500", "fig--big", accent.urban)}
+         ${fig(URB + "massing.jpg", "אבולוציית המסה — קיים · קרקע · גבהים", "", accent.urban)}
+         ${fig(URB + "principles.jpg", "עקרונות תכנון", "", accent.urban)}
+       </div>
      </div>`,
     accent.urban
   );
   const urban_c2 = contentPage(
     "",
     `<div class="grid grid--urban7">
-       ${fig(null, "הדמיה — רחוב", "fig--hero", accent.urban)}
-       ${fig(null, "הדמיה — כיכר", "", accent.urban)}
-       ${fig(null, "סופרפוזיציה מרחבית", "", accent.urban)}
+       ${fig(URB + "render-pedestrian.jpg", "הדמיה — המדרחוב", "fig--hero", accent.urban)}
+       ${fig(URB + "render-facade.jpg", "הדמיה — חזית מסחרית", "", accent.urban)}
+       ${fig(URB + "siteplan.jpg", "תכנית המתחם", "", accent.urban)}
      </div>`,
     accent.urban,
     "page--content-flush"
   );
   const urban_c3 = contentPage(
     "",
-    `${placeholderBadge()}
-     <div class="grid grid--2">
-       ${fig(null, "מבט רחוב — לפני", "", accent.urban)}
-       ${fig(null, "מבט רחוב — אחרי", "", accent.urban)}
-       ${fig(null, "חתך רחוב", "", accent.urban)}
-       ${fig(null, "פרט ריצוף וריהוט רחוב", "", accent.urban)}
+    `<div class="grid g-2up1">
+       ${fig(URB + "context.jpg", "מצב קיים — רחוב נווה שאנן", "", accent.urban)}
+       ${fig(URB + "mobility.jpg", "מפת תחבורה ונגישות 1:15,000", "", accent.urban)}
+       ${fig(URB + "nolli-color.jpg", "מפת נולי — דמות ורקע", "", accent.urban)}
      </div>`,
     accent.urban,
     "page--content-flush"
   );
   const urban_c4 = contentPage(
     "",
-    `<div class="grid g-2up1">
-       ${fig(null, "דיאגרמת תנועה", "", accent.urban)}
-       ${fig(null, "דיאגרמת ירוק", "", accent.urban)}
-       ${fig(null, "הדמיה — מבט כולל", "", accent.urban)}
+    `<div class="grid stack-2">
+       ${fig(URB + "street-elevation.jpg", "רישום רחוב — חזית המדרחוב", "fig--draw", accent.urban)}
+       ${fig(URB + "section.jpg", "חתך רחוב", "fig--draw", accent.urban)}
      </div>`,
     accent.urban,
     "page--content-flush"
@@ -282,42 +283,38 @@
   /* =====================================================================
    *  PROJECT 3 — Time · Space Housing (placeholder, blue)
    * =================================================================== */
-  const time_cover_img = coverImage(null, "הדמיה — מקבץ דיור", accent.time);
-  const time_cover_title = coverTitle("Time · Space", "סטודיו דיור", null, accent.time);
+  const time_cover_img = coverImage(TIM + "render-sunrise.jpg", "Time · Space — הדמיית זריחה", accent.time);
+  const time_cover_title = coverTitle("Time · Space", "סטודיו דיור", TIM + "aerial.jpg", accent.time);
   const time_c1 = contentPage(
     "Time · Space",
-    `${placeholderBadge()}
-     <p class="proj-desc">פרויקט דיור החוקר את היחס בין סטראוטומיה (גזירה ממסה) לבין טקטוניקה (הרכבה),
-       ואת התפתחות המבנה בזמן. למטה: דיאגרמת שלבי העבודה.</p>
-     <div class="stage-strip stage-strip--diagram">
-       ${[1, 2, 3, 4].map((n) => fig(null, "שלב " + n, "scell", accent.time)).join("")}
-     </div>
-     <div class="grid grid--time">
-       ${fig(null, "תכנית", "fig--big", accent.time)}
-       ${fig(null, "חתך", "", accent.time)}
+    `<div class="c1col">
+       <p class="proj-desc">פרויקט דיור החוקר את היחס בין <b>סטראוטומיה</b> (גזירה ממסה) לבין <b>טקטוניקה</b>
+         (הרכבה), ואת התפתחות המבנה בזמן — Time · Space. המסה נחקרת בסדרת שלבים, ממודל ראשוני ועד למקבץ הדיור.</p>
+       <div class="grid g-1up2">
+         ${fig(TIM + "stereotomy.jpg", "סטראוטומיה ↔ טקטוניקה — גזירה ממסה והרכבה", "", accent.time)}
+         ${fig(TIM + "concept.jpg", "סכמת הפרויקט — שלבי המסה", "", accent.time)}
+         ${fig(TIM + "massing.jpg", "מודל מסה — מבט אווירי", "", accent.time)}
+       </div>
      </div>`,
-    accent.time,
-    "page--time-c1"
+    accent.time
   );
   const time_c2 = contentPage(
     "",
-    `<div class="time-grid">
-       <div class="elev-strip">
-         ${[1, 2, 3].map((n) => fig(null, "חזית " + n, "elev", accent.time)).join("")}
-       </div>
-       ${fig(null, "הדמיה", "fig--hero", accent.time)}
-       <div class="gh-box">${fig(null, "Grasshopper — הערכה מחדש", "", accent.time)}</div>
+    `<div class="grid grid--2">
+       ${fig(TIM + "render-courtyard.jpg", "הדמיה — חצר פנימית", "", accent.time)}
+       ${fig(TIM + "render-garden.jpg", "הדמיה — הגן והפרגולה", "", accent.time)}
+       ${fig(TIM + "render-plaza.jpg", "הדמיה — מבט רחוב", "", accent.time)}
+       ${fig(TIM + "render-dawn.jpg", "הדמיה — לפנות בוקר", "", accent.time)}
      </div>`,
     accent.time,
     "page--content-flush"
   );
   const time_c3 = contentPage(
     "",
-    `${placeholderBadge()}
-     <div class="grid g-2up1">
-       ${fig(null, "הדמיה — חלל פנים", "", accent.time)}
-       ${fig(null, "הדמיה — מבט אל הרחוב", "", accent.time)}
-       ${fig(null, "הדמיה — מבואה", "", accent.time)}
+    `<div class="grid g-2up1">
+       ${fig(TIM + "elev-east.jpg", "חזית מזרחית פנימית", "fig--draw", accent.time)}
+       ${fig(TIM + "elev-west.jpg", "חזית מערבית פנימית", "fig--draw", accent.time)}
+       ${fig(TIM + "section-bb.jpg", "חתך ב־ב", "fig--draw", accent.time)}
      </div>`,
     accent.time,
     "page--content-flush"
@@ -325,10 +322,10 @@
   const time_c4 = contentPage(
     "",
     `<div class="grid grid--2">
-       ${fig(null, "תכנית קומה טיפוסית", "", accent.time)}
-       ${fig(null, "דיאגרמת סטראוטומיה / טקטוניקה", "", accent.time)}
-       ${fig(null, "חתך מפורט", "", accent.time)}
-       ${fig(null, "פרט מעטפת", "", accent.time)}
+       ${fig(TIM + "ground-plan.jpg", "תכנית קומת קרקע וקומה טיפוסית", "fig--draw", accent.time)}
+       ${fig(TIM + "unit-types.jpg", "טיפוסי דירה", "fig--draw", accent.time)}
+       ${fig(TIM + "section-aa.jpg", "חתך א־א", "fig--draw", accent.time)}
+       ${fig(TIM + "site-plan.jpg", "תכנית מתחם", "fig--draw", accent.time)}
      </div>`,
     accent.time,
     "page--content-flush"
@@ -407,36 +404,38 @@
   /* =====================================================================
    *  PROJECT 5 — Technological studio (placeholder, gray)
    * =================================================================== */
-  const tech_cover_img = coverImage(null, "דיאגרמה מבנית", accent.tech);
-  const tech_cover_title = coverTitle("סטודיו טכנולוגי", "מבנה ומעטפת", null, accent.tech);
+  const tech_cover_img = coverImage(TEC + "render-courtyard.jpg", "סטודיו טכנולוגי — הדמיית חצר", accent.tech);
+  const tech_cover_title = coverTitle("סטודיו טכנולוגי", "מבנה ומעטפת", TEC + "render-ext.jpg", accent.tech);
   const tech_c1 = contentPage(
     "סטודיו טכנולוגי",
-    `${placeholderBadge()}
-     <p class="proj-desc">פרויקט בדגש מבני: תכניות מפורטות, דיאגרמות קונסטרוקציה והדמיות — ללא חזיתות.</p>
-     <div class="grid grid--tech">
-       ${fig(null, "תכנית מפורטת", "fig--big", accent.tech)}
-       ${fig(null, "דיאגרמה מבנית", "", accent.tech)}
-       ${fig(null, "הדמיה", "", accent.tech)}
+    `<div class="c1col">
+       <p class="proj-desc">פרויקט בדגש מבני־טכנולוגי: מבנה ציבורי — קופת חולים — שגגו המתקמר נפרשׂ מעל המרחב.
+         הפרויקט חוקר את הקונסטרוקציה, המעטפת ופרטי הבנייה, ממודל הרעיון ועד לפרט 1:10.</p>
+       <div class="grid g-1up2">
+         ${fig(TEC + "roof-aerial.jpg", "מבט על — הגג המתקמר", "", accent.tech)}
+         ${fig(TEC + "model-concept.jpg", "מודל הרעיון — מבנה הגג", "", accent.tech)}
+         ${fig(TEC + "model-cut.jpg", "חתך תלת־ממדי — מבנה ומעטפת", "", accent.tech)}
+       </div>
      </div>`,
     accent.tech
   );
   const tech_c2 = contentPage(
     "",
-    `<div class="grid grid--tech2">
-       ${fig(null, "חתך", "fig--big", accent.tech)}
-       ${fig(null, "פרט קונסטרוקציה", "", accent.tech)}
-       ${fig(null, "פרט מעטפת", "", accent.tech)}
+    `<div class="grid grid--2">
+       ${fig(TEC + "render-facade.jpg", "הדמיה — חזית המבנה", "", accent.tech)}
+       ${fig(TEC + "render-entry.jpg", "הדמיה — הכניסה והמבואה", "", accent.tech)}
+       ${fig(TEC + "render-garden.jpg", "הדמיה — המבנה והגן", "", accent.tech)}
+       ${fig(TEC + "render-side.jpg", "הדמיה — מבט צד", "", accent.tech)}
      </div>`,
     accent.tech,
     "page--content-flush"
   );
   const tech_c3 = contentPage(
     "",
-    `${placeholderBadge()}
-     <div class="grid g-2up1">
-       ${fig(null, "הדמיה — חוץ", "", accent.tech)}
-       ${fig(null, "הדמיה — פנים", "", accent.tech)}
-       ${fig(null, "פיצוץ איזומטרי — מערכות", "", accent.tech)}
+    `<div class="grid g-2up1">
+       ${fig(TEC + "section-render.jpg", "חתך רוחב — מבט פנים", "fig--draw", accent.tech)}
+       ${fig(TEC + "section-detail.jpg", "חתך מפורט", "fig--draw", accent.tech)}
+       ${fig(TEC + "roof-structure.jpg", "תכנית גג — שיפועים ומבנה", "fig--draw", accent.tech)}
      </div>`,
     accent.tech,
     "page--content-flush"
@@ -444,10 +443,10 @@
   const tech_c4 = contentPage(
     "",
     `<div class="grid grid--2">
-       ${fig(null, "תכנית מערכות", "", accent.tech)}
-       ${fig(null, "פרט חיבור", "", accent.tech)}
-       ${fig(null, "פרט מעטפת — הגדלה", "", accent.tech)}
-       ${fig(null, "אנליזה אקלימית", "", accent.tech)}
+       ${fig(TEC + "floor-plan.jpg", "תכנית — קומת קרקע", "fig--draw", accent.tech)}
+       ${fig(TEC + "struct-section.jpg", "חתך קונסטרוקטיבי", "fig--draw", accent.tech)}
+       ${fig(TEC + "detail-wall.jpg", "פרט — חיבור קיר ומעקה 1:10", "fig--draw", accent.tech)}
+       ${fig(TEC + "detail-roof.jpg", "פרט — גג ומעטפת 1:10", "fig--draw", accent.tech)}
      </div>`,
     accent.tech,
     "page--content-flush"

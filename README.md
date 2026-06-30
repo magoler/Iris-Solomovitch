@@ -28,16 +28,15 @@ needs hand-renumbering.
 |---|---|
 | 1 | Cover |
 | 2 | Résumé · Table of Contents |
-| 3–5 | **Urban** — מדרחוב נווה שאנן *(placeholder)* |
+| 3–5 | **Urban** — מדרחוב נווה שאנן ✅ real |
 | 6–8 | **Seeing the Sea** — לראות את הים ✅ real |
-| 9–11 | **Time·Space** — סטודיו דיור *(placeholder)* |
+| 9–11 | **Time·Space** — סטודיו דיור ✅ real |
 | 12–14 | **Maryam** — מרים · עיצוב פנים ✅ real |
-| 15–17 | **Technological studio** *(placeholder)* |
+| 15–17 | **Technological studio** — קופת חולים כללית ✅ real |
 | 18 | Back |
 
-**Seeing the Sea**, **Maryam** and the **résumé** have real material; the other three studios are
-on-brand placeholder spreads with the correct accent colour and caption slots so real images
-drop straight in.
+All five studios and the **résumé** carry real material — whole, uncropped renders, plans,
+sections and construction details extracted from the source PDFs and submission folders.
 
 **Never crop:** every image is shown whole (`object-fit: contain`, including the project covers),
 letterboxed on a neutral or accent field rather than cut. Real renders are extracted as whole,
