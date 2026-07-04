@@ -83,43 +83,40 @@
 
   /* ---------- projects (for Table of Contents) ---------- */
 
+  // Order + text follow the TOC template. `accent` stays the per-project theme
+  // colour used across that project's pages; `num` is the TOC page-number colour.
   const projects = [
-    { key: "urban",  title: "מדרחוב נווה שאנן", sub: "סטודיו אורבני", accent: "#6E4FA2" },
-    { key: "sea",    title: "לראות את הים",      sub: "סטודיו שימור · פארק מדרון יפו", accent: "#1E7E8C" },
-    { key: "time",   title: "Time · Space",      sub: "סטודיו דיור", accent: "#2F5DA8" },
-    { key: "maryam", title: "מרים",              sub: "עיצוב פנים", accent: "#A6794B" },
-    { key: "tech",   title: "סטודיו טכנולוגי",   sub: "מבנה ומעטפת", accent: "#6B7079" },
+    { key: "tech",   title: "מופע פלורנטין", sub: "סטודיו מורכב | בהנחיית אדר' רמי ניל | שנה ד' סמסטר ב'",                           accent: "#6B7079", num: "#9E1E29" },
+    { key: "urban",  title: "מדרחוב",        sub: "סטודיו אורבני | בהנחיית אדר' תמר פרצוב ואדר' יואב ויינברג | שנה ג' סמסטר א'",     accent: "#6E4FA2", num: "#AE2F95" },
+    { key: "sea",    title: "לראות את הים",   sub: "סטודיו שימור | בהנחיית פרופ' אדר' אמנון בר-אור | שנה ד' סמסטר א'",               accent: "#1E7E8C", num: "#209092" },
+    { key: "time",   title: "Space Time",    sub: "סטודיו מגורים | בהנחיית אדר' דפנה מתוק ואדר' לאונרדו קליכמן | שנה ג' סמסטר ב'",   accent: "#2F5DA8", num: "#35439B" },
+    { key: "maryam", title: "מרי-ם",         sub: "עיצוב פנים | בהנחיית אדר' רוני אלרואי | שנה ד' סמסטר א'",                         accent: "#A6794B", num: "#EAD030" },
   ];
   const accent = Object.fromEntries(projects.map((p) => [p.key, p.accent]));
 
-  /* ---------- page 1 — Cover ---------- */
-  const coverPage = `<div class="page page--cover" style="background-image:url('${BG}')">
-      <div class="cover__inner">
-        <div class="cover__kicker">Portfolio</div>
-        <h1 class="cover__name">${NAME}</h1>
-        <div class="cover__rule"></div>
-        <div class="cover__role">אדריכלות · Architecture</div>
-      </div>
+  /* ---------- page 1 — Cover (full-bleed artwork) ---------- */
+  const coverPage = `<div class="page page--cover">
+      <img class="page-bleed" src="assets/backgrounds/cover.svg" alt="${NAME} — Portfolio">
     </div>`;
 
   /* ---------- page 2 — Table of Contents ---------- */
+  // Clicking the project name jumps to that project (data-jump=key). The page
+  // number sits on the band side (left of the grey band), coloured per project.
   const tocRows = projects
     .map(
-      (p, i) => `<li class="toc__item" data-jump="${p.key}">
-        <span class="toc__num">${String(i + 1).padStart(2, "0")}</span>
+      (p, i) => `<li class="toc__item" data-jump="${p.key}" role="link" tabindex="0">
+        <span class="toc__num" style="color:${p.num}">${String(i + 1).padStart(2, "0")}</span>
         <span class="toc__txt"><b>${p.title}</b><em>${p.sub}</em></span>
-        <span class="toc__dot" style="background:${p.accent}"></span>
       </li>`
     )
     .join("");
-  const tocPage = `<div class="page page--toc" style="background-image:url('${BG}')">
+  const tocPage = `<div class="page page--toc">
       <header class="sheet__head"><h2 class="sheet__title">תוכן עניינים</h2></header>
       <ul class="toc__list">${tocRows}</ul>
-      <button class="toc__resume" data-jump="resume">קורות חיים — ${NAME}</button>
     </div>`;
 
   /* ---------- page 3 — Resume ---------- */
-  const resumePage = `<div class="page page--resume" style="background-image:url('${BG}')">
+  const resumePage = `<div class="page page--resume">
       <header class="cv__head">
         <div class="cv__headtext">
           <h2 class="cv__name">${NAME}</h2>
@@ -167,14 +164,9 @@
       </div>
     </div>`;
 
-  /* ---------- page 24 — Back (mirror of cover) ---------- */
-  const backPage = `<div class="page page--back" style="background-image:url('${BG}')">
-      <div class="cover__inner cover__inner--mirror">
-        <div class="cover__role">אדריכלות · Architecture</div>
-        <div class="cover__rule"></div>
-        <h1 class="cover__name">${NAME}</h1>
-        <div class="cover__kicker">Portfolio · 2026</div>
-      </div>
+  /* ---------- page 24 — Back (full-bleed artwork, mirror of cover) ---------- */
+  const backPage = `<div class="page page--back">
+      <img class="page-bleed" src="assets/backgrounds/back.svg" alt="${NAME} — Portfolio">
     </div>`;
 
   /* =====================================================================
