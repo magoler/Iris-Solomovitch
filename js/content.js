@@ -18,7 +18,6 @@
   const MAR = "assets/projects/maryam/";
   const URB = "assets/projects/urban/";
   const TIM = "assets/projects/time/";
-  const TEC = "assets/projects/tech/";
 
   /* ---------- small HTML builders ---------- */
 
@@ -86,13 +85,15 @@
   // Order + text follow the TOC template. `accent` stays the per-project theme
   // colour used across that project's pages; `num` is the TOC page-number colour.
   const projects = [
-    { key: "tech",   title: "מופע פלורנטין", sub: "סטודיו מורכב | בהנחיית אדר' רמי ניל | שנה ד' סמסטר ב'",                           accent: "#6B7079", num: "#9E1E29" },
-    { key: "urban",  title: "מדרחוב",        sub: "סטודיו אורבני | בהנחיית אדר' תמר פרצוב ואדר' יואב ויינברג | שנה ג' סמסטר א'",     accent: "#6E4FA2", num: "#AE2F95" },
-    { key: "sea",    title: "לראות את הים",   sub: "סטודיו שימור | בהנחיית פרופ' אדר' אמנון בר-אור | שנה ד' סמסטר א'",               accent: "#1E7E8C", num: "#209092" },
-    { key: "time",   title: "Space Time",    sub: "סטודיו מגורים | בהנחיית אדר' דפנה מתוק ואדר' לאונרדו קליכמן | שנה ג' סמסטר ב'",   accent: "#2F5DA8", num: "#35439B" },
-    { key: "maryam", title: "מרי-ם",         sub: "עיצוב פנים | בהנחיית אדר' רוני אלרואי | שנה ד' סמסטר א'",                         accent: "#A6794B", num: "#EAD030" },
+    { key: "florentin", title: "מופע פלורנטין", sub: "סטודיו מורכב | בהנחיית אדר' רמי ניל | שנה ד' סמסטר ב'",                        accent: "#6B7079", num: "#9E1E29" },
+    { key: "urban",     title: "מדרחוב",        sub: "סטודיו אורבני | בהנחיית אדר' תמר פרצוב ואדר' יואב ויינברג | שנה ג' סמסטר א'",  accent: "#6E4FA2", num: "#AE2F95" },
+    { key: "sea",       title: "לראות את הים",   sub: "סטודיו שימור | בהנחיית פרופ' אדר' אמנון בר-אור | שנה ד' סמסטר א'",            accent: "#1E7E8C", num: "#209092" },
+    { key: "time",      title: "Space Time",    sub: "סטודיו מגורים | בהנחיית אדר' דפנה מתוק ואדר' לאונרדו קליכמן | שנה ג' סמסטר ב'", accent: "#2F5DA8", num: "#35439B" },
+    { key: "maryam",    title: "מרי-ם",         sub: "עיצוב פנים | בהנחיית אדר' רוני אלרואי | שנה ד' סמסטר א'",                      accent: "#A6794B", num: "#EAD030" },
   ];
   const accent = Object.fromEntries(projects.map((p) => [p.key, p.accent]));
+  // Look up a project's TOC title/subtitle by key so covers stay in sync with the TOC.
+  const byKey = Object.fromEntries(projects.map((p) => [p.key, p]));
 
   /* ---------- page 1 — Cover (full-bleed artwork) ---------- */
   const coverPage = `<div class="page page--cover">
@@ -173,9 +174,9 @@
    *  PROJECT 1 — Urban (placeholder)
    * =================================================================== */
   const urban_cover_img = coverImage(URB + "render-street.jpg", "מדרחוב נווה שאנן — הדמיית רחוב", accent.urban);
-  const urban_cover_title = coverTitle("מדרחוב נווה שאנן", "סטודיו אורבני", URB + "model.jpg", accent.urban);
+  const urban_cover_title = coverTitle(byKey.urban.title, byKey.urban.sub, URB + "model.jpg", accent.urban);
   const urban_c1 = contentPage(
-    "מדרחוב נווה שאנן",
+    byKey.urban.title,
     `<div class="c1col">
        <p class="proj-desc">מחקר על המרחב הציבורי, רוח המקום והחיבור שבין הקהילה, הסביבה והמסחר ברחוב
          נווה שאנן. מפת הנולי ותכנית האב מציבות מבנה חדש לאורך הציר, לצד עקרונות תכנון להשבת החיים אל המדרחוב.</p>
@@ -222,7 +223,7 @@
    *  PROJECT 2 — Seeing the Sea (REAL)  — whole renders, never cropped
    * =================================================================== */
   const sea_cover_img = coverImage(SEA + "lagoon-day.jpg", "מבט על — הלגונה והעיר", accent.sea);
-  const sea_cover_title = coverTitle("לראות את הים", "סטודיו שימור · פארק מדרון יפו", SEA + "hero-complex.jpg", accent.sea);
+  const sea_cover_title = coverTitle(byKey.sea.title, byKey.sea.sub, SEA + "hero-complex.jpg", accent.sea);
 
   // --- helpers: each project output is an individual, separately-zoomable tile,
   //     cut as a rectangle from the source PDF (its own background kept) with the
@@ -315,10 +316,10 @@
   /* =====================================================================
    *  PROJECT 3 — Time · Space Housing (placeholder, blue)
    * =================================================================== */
-  const time_cover_img = coverImage(TIM + "render-sunrise.jpg", "Time · Space — הדמיית זריחה", accent.time);
-  const time_cover_title = coverTitle("Time · Space", "סטודיו דיור", TIM + "aerial.jpg", accent.time);
+  const time_cover_img = coverImage(TIM + "render-sunrise.jpg", "Space Time — הדמיית זריחה", accent.time);
+  const time_cover_title = coverTitle(byKey.time.title, byKey.time.sub, TIM + "aerial.jpg", accent.time);
   const time_c1 = contentPage(
-    "Time · Space",
+    byKey.time.title,
     `<div class="c1col">
        <p class="proj-desc">פרויקט דיור החוקר את היחס בין <b>סטראוטומיה</b> (גזירה ממסה) לבין <b>טקטוניקה</b>
          (הרכבה), ואת התפתחות המבנה בזמן — Time · Space. המסה נחקרת בסדרת שלבים, ממודל ראשוני ועד למקבץ הדיור.</p>
@@ -368,12 +369,12 @@
    *  "מגורים בין־דוריים" — דירה בחולון לסבתא מרים ולנכדתה מרי, בהשראת מלון אלמא.
    * =================================================================== */
   const maryam_cover_img = coverImage(MAR + "alma.jpg", "מלון אלמה — מודל העבודה", accent.maryam);
-  const maryam_cover_title = coverTitle("מרים", "עיצוב פנים · מגורים בין־דוריים", MAR + "hero.jpg", accent.maryam);
+  const maryam_cover_title = coverTitle(byKey.maryam.title, byKey.maryam.sub, MAR + "hero.jpg", accent.maryam);
 
   // c1 (page 18, right) — title + paragraph + whole-apartment axon (right half);
   //                        proposed colored plan, private/public (left half, toward the spine)
   const maryam_c1 = contentPage(
-    "מרים",
+    byKey.maryam.title,
     `<div class="mc1-grid">
        <div class="mc1-side">
          <p class="proj-desc">פרויקט עיצוב פנים לדירה בחולון, לסבתא מרים ולנכדתה מרי, החיות כיום
@@ -434,53 +435,55 @@
   );
 
   /* =====================================================================
-   *  PROJECT 5 — Technological studio (placeholder, gray)
+   *  PROJECT — מופע פלורנטין / סטודיו מורכב (MOCK — placeholders, no real assets yet)
+   *  Replaces the old technological-studio project. Drop images into a future
+   *  assets/projects/florentin/ folder and swap the nulls below for real srcs.
    * =================================================================== */
-  const tech_cover_img = coverImage(TEC + "render-courtyard.jpg", "סטודיו טכנולוגי — הדמיית חצר", accent.tech);
-  const tech_cover_title = coverTitle("סטודיו טכנולוגי", "מבנה ומעטפת", TEC + "render-ext.jpg", accent.tech);
-  const tech_c1 = contentPage(
-    "סטודיו טכנולוגי",
+  const florentin_cover_img = coverImage(null, "מופע פלורנטין — הדמיה", accent.florentin);
+  const florentin_cover_title = coverTitle(byKey.florentin.title, byKey.florentin.sub, null, accent.florentin);
+  const florentin_c1 = contentPage(
+    byKey.florentin.title,
     `<div class="c1col">
-       <p class="proj-desc">פרויקט בדגש מבני־טכנולוגי: מבנה ציבורי — קופת חולים — שגגו המתקמר נפרשׂ מעל המרחב.
-         הפרויקט חוקר את הקונסטרוקציה, המעטפת ופרטי הבנייה, ממודל הרעיון ועד לפרט 1:10.</p>
+       <p class="proj-desc">פרויקט סטודיו מורכב בשכונת פלורנטין — מבנה רב־תכליתי המשלב מופע, תרבות ומסחר
+         בלב הרקמה העירונית הצפופה. המחקר בוחן את היחס בין הבמה למרחב הציבורי ואת דרכי החיבור בין הבניין לרחוב.</p>
        <div class="grid g-1up2">
-         ${fig(TEC + "roof-aerial.jpg", "מבט על — הגג המתקמר", "", accent.tech)}
-         ${fig(TEC + "model-concept.jpg", "מודל הרעיון — מבנה הגג", "", accent.tech)}
-         ${fig(TEC + "model-cut.jpg", "חתך תלת־ממדי — מבנה ומעטפת", "", accent.tech)}
+         ${fig(null, "מבט על — המתחם", "", accent.florentin)}
+         ${fig(null, "מודל הרעיון", "", accent.florentin)}
+         ${fig(null, "סכמת הפרוגרמה", "", accent.florentin)}
        </div>
      </div>`,
-    accent.tech
+    accent.florentin
   );
-  const tech_c2 = contentPage(
+  const florentin_c2 = contentPage(
     "",
     `<div class="grid grid--2">
-       ${fig(TEC + "render-facade.jpg", "הדמיה — חזית המבנה", "", accent.tech)}
-       ${fig(TEC + "render-entry.jpg", "הדמיה — הכניסה והמבואה", "", accent.tech)}
-       ${fig(TEC + "render-garden.jpg", "הדמיה — המבנה והגן", "", accent.tech)}
-       ${fig(TEC + "render-side.jpg", "הדמיה — מבט צד", "", accent.tech)}
+       ${fig(null, "הדמיה — חזית המבנה", "", accent.florentin)}
+       ${fig(null, "הדמיה — אולם המופע", "", accent.florentin)}
+       ${fig(null, "הדמיה — המרחב הציבורי", "", accent.florentin)}
+       ${fig(null, "הדמיה — מבט לילה", "", accent.florentin)}
      </div>`,
-    accent.tech,
+    accent.florentin,
     "page--content-flush"
   );
-  const tech_c3 = contentPage(
+  const florentin_c3 = contentPage(
     "",
     `<div class="grid g-2up1">
-       ${fig(TEC + "section-render.jpg", "חתך רוחב — מבט פנים", "fig--draw", accent.tech)}
-       ${fig(TEC + "section-detail.jpg", "חתך מפורט", "fig--draw", accent.tech)}
-       ${fig(TEC + "roof-structure.jpg", "תכנית גג — שיפועים ומבנה", "fig--draw", accent.tech)}
+       ${fig(null, "חתך רוחב", "fig--draw", accent.florentin)}
+       ${fig(null, "חתך אורך", "fig--draw", accent.florentin)}
+       ${fig(null, "חזית ראשית", "fig--draw", accent.florentin)}
      </div>`,
-    accent.tech,
+    accent.florentin,
     "page--content-flush"
   );
-  const tech_c4 = contentPage(
+  const florentin_c4 = contentPage(
     "",
     `<div class="grid grid--2">
-       ${fig(TEC + "floor-plan.jpg", "תכנית — קומת קרקע", "fig--draw", accent.tech)}
-       ${fig(TEC + "struct-section.jpg", "חתך קונסטרוקטיבי", "fig--draw", accent.tech)}
-       ${fig(TEC + "detail-wall.jpg", "פרט — חיבור קיר ומעקה 1:10", "fig--draw", accent.tech)}
-       ${fig(TEC + "detail-roof.jpg", "פרט — גג ומעטפת 1:10", "fig--draw", accent.tech)}
+       ${fig(null, "תכנית — קומת קרקע", "fig--draw", accent.florentin)}
+       ${fig(null, "תכנית — קומה טיפוסית", "fig--draw", accent.florentin)}
+       ${fig(null, "פרט — מעטפת ובמה 1:10", "fig--draw", accent.florentin)}
+       ${fig(null, "תכנית מתחם", "fig--draw", accent.florentin)}
      </div>`,
-    accent.tech,
+    accent.florentin,
     "page--content-flush"
   );
 
@@ -492,9 +495,14 @@
   // Each project = 3 spreads (cover + 2 content). Page numbers auto-increment so
   // adding/removing spreads never requires hand-renumbering.
   let _n = 0;
+  // Book order follows the Table of Contents (01→05):
+  // מופע פלורנטין · מדרחוב · לראות את הים · Space Time · מרי-ם.
   const defs = [
     { single: true, html: coverPage },                              // cover
     { right: tocPage, left: resumePage },                           // TOC + Resume
+    { right: florentin_cover_img, left: florentin_cover_title, acc: accent.florentin },
+    { right: florentin_c1, left: florentin_c2, acc: accent.florentin },
+    { right: florentin_c3, left: florentin_c4, acc: accent.florentin },
     { right: urban_cover_img, left: urban_cover_title, acc: accent.urban },
     { right: urban_c1, left: urban_c2, acc: accent.urban },
     { right: urban_c3, left: urban_c4, acc: accent.urban },
@@ -507,9 +515,6 @@
     { right: maryam_cover_img, left: maryam_cover_title, acc: accent.maryam },
     { right: maryam_c1, left: maryam_c2, acc: accent.maryam },
     { right: maryam_c3, left: maryam_c4, acc: accent.maryam },
-    { right: tech_cover_img, left: tech_cover_title, acc: accent.tech },
-    { right: tech_c1, left: tech_c2, acc: accent.tech },
-    { right: tech_c3, left: tech_c4, acc: accent.tech },
     { single: true, html: backPage },                               // back
   ];
   const spreads = defs.map((d) =>
@@ -520,7 +525,7 @@
 
   // jump targets: project key -> spread index of its cover; "resume" -> spread 1
   const jumps = { resume: 1 };
-  const coverByKey = { urban: 2, sea: 5, time: 8, maryam: 11, tech: 14 };
+  const coverByKey = { florentin: 2, urban: 5, sea: 8, time: 11, maryam: 14 };
   Object.assign(jumps, coverByKey);
 
   window.BOOK = { name: NAME, projects, spreads, jumps };
