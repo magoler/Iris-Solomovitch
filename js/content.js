@@ -87,7 +87,7 @@
   // (cover title, content underline, cover-image field) so the two always match.
   const projects = [
     { key: "florentin", title: "מופע פלורנטין", sub: "סטודיו מורכב | בהנחיית אדר' רמי גיל | שנה ד' סמסטר ב'",                        accent: "#9E1E29", num: "#9E1E29" },
-    { key: "urban",     title: "מדרחוב",        sub: "סטודיו אורבני | בהנחיית אדר' תמר פרצוב ואדר' יואב ויינברג | שנה ג' סמסטר א'",  accent: "#AE2F95", num: "#AE2F95" },
+    { key: "urban",     title: "מדרחוב",        sub: "סטודיו אורבני | בהנחיית אדר' תמר פרצוב ואדר' יואב וינברג | שנה ג' סמסטר א'",   accent: "#9F248F", num: "#9F248F" },
     { key: "sea",       title: "לראות את הים",   sub: "סטודיו שימור | בהנחיית פרופ' אדר' אמנון בר-אור | שנה ד' סמסטר א'",            accent: "#209092", num: "#209092" },
     { key: "time",      title: "Space Time",    sub: "סטודיו מגורים | בהנחיית אדר' דפנה מתוק ואדר' לאונרדו קליכמן | שנה ג' סמסטר ב'", accent: "#35439B", num: "#35439B" },
     { key: "maryam",    title: "מרי-ם",         sub: "עיצוב פנים | בהנחיית אדר' רוני אלרואי | שנה ד' סמסטר א'",                      accent: "#E4AA24", num: "#E4AA24" },
@@ -184,8 +184,11 @@
   /* =====================================================================
    *  PROJECT 1 — Urban (placeholder)
    * =================================================================== */
-  const urban_cover_img = coverImage(URB + "render-street.jpg", "מדרחוב נווה שאנן — הדמיית רחוב", accent.urban);
-  const urban_cover_title = coverTitle(byKey.urban.title, byKey.urban.sub, URB + "model.jpg", accent.urban);
+  // Iris's two ready-made cover artworks (full-bleed, exact A3 ratio):
+  //   cover-title.svg — titled "MIDרחוב" elevation (crisp vector title) → left page
+  //   cover-hero.jpg  — the street-elevation sketch                     → right page
+  const urban_cover_img = `<div class="page page--coverbleed"><img class="page-bleed" src="${URB}cover-hero.jpg" alt="${byKey.urban.title} — נווה שאנן"></div>`;
+  const urban_cover_title = `<div class="page page--coverbleed"><img class="page-bleed" src="${URB}cover-title.svg" alt="${byKey.urban.title}"></div>`;
   const urban_c1 = contentPage(
     byKey.urban.title,
     `<div class="c1col">
