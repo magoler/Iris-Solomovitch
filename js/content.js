@@ -82,14 +82,15 @@
 
   /* ---------- projects (for Table of Contents) ---------- */
 
-  // Order + text follow the TOC template. `accent` stays the per-project theme
-  // colour used across that project's pages; `num` is the TOC page-number colour.
+  // Order + text follow the TOC template. Each project has ONE theme colour used
+  // both for its TOC page-number (`num`) and as the accent across its pages
+  // (cover title, content underline, cover-image field) so the two always match.
   const projects = [
-    { key: "florentin", title: "מופע פלורנטין", sub: "סטודיו מורכב | בהנחיית אדר' רמי ניל | שנה ד' סמסטר ב'",                        accent: "#6B7079", num: "#9E1E29" },
-    { key: "urban",     title: "מדרחוב",        sub: "סטודיו אורבני | בהנחיית אדר' תמר פרצוב ואדר' יואב ויינברג | שנה ג' סמסטר א'",  accent: "#6E4FA2", num: "#AE2F95" },
-    { key: "sea",       title: "לראות את הים",   sub: "סטודיו שימור | בהנחיית פרופ' אדר' אמנון בר-אור | שנה ד' סמסטר א'",            accent: "#1E7E8C", num: "#209092" },
-    { key: "time",      title: "Space Time",    sub: "סטודיו מגורים | בהנחיית אדר' דפנה מתוק ואדר' לאונרדו קליכמן | שנה ג' סמסטר ב'", accent: "#2F5DA8", num: "#35439B" },
-    { key: "maryam",    title: "מרי-ם",         sub: "עיצוב פנים | בהנחיית אדר' רוני אלרואי | שנה ד' סמסטר א'",                      accent: "#A6794B", num: "#EAD030" },
+    { key: "florentin", title: "מופע פלורנטין", sub: "סטודיו מורכב | בהנחיית אדר' רמי ניל | שנה ד' סמסטר ב'",                        accent: "#9E1E29", num: "#9E1E29" },
+    { key: "urban",     title: "מדרחוב",        sub: "סטודיו אורבני | בהנחיית אדר' תמר פרצוב ואדר' יואב ויינברג | שנה ג' סמסטר א'",  accent: "#AE2F95", num: "#AE2F95" },
+    { key: "sea",       title: "לראות את הים",   sub: "סטודיו שימור | בהנחיית פרופ' אדר' אמנון בר-אור | שנה ד' סמסטר א'",            accent: "#209092", num: "#209092" },
+    { key: "time",      title: "Space Time",    sub: "סטודיו מגורים | בהנחיית אדר' דפנה מתוק ואדר' לאונרדו קליכמן | שנה ג' סמסטר ב'", accent: "#35439B", num: "#35439B" },
+    { key: "maryam",    title: "מרי-ם",         sub: "עיצוב פנים | בהנחיית אדר' רוני אלרואי | שנה ד' סמסטר א'",                      accent: "#EAD030", num: "#EAD030" },
   ];
   const accent = Object.fromEntries(projects.map((p) => [p.key, p.accent]));
   // Look up a project's TOC title/subtitle by key so covers stay in sync with the TOC.
