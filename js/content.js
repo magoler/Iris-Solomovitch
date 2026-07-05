@@ -154,7 +154,7 @@
           <ul class="cv__skills">
             <li><b>תכנון BIM:</b> Revit – שליטה גבוהה | AutoCAD – שליטה גבוהה</li>
             <li><b>תכנון פרמטרי:</b> Grasshopper – שליטה טובה | Rhino – שליטה גבוהה</li>
-            <li><b>גרפיקה:</b> Illustrator – שליטה טובה | Photoshop – ניסיון עבודה | Lumion – שליטה טובה | D5 – ניסיון עבודה</li>
+            <li><b>גרפיקה:</b> Illustrator – שליטה טובה | Photoshop – ניסיון עבודה |<br>Lumion – שליטה טובה | D5 – ניסיון עבודה</li>
             <li><b>שפות תכנות:</b> Python – היכרות | C# - היכרות</li>
             <li><b>כללי:</b> Office – שליטה גבוהה</li>
           </ul>
