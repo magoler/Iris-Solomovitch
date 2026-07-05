@@ -96,6 +96,14 @@
   // Look up a project's TOC title/subtitle by key so covers stay in sync with the TOC.
   const byKey = Object.fromEntries(projects.map((p) => [p.key, p]));
 
+  // Spread index of each project's cover (also drives the jump targets below).
+  const coverSpread = { florentin: 2, urban: 5, sea: 8, time: 11, maryam: 14 };
+  // Page numbers a project occupies. The cover is 1 page and every later spread is
+  // 2 pages, so the right (lower) page of spread s is 2·s; a project = cover spread + 2
+  // content spreads → 6 pages. (Cover=1 and back are counted but their folio is hidden.)
+  const pad2 = (n) => String(n).padStart(2, "0");
+  const projPages = (k) => { const s = coverSpread[k]; return [2 * s, 2 * (s + 2) + 1]; };
+
   /* ---------- page 1 — Cover (full-bleed artwork) ---------- */
   const coverPage = `<div class="page page--cover">
       <img class="page-bleed" src="assets/backgrounds/cover.svg" alt="${NAME} — Portfolio">
@@ -105,12 +113,14 @@
   // Clicking the project name jumps to that project (data-jump=key). The page
   // number sits on the band side (left of the grey band), coloured per project.
   const tocRows = projects
-    .map(
-      (p, i) => `<li class="toc__item" data-jump="${p.key}" role="link" tabindex="0">
+    .map((p, i) => {
+      const [first, last] = projPages(p.key);
+      return `<li class="toc__item" data-jump="${p.key}" role="link" tabindex="0">
         <span class="toc__num" style="color:${p.num}">${String(i + 1).padStart(2, "0")}</span>
         <span class="toc__txt"><b>${p.title}</b><em>${p.sub}</em></span>
-      </li>`
-    )
+        <span class="toc__pages">${pad2(first)}–${pad2(last)}</span>
+      </li>`;
+    })
     .join("");
   const tocPage = `<div class="page page--toc">
       <header class="sheet__head"><h2 class="sheet__title">תוכן עניינים</h2></header>
@@ -536,8 +546,7 @@
 
   // jump targets: project key -> spread index of its cover; "resume" -> spread 1
   const jumps = { resume: 1 };
-  const coverByKey = { florentin: 2, urban: 5, sea: 8, time: 11, maryam: 14 };
-  Object.assign(jumps, coverByKey);
+  Object.assign(jumps, coverSpread);
 
   window.BOOK = { name: NAME, projects, spreads, jumps };
 })();

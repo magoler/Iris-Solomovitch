@@ -31,14 +31,16 @@
   let animating = false;
 
   /* ---------- build DOM for one spread ---------- */
-  function pageEl(page) {
+  function pageEl(page, showNo = true) {
     const wrap = document.createElement("div");
     wrap.className = "page-slot";
     wrap.innerHTML = page.html;
-    const pageNo = document.createElement("span");
-    pageNo.className = "page-no";
-    pageNo.textContent = page.no;
-    wrap.firstElementChild.appendChild(pageNo);
+    if (showNo) {
+      const pageNo = document.createElement("span");
+      pageNo.className = "page-no";
+      pageNo.textContent = page.no;
+      wrap.firstElementChild.appendChild(pageNo);
+    }
     return wrap;
   }
 
@@ -46,7 +48,8 @@
     const el = document.createElement("div");
     el.className = "spread" + (spread.single ? " spread--single" : "");
     if (spread.single) {
-      el.appendChild(pageEl(spread.page));
+      // cover & back: still counted in page.no, but the folio is not shown
+      el.appendChild(pageEl(spread.page, false));
     } else {
       // RTL: right page first in DOM order so flexbox row-reverse not needed;
       // we explicitly place right then spine then left.

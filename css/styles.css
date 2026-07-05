@@ -134,12 +134,12 @@ html, body {
   position: absolute; top: 60px; right: 210px; left: 100px; text-align: right;
 }
 .page--toc .toc__list {
-  position: absolute; top: 150px; bottom: 60px; right: 210px; left: 100px;
+  position: absolute; top: 150px; bottom: 60px; right: 210px; left: 20px;
   margin: 0; padding: 0; list-style: none;
   display: flex; flex-direction: column; justify-content: space-around;
 }
 .toc__item {
-  display: flex; align-items: center; gap: 44px;
+  display: flex; align-items: center; gap: 22px;
   cursor: pointer; transition: transform .2s ease, opacity .2s ease;
 }
 .toc__item:hover { transform: translateX(-6px); }
@@ -152,7 +152,13 @@ html, body {
 }
 .toc__txt { flex: 1; display: flex; flex-direction: column; align-items: flex-start; text-align: right; }
 .toc__txt b { font-size: 31px; font-weight: 700; line-height: 1.1; }
-.toc__txt em { font-style: normal; font-size: 17px; color: #6a6a6a; margin-top: 5px; }
+.toc__txt em { font-style: normal; font-size: 17px; color: #6a6a6a; margin-top: 5px; white-space: nowrap; }
+/* project page range, thin Ploni, subtitle size, centred — sits at the left end of the row */
+.toc__pages {
+  flex: 0 0 auto; min-width: 50px; text-align: center;
+  font-weight: 300; font-size: 17px; letter-spacing: .04em; color: #6a6a6a;
+  direction: ltr; font-variant-numeric: tabular-nums;
+}
 
 /* Resume — sits on the CV template: grey band (left) + name as the page title.
    Margins per template: content clears the band by the same gap the title keeps
