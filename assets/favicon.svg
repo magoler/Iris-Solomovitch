@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 143.22 847.45">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-width: 3.17px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke-width: 3.23px;
+      }
+
+      .cls-5 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        stroke-width: 3.24px;
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-7 {
+        fill: #d1d3d4;
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-9 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-4" x="12.57" width="65.83" height="426.8"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-4" x="13.59" y="1.18" width="65.83" height="427.58" transform="translate(93 429.95) rotate(180)"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-4" x="77.68" y="419.61" width="63.25" height="427.84"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <rect class="cls-7" y="3.69" width="143.22" height="842.22"/>
+      <rect class="cls-5" x="5.69" y="3.69" width="3.55" height="842.22"/>
+      <rect class="cls-5" x="11.81" y="3.69" width="3.55" height="842.22"/>
+      <rect class="cls-5" x="44.5" y="420.19" width="3.55" height="428.65" transform="translate(-96.8 14.61) rotate(-8.83)"/>
+      <rect class="cls-5" x="77.9" y="3.69" width="3.55" height="842.22"/>
+      <g class="cls-9">
+        <ellipse class="cls-2" cx="12.57" cy="214.57" rx="60.76" ry="209.52"/>
+      </g>
+      <g class="cls-6">
+        <ellipse class="cls-3" cx="79.41" cy="213.8" rx="60.76" ry="209.91"/>
+      </g>
+      <g class="cls-8">
+        <ellipse class="cls-1" cx="77.68" cy="634.71" rx="58.39" ry="210.04"/>
+      </g>
+    </g>
+  </g>
+</svg>
