@@ -223,8 +223,11 @@
   /* =====================================================================
    *  PROJECT 2 — Seeing the Sea (REAL)  — whole renders, never cropped
    * =================================================================== */
-  const sea_cover_img = coverImage(SEA + "lagoon-day.jpg", "מבט על — הלגונה והעיר", accent.sea);
-  const sea_cover_title = coverTitle(byKey.sea.title, byKey.sea.sub, SEA + "hero-complex.jpg", accent.sea);
+  // Iris's two ready-made cover artworks (full-bleed, exact A3 ratio):
+  //   cover-title.svg — titled hero (crisp vector title) → left page
+  //   cover-hero.jpg  — the courtyard render            → right page
+  const sea_cover_img = `<div class="page page--coverbleed"><img class="page-bleed" src="${SEA}cover-hero.jpg" alt="${byKey.sea.title} — פארק מדרון יפו"></div>`;
+  const sea_cover_title = `<div class="page page--coverbleed"><img class="page-bleed" src="${SEA}cover-title.svg" alt="${byKey.sea.title}"></div>`;
 
   // --- helpers: each project output is an individual, separately-zoomable tile,
   //     cut as a rectangle from the source PDF (its own background kept) with the
