@@ -86,7 +86,7 @@
   // both for its TOC page-number (`num`) and as the accent across its pages
   // (cover title, content underline, cover-image field) so the two always match.
   const projects = [
-    { key: "florentin", title: "מופע פלורנטין", sub: "סטודיו מורכב | בהנחיית אדר' רמי ניל | שנה ד' סמסטר ב'",                        accent: "#9E1E29", num: "#9E1E29" },
+    { key: "florentin", title: "מופע פלורנטין", sub: "סטודיו מורכב | בהנחיית אדר' רמי גיל | שנה ד' סמסטר ב'",                        accent: "#9E1E29", num: "#9E1E29" },
     { key: "urban",     title: "מדרחוב",        sub: "סטודיו אורבני | בהנחיית אדר' תמר פרצוב ואדר' יואב ויינברג | שנה ג' סמסטר א'",  accent: "#AE2F95", num: "#AE2F95" },
     { key: "sea",       title: "לראות את הים",   sub: "סטודיו שימור | בהנחיית פרופ' אדר' אמנון בר-אור | שנה ד' סמסטר א'",            accent: "#209092", num: "#209092" },
     { key: "time",      title: "Space Time",    sub: "סטודיו מגורים | בהנחיית אדר' דפנה מתוק ואדר' לאונרדו קליכמן | שנה ג' סמסטר ב'", accent: "#35439B", num: "#35439B" },
@@ -440,8 +440,12 @@
    *  Replaces the old technological-studio project. Drop images into a future
    *  assets/projects/florentin/ folder and swap the nulls below for real srcs.
    * =================================================================== */
-  const florentin_cover_img = coverImage(null, "מופע פלורנטין — הדמיה", accent.florentin);
-  const florentin_cover_title = coverTitle(byKey.florentin.title, byKey.florentin.sub, null, accent.florentin);
+  // Iris's two ready-made cover artworks (full-bleed, exact A3 ratio):
+  //   cover-title.svg — titled aerial (crisp vector title baked in)  → left page
+  //   cover-hero.jpg  — the Florentin street render                 → right page
+  const FLO = "assets/projects/florentin/";
+  const florentin_cover_img = `<div class="page page--coverbleed"><img class="page-bleed" src="${FLO}cover-hero.jpg" alt="${byKey.florentin.title} — פלורנטין"></div>`;
+  const florentin_cover_title = `<div class="page page--coverbleed"><img class="page-bleed" src="${FLO}cover-title.svg" alt="${byKey.florentin.title}"></div>`;
   const florentin_c1 = contentPage(
     byKey.florentin.title,
     `<div class="c1col">
