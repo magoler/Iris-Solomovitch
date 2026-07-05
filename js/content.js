@@ -90,7 +90,7 @@
     { key: "urban",     title: "מדרחוב",        sub: "סטודיו אורבני | בהנחיית אדר' תמר פרצוב ואדר' יואב ויינברג | שנה ג' סמסטר א'",  accent: "#AE2F95", num: "#AE2F95" },
     { key: "sea",       title: "לראות את הים",   sub: "סטודיו שימור | בהנחיית פרופ' אדר' אמנון בר-אור | שנה ד' סמסטר א'",            accent: "#209092", num: "#209092" },
     { key: "time",      title: "Space Time",    sub: "סטודיו מגורים | בהנחיית אדר' דפנה מתוק ואדר' לאונרדו קליכמן | שנה ג' סמסטר ב'", accent: "#35439B", num: "#35439B" },
-    { key: "maryam",    title: "מרי-ם",         sub: "עיצוב פנים | בהנחיית אדר' רוני אלרואי | שנה ד' סמסטר א'",                      accent: "#EAD030", num: "#EAD030" },
+    { key: "maryam",    title: "מרי-ם",         sub: "עיצוב פנים | בהנחיית אדר' רוני אלרואי | שנה ד' סמסטר א'",                      accent: "#E4AA24", num: "#E4AA24" },
   ];
   const accent = Object.fromEntries(projects.map((p) => [p.key, p.accent]));
   // Look up a project's TOC title/subtitle by key so covers stay in sync with the TOC.
@@ -372,8 +372,11 @@
    *  PROJECT 4 — Maryam interior (REAL)  pages 16–19
    *  "מגורים בין־דוריים" — דירה בחולון לסבתא מרים ולנכדתה מרי, בהשראת מלון אלמא.
    * =================================================================== */
-  const maryam_cover_img = coverImage(MAR + "alma.jpg", "מלון אלמה — מודל העבודה", accent.maryam);
-  const maryam_cover_title = coverTitle(byKey.maryam.title, byKey.maryam.sub, MAR + "hero.jpg", accent.maryam);
+  // Iris's two ready-made cover artworks (full-bleed, exact A3 ratio):
+  //   cover-title.svg — titled interior (crisp vector gold title) → left page
+  //   cover-hero.jpg  — the living-room render                    → right page
+  const maryam_cover_img = `<div class="page page--coverbleed"><img class="page-bleed" src="${MAR}cover-hero.jpg" alt="${byKey.maryam.title} — עיצוב פנים"></div>`;
+  const maryam_cover_title = `<div class="page page--coverbleed"><img class="page-bleed" src="${MAR}cover-title.svg" alt="${byKey.maryam.title}"></div>`;
 
   // c1 (page 18, right) — title + paragraph + whole-apartment axon (right half);
   //                        proposed colored plan, private/public (left half, toward the spine)
