@@ -1,69 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 794.44 736.06">
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 794.44 741.76">
   <defs>
     <style>
       .cls-1 {
-        fill: #fff;
+        stroke-width: 20.09px;
       }
 
-      .cls-2 {
-        stroke: #fff;
-        stroke-miterlimit: 10;
-        stroke-width: 15px;
-      }
-
-      .cls-2, .cls-3 {
+      .cls-1, .cls-2, .cls-3 {
         fill: none;
       }
 
+      .cls-1, .cls-3 {
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
       .cls-4 {
-        clip-path: url(#clippath-1);
+        fill: #fff;
       }
 
       .cls-5 {
-        clip-path: url(#clippath-3);
+        clip-path: url(#clippath-1);
       }
 
       .cls-6 {
-        fill: #6d6e71;
+        clip-path: url(#clippath-3);
       }
 
       .cls-7 {
-        clip-path: url(#clippath-2);
+        fill: #6d6e71;
       }
 
       .cls-8 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-9 {
         clip-path: url(#clippath);
+      }
+
+      .cls-3 {
+        stroke-width: 20px;
       }
     </style>
     <clipPath id="clippath">
-      <rect class="cls-3" x="66.83" width="338.22" height="371.26" transform="translate(471.88 371.26) rotate(180)"/>
+      <rect class="cls-2" x="66.83" y="3.45" width="338.22" height="377.39" transform="translate(471.88 384.28) rotate(180)"/>
     </clipPath>
     <clipPath id="clippath-1">
-      <rect class="cls-3" x="396.14" y="363.31" width="325" height="371.48"/>
+      <rect class="cls-2" x="396.14" y="366.76" width="325" height="375"/>
     </clipPath>
     <clipPath id="clippath-2">
-      <rect class="cls-3" x="0" y=".27" width="792.28" height="735.09" rx="367.54" ry="367.54"/>
+      <rect class="cls-2" x="0" y="3.72" width="792.28" height="735.09" rx="367.54" ry="367.54"/>
     </clipPath>
     <clipPath id="clippath-3">
-      <rect class="cls-3" x="61.6" y="-1.03" width="338.22" height="370.58"/>
+      <rect class="cls-2" x="61.6" y="2.42" width="338.22" height="370.58"/>
     </clipPath>
   </defs>
   <g id="Layer_1-2" data-name="Layer 1">
-    <rect class="cls-6" x="2.16" y=".97" width="792.28" height="735.09" rx="367.54" ry="367.54"/>
-    <polygon class="cls-1" points="411.84 733.59 393.81 734.06 57.74 366.23 75.77 365.75 411.84 733.59"/>
-    <rect class="cls-1" x="397.28" y="2.17" width="18.25" height="731.29"/>
+    <rect class="cls-7" x="2.16" y="4.42" width="792.28" height="735.09" rx="367.54" ry="367.54"/>
+    <polygon class="cls-4" points="412.49 741.21 394.45 741.66 57.74 369.67 75.78 369.22 412.49 741.21"/>
+    <rect class="cls-4" x="393.19" width="23.14" height="741.76"/>
+    <g class="cls-9">
+      <ellipse class="cls-3" cx="405.05" cy="191.1" rx="312.2" ry="185.27"/>
+    </g>
+    <g class="cls-5">
+      <ellipse class="cls-1" cx="396.14" cy="555.29" rx="300.01" ry="184.1"/>
+    </g>
     <g class="cls-8">
-      <ellipse class="cls-2" cx="405.05" cy="184.61" rx="312.2" ry="182.26"/>
-    </g>
-    <g class="cls-4">
-      <ellipse class="cls-2" cx="396.14" cy="550.07" rx="300.01" ry="182.37"/>
-    </g>
-    <g class="cls-7">
-      <rect class="cls-1" x="26.29" y="2.17" width="18.25" height="731.29"/>
-      <rect class="cls-1" x="57.71" y="2.17" width="18.25" height="731.29"/>
-      <g class="cls-5">
-        <ellipse class="cls-2" cx="61.6" cy="185.28" rx="312.2" ry="181.93"/>
+      <rect class="cls-4" x="22.11" y="5.62" width="22.42" height="731.29"/>
+      <rect class="cls-4" x="57.71" y="5.62" width="24.33" height="731.29"/>
+      <g class="cls-6">
+        <ellipse class="cls-3" cx="61.6" cy="188.72" rx="312.2" ry="181.93"/>
       </g>
     </g>
   </g>
