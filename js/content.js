@@ -253,40 +253,30 @@
   const panelFig = (src, n) =>
     `<figure class="out panel"><img src="${SEA + src}" alt="" loading="lazy"><span class="panel-num">${n}</span></figure>`;
 
-  // c1 (page 12) — concept paragraph (top) + marine-gallery plan beside the
-  // 1936 British map and the top-view render (matched in scale to the upper plan on p.13)
-  const sea_c1 = `<div class="page page--sea12">
-      <div class="sea12-col sea12-left">
-        <figure class="sea12-model">
-          <img src="${SEA}model.jpg" alt="מודל עבודה — פארק המדרון">
-          <figcaption>מודל עבודה</figcaption>
-        </figure>
-        <div class="sea12-stack">
-          <figure>
-            <img src="${SEA}g-topview.jpg" alt="מבט על — הבנוי בפרויקט">
-            <figcaption>מבט על – הבנוי בפרויקט | <bdi>1:500</bdi></figcaption>
-          </figure>
-          <figure>
-            <img src="${SEA}g-british.jpg" alt="מיפוי בריטי 1936">
-            <figcaption>מיפוי בריטי משנת <bdi>1936</bdi> | <bdi>1:500</bdi></figcaption>
-          </figure>
-        </div>
-      </div>
-      <div class="sea12-col sea12-right">
-        <div class="sea12-head">
-          <h3 class="content__title">לראות את הים</h3>
-          <p class="proj-desc sea12-lead">הפרויקט עוסק בחשיפת השכבות הסמויות של פארק המדרון ביפו, ובבחינה מחודשת
-            של המתח בין זיכרון להדחקה במרחב העירוני. מתוך קריאה היסטורית וביקורתית, הפרויקט מבקש להחזיר אל פני
-            השטח את הסיפור המקומי שנדחק, וליצור חיבור מחודש בין שכונות עג׳מי וג׳בליה לבין הים. ההתערבות האדריכלית
-            מציעה מערכת מרחבית המשלבת חינוך, תרבות ופעילות קהילתית, באמצעות מרחבים פתוחים וגמישים המעודדים מפגש,
-            למידה ועשייה משותפת. כך הופך הזיכרון למרכיב פעיל המעצב את חוויית המקום ואת חיי הקהילה.</p>
-        </div>
-        <figure class="sea12-gallery">
-          <img src="${SEA}g-gallery.jpg" alt="תכנית גלריה ימית">
-          <figcaption>תכנית גלריה ימית וקיוסק הטיילת – מפלס <bdi>8.67+</bdi> | <bdi>1:100</bdi></figcaption>
-        </figure>
-      </div>
-    </div>`;
+  // c1 (page 12) — the whole "עמוד תוכן 1" board placed full-bleed, with live
+  // title+paragraph over the baked text and clickable hotspots opening each
+  // sub-image (model / photo-exhibition render / lagoon-stages grid / E-W section) in hi-res.
+  const seaHot = (l, t, w, h, src, cap) =>
+    `<button class="flo-hotspot" style="left:${l}%;top:${t}%;width:${w}%;height:${h}%"
+       data-hires="${SEA}${src}" data-cap="${cap}" aria-label="${cap}" title="${cap}"></button>`;
+  const sea_c1_text =
+    "הפרויקט עוסק בהתחדשות פארק המדרון ביפו באמצעות חשיפת השכבות ההיסטוריות של המקום וחידוש הקשר בין העיר לים. " +
+    "מחקר התיעוד חשף כיצד מילוי הקרקע מחק את קו החוף המקורי, ניתק רחובות היסטוריים והחליש את הזיקה למרחב החופי. " +
+    "התכנון מציע להחזיר את תווי קו החוף, ליצור לגונה חדשה, לשחזר רצפים עירוניים ולשלב מבני תרבות וקהילה הנשענים " +
+    "על עקבות הבינוי ההיסטורי. השפה האדריכלית משלבת חומרים מקומיים עם ביטוי עכשווי ומדגישה שקיפות, נגישות ומבט " +
+    "רצוף בין יפו לים. הפרויקט מציג את השימור ככלי לתיקון מרחבי, המחבר מחדש בין ההיסטוריה, הנוף והקהילה.";
+  const sea_c1 =
+    `<div class="page page--flo-board" style="--accent:${accent.sea}">
+       <img class="flo-board-img" src="${SEA}board1.webp" alt="${byKey.sea.title} — עמוד תוכן 1">
+       <div class="sea-board-textcover">
+         <h3 class="sea-board-title">${byKey.sea.title}</h3>
+         <p class="sea-board-para">${sea_c1_text}</p>
+       </div>
+       ${seaHot(2.52, 5.62, 33.89, 54.08, "model-hi.webp", "מודל")}
+       ${seaHot(2.52, 65.0, 33.89, 26.09, "exhibition.webp", "תערוכת צילום")}
+       ${seaHot(39.15, 25.46, 58.5, 52.25, "lagoon-stages.webp", "שלבי יצירת הלגונה")}
+       ${seaHot(39.07, 83.77, 58.47, 9.58, "section-ew.webp", "חתך א-א | מזרח-מערב | 1:1000")}
+     </div>`;
 
   // c2 (page 13) — PDF page 5: interior renders (left) + upper-construction plan (right, by the spine)
   const sea_c2 = `<div class="page page--sea-out sea13">
