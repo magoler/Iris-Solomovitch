@@ -484,7 +484,7 @@ html, body {
 .page--flo-c1 .flo-c1-grid {
   display: grid;
   grid-template-columns: 1.06fr 1fr;
-  grid-template-rows: 1.45fr 1.02fr 1.4fr;
+  grid-template-rows: 1.72fr auto 1.5fr;
   grid-template-areas:
     "text  strip"
     "bill  map"
@@ -493,11 +493,14 @@ html, body {
 }
 .page--flo-c1 .flo-text  { grid-area: text; min-height: 0; }
 .page--flo-c1 .flo-strip { grid-area: strip; min-height: 0; }
-.page--flo-c1 .flo-bill  { grid-area: bill; min-height: 0; }
+.page--flo-c1 .flo-bill  { grid-area: bill; min-height: 0; align-self: start; }
+/* billboard box matches its own 2.83:1 shape so it fills width with no letterbox:
+   its top hugs the map's top line and its caption sits right beneath it. */
+.page--flo-c1 .flo-bill .figure__img { flex: 0 0 auto; width: 100%; aspect-ratio: 2.83 / 1; }
 .page--flo-c1 .flo-map   { grid-area: map;  min-height: 0; }
 .page--flo-c1 .flo-sect  { grid-area: sect; min-height: 0; }
 .page--flo-c1 .flo-text .proj-desc {
-  margin: 62px 0 0; max-width: none; font-size: 16px; line-height: 1.68; text-align: justify;
+  margin: 58px 0 0; max-width: none; font-size: 15.5px; line-height: 1.56; text-align: justify;
 }
 .page--flo-c1 .caption { font-size: 13px; margin-top: 6px; }
 
