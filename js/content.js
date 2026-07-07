@@ -498,17 +498,14 @@
        ${floHot(50, 34.42, 47.5, 17.62, "billboard.webp", "מצב מוצע | בילבורד מערבי | רחוב הנגרים")}
        ${floHot(49.92, 55.63, 47.62, 37.85, "section.webp", "חתך מקומי | 1:250")}
      </div>`;
-  const florentin_c2 = contentPage(
-    "",
-    `<div class="grid grid--2">
-       ${fig(null, "הדמיה — חזית המבנה", "", accent.florentin)}
-       ${fig(null, "הדמיה — אולם המופע", "", accent.florentin)}
-       ${fig(null, "הדמיה — המרחב הציבורי", "", accent.florentin)}
-       ${fig(null, "הדמיה — מבט לילה", "", accent.florentin)}
-     </div>`,
-    accent.florentin,
-    "page--content-flush"
-  );
+  const florentin_c2 =
+    `<div class="page page--flo-board" style="--accent:${accent.florentin}">
+       <img class="flo-board-img" src="${FLO}board2.webp" alt="${byKey.florentin.title} — עמוד תוכן 2">
+       ${floHot(2.49, 5.54, 32.95, 26.68, "bill-east.webp", "בילבורד מזרחי")}
+       ${floHot(2.52, 36.38, 32.89, 23.2, "bill-west2.webp", "בילבורד מערבי 2")}
+       ${floHot(2.49, 64.29, 32.95, 28.98, "courtyard.webp", "מבט רחוב אל חצר הפרינג'")}
+       ${floHot(39.84, 5.5, 57.73, 86, "plan.webp", "תכנית קומת קרקע | 1:1000")}
+     </div>`;
   const florentin_c3 = contentPage(
     "",
     `<div class="grid g-2up1">
