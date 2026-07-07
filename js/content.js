@@ -477,8 +477,7 @@
        data-hires="${FLO}${src}" data-cap="${cap}" aria-label="${cap}" title="${cap}"></button>`;
   const florentin_c1 =
     `<div class="page page--flo-board" style="--accent:${accent.florentin}">
-       <img class="flo-board-img" src="${FLO}board.jpg" alt="${byKey.florentin.title} — עמוד תוכן 1"
-            data-hires="${FLO}board.jpg" data-cap="${byKey.florentin.title}">
+       <img class="flo-board-img" src="${FLO}board.jpg" alt="${byKey.florentin.title} — עמוד תוכן 1">
        ${floHot(2, 4, 45, 29, "three-s.jpg", "שלושת ה-Sים התכנוניים")}
        ${floHot(2, 37, 45, 55, "context.jpg", "קונטקסט מרחבי ושלבי ההגעה למופע הפלורנטיני")}
        ${floHot(50, 37, 47, 16, "billboard.jpg", "מצב מוצע | בילבורד מערבי | רחוב הנגרים")}
