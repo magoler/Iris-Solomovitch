@@ -476,6 +476,31 @@ html, body {
 .mc-pair .figure { min-height: 0; }
 .mc-aside { min-height: 0; height: 100%; }
 
+/* ---------- מופע פלורנטין — content page 1 (title+text · billboard · section | S-strip · context map) ---------- */
+/* Dense architecture-board layout: tight margins, images fill edge-to-edge. */
+.page--flo-c1 .content__head { top: 30px; right: 34px; }
+.page--flo-c1 .content__title { font-size: 40px; border-bottom: none; padding-bottom: 0; }
+.page--flo-c1 .content__body { inset: 30px 34px 26px; }
+.page--flo-c1 .flo-c1-grid {
+  display: grid;
+  grid-template-columns: 1.06fr 1fr;
+  grid-template-rows: 1.45fr 1.02fr 1.4fr;
+  grid-template-areas:
+    "text  strip"
+    "bill  map"
+    "sect  map";
+  gap: 12px 18px; height: 100%; min-height: 0;
+}
+.page--flo-c1 .flo-text  { grid-area: text; min-height: 0; }
+.page--flo-c1 .flo-strip { grid-area: strip; min-height: 0; }
+.page--flo-c1 .flo-bill  { grid-area: bill; min-height: 0; }
+.page--flo-c1 .flo-map   { grid-area: map;  min-height: 0; }
+.page--flo-c1 .flo-sect  { grid-area: sect; min-height: 0; }
+.page--flo-c1 .flo-text .proj-desc {
+  margin: 62px 0 0; max-width: none; font-size: 16px; line-height: 1.68; text-align: justify;
+}
+.page--flo-c1 .caption { font-size: 13px; margin-top: 6px; }
+
 /* ============================ LIGHTBOX =============================== */
 /* click affordance on every viewable asset */
 .figure__img img, .page--coverimg .bleed,

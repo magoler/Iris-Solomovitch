@@ -468,18 +468,30 @@
   const FLO = "assets/projects/florentin/";
   const florentin_cover_img = `<div class="page page--coverbleed"><img class="page-bleed" src="${FLO}cover-hero.jpg" alt="${byKey.florentin.title} — פלורנטין"></div>`;
   const florentin_cover_title = `<div class="page page--coverbleed"><img class="page-bleed" src="${FLO}cover-title.svg" alt="${byKey.florentin.title}"></div>`;
+  // Real content page 1 — layout mirrors Iris's "עמוד תוכן 1" board:
+  //   right column  = title + project text, billboard elevation, local section
+  //   left  column  = the three planning "S" strip (SITE/SETTING/SET), context map
+  // Captions come from each source file's name (' - ' shown as ' | ').
+  const florentin_text =
+    "הפרויקט מציע התחדשות למערב שכונת פלורנטין מתוך רצון לשמר ולהעצים את אופייה הייחודי. " +
+    "נקודת המוצא היא התבוננות בשכונה כבמה עירונית פתוחה, שבה המלאכות, הגרפיטי, החומריות החשופה " +
+    "והבינוי המאולתר יוצרים מופע אורבני מתמשך. בהשראת עולם התיאטרון והקרקס פותחה שפה תכנונית " +
+    "ההופכת את ההליכה ברחוב לחוויה דינמית. התכנון מתבסס על התערבויות מדורגות השומרות על המרקם " +
+    "הקיים, ומייצר מערכת של רחובות, סמטאות ופיאצלות המעודדת שוטטות, מפגשים וחיבור בין מסחר, " +
+    "מלאכה, תרבות ומגורים. המבנים החדשים ממשיכים את השפה התעשייתית והחשופה של פלורנטין, תוך " +
+    "הפיכת האדריכלות עצמה לחלק מהמופע העירוני. הפרויקט מציע מרחב גמיש, שבו הזהות המקומית אינה " +
+    "נשמרת כזיכרון בלבד, אלא ממשיכה להתפתח כחלק בלתי נפרד מחיי השכונה.";
   const florentin_c1 = contentPage(
     byKey.florentin.title,
-    `<div class="c1col">
-       <p class="proj-desc">פרויקט סטודיו מורכב בשכונת פלורנטין — מבנה רב־תכליתי המשלב מופע, תרבות ומסחר
-         בלב הרקמה העירונית הצפופה. המחקר בוחן את היחס בין הבמה למרחב הציבורי ואת דרכי החיבור בין הבניין לרחוב.</p>
-       <div class="grid g-1up2">
-         ${fig(null, "מבט על — המתחם", "", accent.florentin)}
-         ${fig(null, "מודל הרעיון", "", accent.florentin)}
-         ${fig(null, "סכמת הפרוגרמה", "", accent.florentin)}
-       </div>
+    `<div class="flo-c1-grid">
+       <div class="flo-text"><p class="proj-desc">${florentin_text}</p></div>
+       ${fig(FLO + "three-s.jpg", "שלושת ה-Sים התכנוניים", "flo-strip", accent.florentin)}
+       ${fig(FLO + "billboard.jpg", "מצב מוצע | בילבורד מערבי | רחוב הנגרים", "flo-bill", accent.florentin)}
+       ${fig(FLO + "context.jpg", "קונטקסט מרחבי ושלבי ההגעה למופע הפלורנטיני", "flo-map", accent.florentin)}
+       ${fig(FLO + "section.jpg", "חתך מקומי | 1:250", "flo-sect", accent.florentin)}
      </div>`,
-    accent.florentin
+    accent.florentin,
+    "page--flo-c1"
   );
   const florentin_c2 = contentPage(
     "",
