@@ -476,32 +476,25 @@ html, body {
 .mc-pair .figure { min-height: 0; }
 .mc-aside { min-height: 0; height: 100%; }
 
-/* ---------- מופע פלורנטין — content page 1 (title+text · billboard · section | S-strip · context map) ---------- */
-/* Dense architecture-board layout: tight margins, images fill edge-to-edge. */
-.page--flo-c1 .content__head { top: 30px; right: 34px; }
-.page--flo-c1 .content__title { font-size: 40px; border-bottom: none; padding-bottom: 0; }
-.page--flo-c1 .content__body { inset: 30px 34px 26px; }
-.page--flo-c1 .flo-c1-grid {
-  display: grid;
-  grid-template-columns: 1.18fr 1fr;
-  grid-template-rows: 1.72fr 1.02fr 1.72fr;
-  grid-template-areas:
-    "text  strip"
-    "bill  map"
-    "sect  map";
-  gap: 12px 18px; height: 100%; min-height: 0;
+/* ---------- מופע פלורנטין — content page 1: the full "עמוד תוכן 1" board ----------
+   The board is placed whole (full-bleed). Transparent hotspots over each sub-image
+   open the matching high-res file in the lightbox; the board itself opens too. */
+.page--flo-board { background: #fff; }
+.flo-board-img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: fill; display: block; cursor: zoom-in;
 }
-.page--flo-c1 .flo-text  { grid-area: text; min-height: 0; }
-.page--flo-c1 .flo-strip { grid-area: strip; min-height: 0; }
-.page--flo-c1 .flo-bill  { grid-area: bill; min-height: 0; }
-/* billboard image pinned to the top of its cell so it hugs the map's top line. */
-.page--flo-c1 .flo-bill .figure__img img { object-position: 50% 0; }
-.page--flo-c1 .flo-map   { grid-area: map;  min-height: 0; }
-.page--flo-c1 .flo-sect  { grid-area: sect; min-height: 0; }
-.page--flo-c1 .flo-text .proj-desc {
-  margin: 58px 0 0; max-width: none; font-size: 15.5px; line-height: 1.56; text-align: justify;
+.flo-hotspot {
+  position: absolute; margin: 0; padding: 0; border: 0; background: transparent;
+  cursor: zoom-in; border-radius: 5px;
+  transition: background .15s ease, box-shadow .15s ease;
 }
-.page--flo-c1 .caption { font-size: 13px; margin-top: 6px; }
+.flo-hotspot:hover,
+.flo-hotspot:focus-visible {
+  background: rgba(158, 30, 41, .10);
+  box-shadow: 0 0 0 2px var(--accent, #9E1E29), 0 8px 24px rgba(0,0,0,.18);
+  outline: none;
+}
 
 /* ============================ LIGHTBOX =============================== */
 /* click affordance on every viewable asset */

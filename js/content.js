@@ -468,31 +468,22 @@
   const FLO = "assets/projects/florentin/";
   const florentin_cover_img = `<div class="page page--coverbleed"><img class="page-bleed" src="${FLO}cover-hero.jpg" alt="${byKey.florentin.title} — פלורנטין"></div>`;
   const florentin_cover_title = `<div class="page page--coverbleed"><img class="page-bleed" src="${FLO}cover-title.svg" alt="${byKey.florentin.title}"></div>`;
-  // Real content page 1 — layout mirrors Iris's "עמוד תוכן 1" board:
-  //   right column  = title + project text, billboard elevation, local section
-  //   left  column  = the three planning "S" strip (SITE/SETTING/SET), context map
-  // Captions come from each source file's name (' - ' shown as ' | ').
-  const florentin_text =
-    "הפרויקט מציע התחדשות למערב שכונת פלורנטין מתוך רצון לשמר ולהעצים את אופייה הייחודי. " +
-    "נקודת המוצא היא התבוננות בשכונה כבמה עירונית פתוחה, שבה המלאכות, הגרפיטי, החומריות החשופה " +
-    "והבינוי המאולתר יוצרים מופע אורבני מתמשך. בהשראת עולם התיאטרון והקרקס פותחה שפה תכנונית " +
-    "ההופכת את ההליכה ברחוב לחוויה דינמית. התכנון מתבסס על התערבויות מדורגות השומרות על המרקם " +
-    "הקיים, ומייצר מערכת של רחובות, סמטאות ופיאצלות המעודדת שוטטות, מפגשים וחיבור בין מסחר, " +
-    "מלאכה, תרבות ומגורים. המבנים החדשים ממשיכים את השפה התעשייתית והחשופה של פלורנטין, תוך " +
-    "הפיכת האדריכלות עצמה לחלק מהמופע העירוני. הפרויקט מציע מרחב גמיש, שבו הזהות המקומית אינה " +
-    "נשמרת כזיכרון בלבד, אלא ממשיכה להתפתח כחלק בלתי נפרד מחיי השכונה.";
-  const florentin_c1 = contentPage(
-    byKey.florentin.title,
-    `<div class="flo-c1-grid">
-       <div class="flo-text"><p class="proj-desc">${florentin_text}</p></div>
-       ${fig(FLO + "three-s.jpg", "שלושת ה-Sים התכנוניים", "flo-strip", accent.florentin)}
-       ${fig(FLO + "billboard.jpg", "מצב מוצע | בילבורד מערבי | רחוב הנגרים", "flo-bill", accent.florentin)}
-       ${fig(FLO + "context.jpg", "קונטקסט מרחבי ושלבי ההגעה למופע הפלורנטיני", "flo-map", accent.florentin)}
-       ${fig(FLO + "section.jpg", "חתך מקומי | 1:250", "flo-sect", accent.florentin)}
-     </div>`,
-    accent.florentin,
-    "page--flo-c1"
-  );
+  // Real content page 1 — Iris's "עמוד תוכן 1" board placed whole (full-bleed).
+  // Each sub-figure is a transparent hotspot that opens the matching high-res
+  // image in the lightbox. Rectangles are % of the board (measured from it).
+  // Caption of each product = its source file's name (' - ' shown as ' | ').
+  const floHot = (l, t, w, h, src, cap) =>
+    `<button class="flo-hotspot" style="left:${l}%;top:${t}%;width:${w}%;height:${h}%"
+       data-hires="${FLO}${src}" data-cap="${cap}" aria-label="${cap}" title="${cap}"></button>`;
+  const florentin_c1 =
+    `<div class="page page--flo-board" style="--accent:${accent.florentin}">
+       <img class="flo-board-img" src="${FLO}board.jpg" alt="${byKey.florentin.title} — עמוד תוכן 1"
+            data-hires="${FLO}board.jpg" data-cap="${byKey.florentin.title}">
+       ${floHot(2, 4, 45, 29, "three-s.jpg", "שלושת ה-Sים התכנוניים")}
+       ${floHot(2, 37, 45, 55, "context.jpg", "קונטקסט מרחבי ושלבי ההגעה למופע הפלורנטיני")}
+       ${floHot(50, 37, 47, 16, "billboard.jpg", "מצב מוצע | בילבורד מערבי | רחוב הנגרים")}
+       ${floHot(50, 57, 47, 35, "section.jpg", "חתך מקומי | 1:250")}
+     </div>`;
   const florentin_c2 = contentPage(
     "",
     `<div class="grid grid--2">

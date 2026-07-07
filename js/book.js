@@ -390,10 +390,13 @@
 
     // click any figure / cover image to view it large
     stage.addEventListener("click", (e) => {
-      const img = e.target.closest(".figure__img img, .page--coverimg .bleed, .page--sea-out .out img, .page--sea12 figure img");
+      // board hotspots: open the matching high-res file
+      const hot = e.target.closest(".flo-hotspot");
+      if (hot) { e.stopPropagation(); lbOpen(hot.dataset.hires, hot.dataset.cap); return; }
+      const img = e.target.closest(".figure__img img, .page--coverimg .bleed, .page--sea-out .out img, .page--sea12 figure img, .flo-board-img");
       if (!img || img.closest(".figure--missing")) return;
       e.stopPropagation();
-      lbOpen(img.currentSrc || img.src, img.alt);
+      lbOpen(img.dataset.hires || img.currentSrc || img.src, img.dataset.cap || img.alt);
     });
     // close only when clicking OUTSIDE the image (backdrop / stage margins / × button);
     // clicks on the image pan/zoom and a drag must never trigger a close
