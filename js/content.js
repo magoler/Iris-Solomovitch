@@ -278,16 +278,17 @@
        ${seaHot(39.07, 83.77, 58.47, 9.58, "section-ew.webp", "חתך א-א | מזרח-מערב | 1:1000")}
      </div>`;
 
-  // c2 (page 13) — PDF page 5: interior renders (left) + upper-construction plan (right, by the spine)
-  const sea_c2 = `<div class="page page--sea-out sea13">
-      <div class="sea13-renders">
-        ${outFig(SEA + "s13-r1.jpg", 'ארכיון, ספריה וחללי שיח <bdi>History-telling</bdi>', "מידע אודות השכונה והעברת שיח חוויתי ולימודי בין עבר-הווה-עתיד")}
-        ${outFig(SEA + "s13-r2.jpg", "רחבה קהילתית", "אירועים שכונתיים ופעילויות א-פורמליות")}
-        ${outFig(SEA + "s13-r3.jpg", "תערוכת צילום", "אודות שכונת עג׳מי וג׳בליה")}
-        ${outFig(SEA + "s13-r4.jpg", "תערוכת קבע ימית", "אודות קו החוף המקורי, בסמוך לטיילת חוף הים")}
-      </div>
-      ${outFig(SEA + "s13-plan.jpg", 'תכנית בינוי עליון – מפלסים <bdi>15.65+</bdi>, <bdi>13.65+</bdi> | <bdi>1:100</bdi>', null, "sea13-plan")}
-    </div>`;
+  // c2 (page 13) — the whole "עמוד תוכן 2" board full-bleed (no text overlay),
+  // hotspots open each sub-image in hi-res: 1936 context map + interior render
+  // (webp exports) and the upper/lower building plans (crisp vector, from תכניות סופי.pdf).
+  const sea_c2 =
+    `<div class="page page--flo-board" style="--accent:${accent.sea}">
+       <img class="flo-board-img" src="${SEA}board2.webp" alt="${byKey.sea.title} — עמוד תוכן 2">
+       ${seaHot(2.52, 5.54, 50.34, 39.35, "context-1936.webp", "תקריב על אזור ההתערבות ותווי הבינוי ההיסטורי משנת 1936")}
+       ${seaHot(2.52, 50.79, 46.67, 41.13, "interior-lagoon.webp", "חללי שיח | מבט אל הלגונה")}
+       ${seaHot(53.98, 5.58, 43.59, 59.3, "plan-upper.webp", "תכנית מפלס בינוי עליון | 1:500")}
+       ${seaHot(53.98, 68.21, 43.59, 25.14, "plan-lower.webp", "תכנית מפלס בינוי תחתון | 1:500")}
+     </div>`;
 
   // c3 (page 14) — PDF page 2: spatial-intervention sequence (6 panels, captions baked in)
   const sea_c3 = `<div class="page page--sea-out sea14">
