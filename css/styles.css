@@ -489,6 +489,21 @@ html, body {
   cursor: zoom-in;
 }
 .flo-hotspot:focus-visible { outline: none; }
+/* live text over the board's top-right area (hides the baked-in text).
+   Matches the board's own type: Ploni Black title + Ploni Light body. */
+.flo-textcover {
+  position: absolute; top: 40px; right: 30px; width: 596px; height: 258px;
+  background: #fff; direction: rtl; text-align: right; overflow: hidden;
+  font-family: var(--font);
+}
+.flo-board-title {
+  margin: 0; font-family: var(--font); font-weight: 900; font-size: 44px;
+  color: #1e1e1e; line-height: 1.05; letter-spacing: -0.005em;
+}
+.flo-board-para {
+  margin: 24px 0 0; font-family: var(--font); font-weight: 400; font-size: 14.5px;
+  line-height: 1.42; color: #2a2929; text-align: justify;
+}
 
 /* ============================ LIGHTBOX =============================== */
 /* click affordance on every viewable asset */

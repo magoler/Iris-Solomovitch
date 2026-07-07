@@ -475,9 +475,24 @@
   const floHot = (l, t, w, h, src, cap) =>
     `<button class="flo-hotspot" style="left:${l}%;top:${t}%;width:${w}%;height:${h}%"
        data-hires="${FLO}${src}" data-cap="${cap}" aria-label="${cap}" title="${cap}"></button>`;
+  // Live text set over the board's top-right area (replaces the baked-in text),
+  // styled to match the board's own title + justified RTL paragraph.
+  const florentin_text =
+    "הפרויקט מציע התחדשות למערב שכונת פלורנטין מתוך רצון לשמר ולהעצים את אופייה הייחודי. " +
+    "נקודת המוצא היא התבוננות בשכונה כבמה עירונית פתוחה, שבה המלאכות, הגרפיטי, החומריות החשופה " +
+    "והבינוי המאולתר יוצרים מופע אורבני מתמשך. בהשראת עולם התיאטרון והקרקס פותחה שפה תכנונית " +
+    "ההופכת את ההליכה ברחוב לחוויה דינמית. התכנון מתבסס על התערבויות מדורגות השומרות על המרקם " +
+    "הקיים, ומייצר מערכת של רחובות, סמטאות ופיאצלות המעודדת שוטטות, מפגשים וחיבור בין מסחר, " +
+    "מלאכה, תרבות ומגורים. המבנים החדשים ממשיכים את השפה התעשייתית והחשופה של פלורנטין, תוך " +
+    "הפיכת האדריכלות עצמה לחלק מהמופע העירוני. הפרויקט מציע מרחב גמיש, שבו הזהות המקומית אינה " +
+    "נשמרת כזיכרון בלבד, אלא ממשיכה להתפתח כחלק בלתי נפרד מחיי השכונה.";
   const florentin_c1 =
     `<div class="page page--flo-board" style="--accent:${accent.florentin}">
        <img class="flo-board-img" src="${FLO}board.jpg" alt="${byKey.florentin.title} — עמוד תוכן 1">
+       <div class="flo-textcover">
+         <h3 class="flo-board-title">${byKey.florentin.title}</h3>
+         <p class="flo-board-para">${florentin_text}</p>
+       </div>
        ${floHot(2.5, 5.5, 45.96, 27.35, "three-s.jpg", "שלושת ה-Sים התכנוניים")}
        ${floHot(2.5, 34.42, 45.96, 59.05, "context.jpg", "קונטקסט מרחבי ושלבי ההגעה למופע הפלורנטיני")}
        ${floHot(50, 34.42, 47.5, 17.62, "billboard.jpg", "מצב מוצע | בילבורד מערבי | רחוב הנגרים")}
