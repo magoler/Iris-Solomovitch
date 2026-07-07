@@ -478,10 +478,10 @@
   const florentin_c1 =
     `<div class="page page--flo-board" style="--accent:${accent.florentin}">
        <img class="flo-board-img" src="${FLO}board.jpg" alt="${byKey.florentin.title} — עמוד תוכן 1">
-       ${floHot(2, 4, 45, 29, "three-s.jpg", "שלושת ה-Sים התכנוניים")}
-       ${floHot(2, 37, 45, 55, "context.jpg", "קונטקסט מרחבי ושלבי ההגעה למופע הפלורנטיני")}
-       ${floHot(50, 37, 47, 16, "billboard.jpg", "מצב מוצע | בילבורד מערבי | רחוב הנגרים")}
-       ${floHot(50, 57, 47, 35, "section.jpg", "חתך מקומי | 1:250")}
+       ${floHot(2.5, 5.5, 45.96, 27.35, "three-s.jpg", "שלושת ה-Sים התכנוניים")}
+       ${floHot(2.5, 34.42, 45.96, 59.05, "context.jpg", "קונטקסט מרחבי ושלבי ההגעה למופע הפלורנטיני")}
+       ${floHot(50, 34.42, 47.5, 17.62, "billboard.jpg", "מצב מוצע | בילבורד מערבי | רחוב הנגרים")}
+       ${floHot(49.92, 55.63, 47.62, 37.85, "section.jpg", "חתך מקומי | 1:250")}
      </div>`;
   const florentin_c2 = contentPage(
     "",
