@@ -483,8 +483,8 @@ html, body {
 .page--flo-c1 .content__body { inset: 30px 34px 26px; }
 .page--flo-c1 .flo-c1-grid {
   display: grid;
-  grid-template-columns: 1.06fr 1fr;
-  grid-template-rows: 1.72fr auto 1.5fr;
+  grid-template-columns: 1.18fr 1fr;
+  grid-template-rows: 1.72fr 1.02fr 1.72fr;
   grid-template-areas:
     "text  strip"
     "bill  map"
@@ -493,10 +493,9 @@ html, body {
 }
 .page--flo-c1 .flo-text  { grid-area: text; min-height: 0; }
 .page--flo-c1 .flo-strip { grid-area: strip; min-height: 0; }
-.page--flo-c1 .flo-bill  { grid-area: bill; min-height: 0; align-self: start; }
-/* billboard box matches its own 2.83:1 shape so it fills width with no letterbox:
-   its top hugs the map's top line and its caption sits right beneath it. */
-.page--flo-c1 .flo-bill .figure__img { flex: 0 0 auto; width: 100%; aspect-ratio: 2.83 / 1; }
+.page--flo-c1 .flo-bill  { grid-area: bill; min-height: 0; }
+/* billboard image pinned to the top of its cell so it hugs the map's top line. */
+.page--flo-c1 .flo-bill .figure__img img { object-position: 50% 0; }
 .page--flo-c1 .flo-map   { grid-area: map;  min-height: 0; }
 .page--flo-c1 .flo-sect  { grid-area: sect; min-height: 0; }
 .page--flo-c1 .flo-text .proj-desc {
