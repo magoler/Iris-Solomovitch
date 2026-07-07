@@ -543,7 +543,7 @@ html, body {
 }
 .lightbox__img {
   max-width: 96vw; max-height: 84vh; object-fit: contain;
-  background: #fff; border-radius: 3px; box-shadow: 0 30px 90px rgba(0, 0, 0, .6);
+  border-radius: 3px; box-shadow: 0 30px 90px rgba(0, 0, 0, .6);
   transform-origin: center center;            /* no will-change: keeps zoom crisp (browser repaints) */
   cursor: zoom-in; user-select: none; -webkit-user-drag: none;
 }
