@@ -488,7 +488,7 @@
     "נשמרת כזיכרון בלבד, אלא ממשיכה להתפתח כחלק בלתי נפרד מחיי השכונה.";
   const florentin_c1 =
     `<div class="page page--flo-board" style="--accent:${accent.florentin}">
-       <img class="flo-board-img" src="${FLO}board.jpg" alt="${byKey.florentin.title} — עמוד תוכן 1">
+       <img class="flo-board-img" src="${FLO}board.webp" alt="${byKey.florentin.title} — עמוד תוכן 1">
        <div class="flo-textcover">
          <h3 class="flo-board-title">${byKey.florentin.title}</h3>
          <p class="flo-board-para">${florentin_text}</p>
