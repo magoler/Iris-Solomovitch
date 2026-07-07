@@ -493,10 +493,10 @@
          <h3 class="flo-board-title">${byKey.florentin.title}</h3>
          <p class="flo-board-para">${florentin_text}</p>
        </div>
-       ${floHot(2.5, 5.5, 45.96, 27.35, "three-s.jpg", "שלושת ה-Sים התכנוניים")}
-       ${floHot(2.5, 34.42, 45.96, 59.05, "context.jpg", "קונטקסט מרחבי ושלבי ההגעה למופע הפלורנטיני")}
-       ${floHot(50, 34.42, 47.5, 17.62, "billboard.jpg", "מצב מוצע | בילבורד מערבי | רחוב הנגרים")}
-       ${floHot(49.92, 55.63, 47.62, 37.85, "section.jpg", "חתך מקומי | 1:250")}
+       ${floHot(2.5, 5.5, 45.96, 27.35, "three-s.webp", "שלושת ה-Sים התכנוניים")}
+       ${floHot(2.5, 34.42, 45.96, 59.05, "context.webp", "קונטקסט מרחבי ושלבי ההגעה למופע הפלורנטיני")}
+       ${floHot(50, 34.42, 47.5, 17.62, "billboard.webp", "מצב מוצע | בילבורד מערבי | רחוב הנגרים")}
+       ${floHot(49.92, 55.63, 47.62, 37.85, "section.webp", "חתך מקומי | 1:250")}
      </div>`;
   const florentin_c2 = contentPage(
     "",
