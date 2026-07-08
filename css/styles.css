@@ -525,6 +525,13 @@ html, body {
   line-height: 20.8px; letter-spacing: 0.04em;
   color: #000; text-align: justify;
 }
+/* מרי-ם intro board (עמוד פתיחה): the baked paragraph is already at spec, but the
+   baked title is undersized — cover just the title and render it live at the 40pt rule. */
+.mar-titlecover {
+  position: absolute; top: 38px; right: 30px; width: 260px; height: 78px;
+  background: #fff; direction: rtl; text-align: right; overflow: hidden;
+  font-family: var(--font);
+}
 
 /* ============================ LIGHTBOX =============================== */
 /* click affordance on every viewable asset */

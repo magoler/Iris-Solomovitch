@@ -385,23 +385,28 @@
   const maryam_cover_img = `<div class="page page--coverbleed"><img class="page-bleed" src="${MAR}cover-hero.jpg" alt="${byKey.maryam.title} — עיצוב פנים"></div>`;
   const maryam_cover_title = `<div class="page page--coverbleed"><img class="page-bleed" src="${MAR}cover-title.svg" alt="${byKey.maryam.title}"></div>`;
 
-  // c1 (page 18, right) — title + paragraph + whole-apartment axon (right half);
-  //                        proposed colored plan, private/public (left half, toward the spine)
-  const maryam_c1 = contentPage(
-    byKey.maryam.title,
-    `<div class="mc1-grid">
-       <div class="mc1-side">
-         <p class="proj-desc">פרויקט עיצוב פנים לדירה בחולון, לסבתא מרים ולנכדתה מרי, החיות כיום
-           בשתי קומות נפרדות. התכנון מבקש לבטל את הניתוק שבין הדורות ולייצר קרבה: הקיר שהפריד בין
-           שני המודולים הוסר, וקופסאות האור הופכות לאלמנט מכליל המגדיר את המרחב. בהשראת מלון אלמא —
-           אורכניות, המשכיות וקירות בטון הזורמים פנימה — והעיקרון המוביל לכל אורך הפרויקט: <b>ריחוף</b>.</p>
-         ${fig(MAR + "axon.jpg", "פרספקטיבה — מבט־על על מכלול הדירה", "fig--draw", accent.maryam)}
-       </div>
-       ${fig(MAR + "plan-zones.jpg", "תכנית מוצעת 1:50 — הפרדה בין הפרטי לציבורי", "fig--draw mc1-plan", accent.maryam)}
-     </div>`,
-    accent.maryam,
-    "page--maryam-c1"
-  );
+  // c1 (page 18, right) — the whole "עמוד פתיחה" board full-bleed (A3, transparent):
+  // dollhouse axon (top-left) + living/kitchen render (bottom-left); two 1:50 sections
+  // stack on the bottom-right; the project title+description sit top-right. The baked
+  // description is already per the type spec, so only the (undersized) title is re-rendered
+  // live at 40pt. Hotspots open each image in the lightbox.
+  const maryam_c1 =
+    `<div class="page page--flo-board" style="--accent:${accent.maryam}">
+       <img class="flo-board-img" src="${MAR}intro-board.webp" alt="${byKey.maryam.title} — עמוד פתיחה">
+       <div class="mar-titlecover"><h3 class="flo-board-title">${byKey.maryam.title}</h3></div>
+       <button class="flo-hotspot" style="left:2%;top:3.5%;width:57%;height:46%"
+         data-hires="${MAR}iv-axon.webp" data-cap="מבט על — פרספקטיבה"
+         aria-label="מבט על — פרספקטיבה" title="מבט על — פרספקטיבה"></button>
+       <button class="flo-hotspot" style="left:2%;top:52%;width:57%;height:41%"
+         data-hires="${MAR}iv-living.webp" data-cap="מבט פנים — סלון ומטבח"
+         aria-label="מבט פנים — סלון ומטבח" title="מבט פנים — סלון ומטבח"></button>
+       <button class="flo-hotspot" style="left:64.5%;top:52.5%;width:34%;height:21.5%"
+         data-hires="${MAR}sec-bb.webp" data-cap="חתך ב-ב | 1:50"
+         aria-label="חתך ב-ב 1:50" title="חתך ב-ב 1:50"></button>
+       <button class="flo-hotspot" style="left:64.5%;top:78%;width:34%;height:17%"
+         data-hires="${MAR}sec-cc.webp" data-cap="חתך ג-ג | 1:50"
+         aria-label="חתך ג-ג 1:50" title="חתך ג-ג 1:50"></button>
+     </div>`;
 
   // c2 (page 19, left) — the whole "תכנית דירה 1:75" board full-bleed (A3, transparent):
   // the apartment plan fills the right, two interior views stack on the left.
