@@ -427,20 +427,21 @@
          data-hires="${MAR}section-hi.webp" data-cap="חתך | 1:20" aria-label="חתך 1:20" title="חתך 1:20"></button>
      </div>`;
 
-  // c4 (page 21, left) — same pattern: render revealing the light-box detail + the detail,
-  //                      with an adjacent half-page render
-  const maryam_c4 = contentPage(
-    "",
-    `<div class="mc-detail">
-       ${fig(MAR + "render-mari.jpg", "הדמיה — חדר מרי", "mc-aside", accent.maryam)}
-       <div class="mc-pair">
-         ${fig(MAR + "render-cove.jpg", "הדמיה — קופסת האור בתקרה", "", accent.maryam)}
-         ${fig(MAR + "detail-lightbox.jpg", "פרט — קופסת אור והנמכת תקרת גבס 1:10", "fig--draw", accent.maryam)}
-       </div>
-     </div>`,
-    accent.maryam,
-    "page--content-flush page--maryam-detail"
-  );
+  // c4 (page 21, left) — the whole "פרטים 1:10" board full-bleed (A3, transparent),
+  // three hotspots open each 1:10 detail (render + drawing) in the lightbox.
+  const maryam_c4 =
+    `<div class="page page--flo-board" style="--accent:${accent.maryam}">
+       <img class="flo-board-img" src="${MAR}detail-board.webp" alt="${byKey.maryam.title} — פרטים 1:10">
+       <button class="flo-hotspot" style="left:2%;top:5%;width:44%;height:35%"
+         data-hires="${MAR}dt-shelf.webp" data-cap="פרט חיבור מדף נירוסטה לקיר גבס | 1:10"
+         aria-label="פרט חיבור מדף נירוסטה לקיר גבס 1:10" title="פרט חיבור מדף נירוסטה לקיר גבס 1:10"></button>
+       <button class="flo-hotspot" style="left:51.5%;top:5%;width:47%;height:36%"
+         data-hires="${MAR}dt-ceiling.webp" data-cap="פרט הנמכת תקרת גבס וקופסת אור | 1:10"
+         aria-label="פרט הנמכת תקרת גבס וקופסת אור 1:10" title="פרט הנמכת תקרת גבס וקופסת אור 1:10"></button>
+       <button class="flo-hotspot" style="left:2%;top:48%;width:96%;height:44%"
+         data-hires="${MAR}dt-stand.webp" data-cap="פרט מעמד רהיט עמודי נירוסטה ומבט על | 1:10"
+         aria-label="פרט מעמד רהיט עמודי נירוסטה ומבט על 1:10" title="פרט מעמד רהיט עמודי נירוסטה ומבט על 1:10"></button>
+     </div>`;
 
   /* =====================================================================
    *  PROJECT — מופע פלורנטין / סטודיו מורכב (MOCK — placeholders, no real assets yet)
