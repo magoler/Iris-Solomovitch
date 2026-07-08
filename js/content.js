@@ -418,20 +418,14 @@
     "page--content-flush page--maryam-c2"
   );
 
-  // c3 (page 20, right) — render that reveals the detail + the detail beneath it,
-  //                       and an adjacent half-page render
-  const maryam_c3 = contentPage(
-    "",
-    `<div class="mc-detail">
-       <div class="mc-pair">
-         ${fig(MAR + "render-shelfwall.jpg", "הדמיה — קיר המדפים המרחפים", "", accent.maryam)}
-         ${fig(MAR + "detail-shelf.jpg", "פרט — חיבור מדף נירוסטה לקיר גבס 1:10", "fig--draw", accent.maryam)}
-       </div>
-       ${fig(MAR + "render-cabinet.jpg", "הדמיה — קונסולת הסלון המרחפת", "mc-aside", accent.maryam)}
-     </div>`,
-    accent.maryam,
-    "page--content-flush page--maryam-detail"
-  );
+  // c3 (page 20, right) — the whole "חתך 1:20" board full-bleed (A3, black),
+  // a hotspot over the section opens the crisp white hi-res drawing in the lightbox.
+  const maryam_c3 =
+    `<div class="page page--flo-board" style="--accent:${accent.maryam}">
+       <img class="flo-board-img" src="${MAR}section-board.webp" alt="${byKey.maryam.title} — חתך 1:20">
+       <button class="flo-hotspot" style="left:3.5%;top:5.5%;width:96.3%;height:81.7%"
+         data-hires="${MAR}section-hi.webp" data-cap="חתך | 1:20" aria-label="חתך 1:20" title="חתך 1:20"></button>
+     </div>`;
 
   // c4 (page 21, left) — same pattern: render revealing the light-box detail + the detail,
   //                      with an adjacent half-page render
