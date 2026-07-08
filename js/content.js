@@ -387,13 +387,26 @@
 
   // c1 (page 18, right) — the whole "עמוד פתיחה" board full-bleed (A3, transparent):
   // dollhouse axon (top-left) + living/kitchen render (bottom-left); two 1:50 sections
-  // stack on the bottom-right; the project title+description sit top-right. The baked
-  // description is already per the type spec, so only the (undersized) title is re-rendered
-  // live at 40pt. Hotspots open each image in the lightbox.
+  // stack on the bottom-right; live title+description (per type spec) cover the baked
+  // text top-right. Hotspots open each image in the lightbox.
+  const maryam_intro_text =
+    "הפרויקט עוסק בתכנון סביבת מגורים משותפת לסבתא ולמטפלתה במלון אלמא, מתוך רצון לחזק את " +
+    "הקרבה תוך שמירה על פרטיות. השפה התכנונית נשענת על מחקר של אדריכלות המלון ומתבססת על " +
+    "שלושה עקרונות מרכזיים: ריחוף, המשכיות ואורכיות. עקרונות אלה באים לידי ביטוי בארגון החלל, " +
+    "בריהוט המרחף, בקופסאות אור המגדירות אזורים שונים ובקשרי פנים חוץ המעשירים את חוויית " +
+    "המגורים. התכנון מייצר הבחנה ברורה בין המרחבים הציבוריים והפרטיים, תוך יצירת רצף חומרי " +
+    "ותנועתי המחבר ביניהם ומעודד מפגש טבעי בין הדיירות לאורך היום. בחירת החומרים, פרטי הנגרות " +
+    "והאלמנטים הקונסטרוקטיביים פועלים יחד ליצירת תחושת קלילות, המשכיות ואור טבעי, תוך חיבור " +
+    "בין השפה האדריכלית של מלון אלמא לבין צורכי המגורים העכשוויים. הפרויקט מדגים כיצד עיצוב " +
+    "פנים יכול לעצב לא רק את החלל, אלא גם את איכות החיים ואת מערכות היחסים בין הדיירים " +
+    "באמצעות אדריכלות רגישה, פונקציונלית ומדויקת.";
   const maryam_c1 =
     `<div class="page page--flo-board" style="--accent:${accent.maryam}">
        <img class="flo-board-img" src="${MAR}intro-board.webp" alt="${byKey.maryam.title} — עמוד פתיחה">
-       <div class="mar-titlecover"><h3 class="flo-board-title">${byKey.maryam.title}</h3></div>
+       <div class="mar-board-textcover">
+         <h3 class="flo-board-title">${byKey.maryam.title}</h3>
+         <p class="flo-board-para">${maryam_intro_text}</p>
+       </div>
        <button class="flo-hotspot" style="left:2%;top:3.5%;width:57%;height:46%"
          data-hires="${MAR}iv-axon.webp" data-cap="מבט על — פרספקטיבה"
          aria-label="מבט על — פרספקטיבה" title="מבט על — פרספקטיבה"></button>

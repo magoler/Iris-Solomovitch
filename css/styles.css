@@ -525,12 +525,16 @@ html, body {
   line-height: 20.8px; letter-spacing: 0.04em;
   color: #000; text-align: justify;
 }
-/* מרי-ם intro board (עמוד פתיחה): the baked paragraph is already at spec, but the
-   baked title is undersized — cover just the title and render it live at the 40pt rule. */
-.mar-titlecover {
-  position: absolute; top: 38px; right: 30px; width: 260px; height: 78px;
+/* מרי-ם intro board (עמוד פתיחה): live title+description over the baked text,
+   per the type spec (Ploni Black 40pt title + Ploni Light 14pt justified body).
+   Sits above the three concept icons; column spans to the sections' left edge below. */
+.mar-board-textcover {
+  position: absolute; top: 34px; right: 30px; width: 416px; height: 372px;
   background: #fff; direction: rtl; text-align: right; overflow: hidden;
   font-family: var(--font);
+}
+.mar-board-textcover .flo-board-para {
+  width: 406px; margin-top: 13px; font-size: 14.2px; line-height: 19.8px;
 }
 
 /* ============================ LIGHTBOX =============================== */
