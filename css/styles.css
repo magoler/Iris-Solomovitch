@@ -496,13 +496,18 @@ html, body {
   background: #fff; direction: rtl; text-align: right; overflow: hidden;
   font-family: var(--font);
 }
+/* Type spec (from Iris): title = Ploni Black 40pt / tracking 50 / right;
+   paragraph = Ploni Light 14pt / tracking 40 / leading 20pt / justify area-text,
+   area 200×60mm. Board is A3-land at 1240px → 2.9524 px/mm, 1pt = 1.0416px. */
 .flo-board-title {
-  margin: 0; font-family: var(--font); font-weight: 900; font-size: 44px;
-  color: #1e1e1e; line-height: 1.05; letter-spacing: -0.005em;
+  margin: 0; font-family: var(--font); font-weight: 800; font-size: 41.7px;
+  color: #1e1e1e; line-height: 1.05; letter-spacing: 0.05em;
 }
 .flo-board-para {
-  margin: 24px 0 0; font-family: var(--font); font-weight: 400; font-size: 14.5px;
-  line-height: 1.42; color: #2a2929; text-align: justify;
+  margin: 17px 0 0; width: 590px; /* 200 mm area; gap tuned so last line meets the SITE/SETTING/SET bottom */
+  font-family: var(--font); font-weight: 300; font-size: 14.6px;
+  line-height: 20.8px; letter-spacing: 0.04em;
+  color: #2a2929; text-align: justify;
 }
 /* לראות את הים board (עמוד תוכן 1) — live text over the baked title+paragraph */
 .sea-board-textcover {
@@ -511,12 +516,14 @@ html, body {
   font-family: var(--font);
 }
 .sea-board-title {
-  margin: 0; font-family: var(--font); font-weight: 900; font-size: 46px;
-  color: #000; line-height: 1.05; letter-spacing: -0.005em;
+  margin: 0; font-family: var(--font); font-weight: 800; font-size: 41.7px;
+  color: #000; line-height: 1.05; letter-spacing: 0.05em;
 }
 .sea-board-para {
-  margin: 20px 0 0; font-family: var(--font); font-weight: 400; font-size: 14.5px;
-  line-height: 1.44; color: #000; text-align: justify;
+  margin: 20px 0 0; width: 726px; /* text column spans the lagoon grid below (left edge @39.15%) */
+  font-family: var(--font); font-weight: 300; font-size: 14.6px;
+  line-height: 20.8px; letter-spacing: 0.04em;
+  color: #000; text-align: justify;
 }
 
 /* ============================ LIGHTBOX =============================== */
