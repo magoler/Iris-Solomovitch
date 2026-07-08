@@ -403,20 +403,22 @@
     "page--maryam-c1"
   );
 
-  // c2 (page 19, left) — dimensioned plan (right half, toward the spine);
-  //                       living-room render (top) + floating-cabinet detail (bottom), beside the plan
-  const maryam_c2 = contentPage(
-    "",
-    `<div class="mc2-grid">
-       ${fig(MAR + "plan-dim.jpg", "תכנית דירה 1:50 — מידות ופריסת החללים", "fig--draw mc2-plan", accent.maryam)}
-       <div class="mc2-side">
-         ${fig(MAR + "render-living.jpg", "הדמיה — מבט לסלון", "", accent.maryam)}
-         ${fig(MAR + "detail-cabinet.jpg", "פרט — ארון מרחף · מעמד עמודי נירוסטה", "fig--draw", accent.maryam)}
-       </div>
-     </div>`,
-    accent.maryam,
-    "page--content-flush page--maryam-c2"
-  );
+  // c2 (page 19, left) — the whole "תכנית דירה 1:75" board full-bleed (A3, transparent):
+  // the apartment plan fills the right, two interior views stack on the left.
+  // Hotspots open each in hi-res.
+  const maryam_c2 =
+    `<div class="page page--flo-board" style="--accent:${accent.maryam}">
+       <img class="flo-board-img" src="${MAR}plan-board.webp" alt="${byKey.maryam.title} — תכנית דירה 1:75">
+       <button class="flo-hotspot" style="left:2%;top:5.5%;width:41%;height:44%"
+         data-hires="${MAR}iv-bedroom.webp" data-cap="מבט פנים — חדר שינה מרים"
+         aria-label="מבט פנים — חדר שינה מרים" title="מבט פנים — חדר שינה מרים"></button>
+       <button class="flo-hotspot" style="left:2%;top:51%;width:41%;height:41%"
+         data-hires="${MAR}iv-kitchen.webp" data-cap="מבט פנים — מטבח"
+         aria-label="מבט פנים — מטבח" title="מבט פנים — מטבח"></button>
+       <button class="flo-hotspot" style="left:50%;top:4.5%;width:49%;height:92%"
+         data-hires="${MAR}plan-75.webp" data-cap="תכנית דירה | 1:75"
+         aria-label="תכנית דירה 1:75" title="תכנית דירה 1:75"></button>
+     </div>`;
 
   // c3 (page 20, right) — the whole "חתך 1:20" board full-bleed (A3, black),
   // a hotspot over the section opens the crisp white hi-res drawing in the lightbox.
