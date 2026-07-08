@@ -420,13 +420,13 @@
          aria-label="תכנית דירה 1:75" title="תכנית דירה 1:75"></button>
      </div>`;
 
-  // c3 (page 20, right) — the whole "חתך 1:20" board full-bleed (A3, black),
-  // a hotspot over the section opens the crisp white hi-res drawing in the lightbox.
+  // c3 (page 20, right) — the whole "חתך א-א 1:20" board full-bleed (A3, transparent),
+  // a hotspot over the section opens the hi-res drawing in the lightbox.
   const maryam_c3 =
     `<div class="page page--flo-board" style="--accent:${accent.maryam}">
-       <img class="flo-board-img" src="${MAR}section-board.webp" alt="${byKey.maryam.title} — חתך 1:20">
+       <img class="flo-board-img" src="${MAR}section-board.webp" alt="${byKey.maryam.title} — חתך א-א 1:20">
        <button class="flo-hotspot" style="left:3.5%;top:5.5%;width:96.3%;height:81.7%"
-         data-hires="${MAR}section-hi.webp" data-cap="חתך | 1:20" aria-label="חתך 1:20" title="חתך 1:20"></button>
+         data-hires="${MAR}section-hi.webp" data-cap="חתך א-א | 1:20" aria-label="חתך א-א 1:20" title="חתך א-א 1:20"></button>
      </div>`;
 
   // c4 (page 21, left) — the whole "פרטים 1:10" board full-bleed (A3, transparent),
