@@ -363,17 +363,25 @@
     accent.time,
     "page--content-flush"
   );
-  const time_c4 = contentPage(
-    "",
-    `<div class="grid grid--2">
-       ${fig(TIM + "ground-plan.jpg", "תכנית קומת קרקע וקומה טיפוסית", "fig--draw", accent.time)}
-       ${fig(TIM + "unit-types.jpg", "טיפוסי דירה", "fig--draw", accent.time)}
-       ${fig(TIM + "section-aa.jpg", "חתך א־א", "fig--draw", accent.time)}
-       ${fig(TIM + "site-plan.jpg", "תכנית מתחם", "fig--draw", accent.time)}
-     </div>`,
-    accent.time,
-    "page--content-flush"
-  );
+  // c4 (page 13, left) — the whole "טיפוסי הדירה" board full-bleed (A3, transparent):
+  // the four apartment typologies (axon + 1:100 plan) laid out in a 2×2 grid, each
+  // carrying its baked "… | 1:100" caption. A hotspot over each opens its hi-res export.
+  const time_c4 =
+    `<div class="page page--flo-board" style="--accent:${accent.time}">
+       <img class="flo-board-img" src="${TIM}unit-board.webp" alt="${byKey.time.title} — טיפוסי הדירה">
+       <button class="flo-hotspot" style="left:2.52%;top:5.5%;width:45.17%;height:33%"
+         data-hires="${TIM}unit-3room.webp" data-cap="דירת 3 חדרים | 81 מ״ר | 1:100"
+         aria-label="דירת 3 חדרים 81 מ״ר 1:100" title="דירת 3 חדרים 81 מ״ר 1:100"></button>
+       <button class="flo-hotspot" style="left:65.46%;top:5.5%;width:32.07%;height:32.77%"
+         data-hires="${TIM}unit-studio.webp" data-cap="דירת סטודיו | 54 מ״ר | 1:100"
+         aria-label="דירת סטודיו 54 מ״ר 1:100" title="דירת סטודיו 54 מ״ר 1:100"></button>
+       <button class="flo-hotspot" style="left:2.6%;top:52.35%;width:45.12%;height:42.46%"
+         data-hires="${TIM}unit-4room.webp" data-cap="דירת 4 חדרים | 108 מ״ר | 1:100"
+         aria-label="דירת 4 חדרים 108 מ״ר 1:100" title="דירת 4 חדרים 108 מ״ר 1:100"></button>
+       <button class="flo-hotspot" style="left:53.68%;top:42.3%;width:43.86%;height:52.51%"
+         data-hires="${TIM}unit-5room.webp" data-cap="דירת 5 חדרים | 135 מ״ר | 1:100"
+         aria-label="דירת 5 חדרים 135 מ״ר 1:100" title="דירת 5 חדרים 135 מ״ר 1:100"></button>
+     </div>`;
 
   /* =====================================================================
    *  PROJECT 4 — Maryam interior (REAL)  pages 16–19
