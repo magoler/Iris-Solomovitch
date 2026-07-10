@@ -329,40 +329,77 @@
   //   cover-hero.jpg  — the structure/courtyard render               → right page
   const time_cover_img = `<div class="page page--coverbleed"><img class="page-bleed" src="${TIM}cover-hero.jpg" alt="${byKey.time.title}"></div>`;
   const time_cover_title = `<div class="page page--coverbleed"><img class="page-bleed" src="${TIM}cover-title.svg" alt="${byKey.time.title}"></div>`;
-  const time_c1 = contentPage(
-    byKey.time.title,
-    `<div class="c1col">
-       <p class="proj-desc">פרויקט דיור החוקר את היחס בין <b>סטראוטומיה</b> (גזירה ממסה) לבין <b>טקטוניקה</b>
-         (הרכבה), ואת התפתחות המבנה בזמן — Time · Space. המסה נחקרת בסדרת שלבים, ממודל ראשוני ועד למקבץ הדיור.</p>
-       <div class="grid g-1up2">
-         ${fig(TIM + "stereotomy.jpg", "סטראוטומיה ↔ טקטוניקה — גזירה ממסה והרכבה", "", accent.time)}
-         ${fig(TIM + "concept.jpg", "סכמת הפרויקט — שלבי המסה", "", accent.time)}
-         ${fig(TIM + "massing.jpg", "מודל מסה — מבט אווירי", "", accent.time)}
+  // c1 (page 12, right) — Iris's concept board (Artboard 17) placed whole (full-bleed):
+  // floor-plan schemes top-left, the parti (massing) strip across the middle, two 1:500
+  // elevations along the bottom. Live title + description sit over the board's baked
+  // top-right text (per the type spec). Each figure is a hotspot opening its hi-res.
+  const time_intro_text =
+    "הפרויקט בוחן כיצד מושג הזמן יכול לשמש כלי תכנוני ליצירת סביבת מגורים המעודדת שכנות וקהילה. " +
+    "מתוך מחקר על זמן, תנועה ומרחב גובשו ארבעה עקרונות — אירועיות, שוטטות, מחזוריות ושהות — אשר " +
+    "תורגמו למערכת אדריכלית המשלבת מגורים, מסחר ומרחבים ציבוריים. התכנון מבוסס על דיאלוג בין מסה " +
+    "סטריאוטומית לבין מערכת טקטונית קלה, שביניהן נוצר מרחב פנימי המחבר בין רחוב אילת לפארק המסילה " +
+    "ומעודד מפגשים ותנועה חופשית. גם יחידות הדיור ממשיכות את הרעיון באמצעות צירי תנועה רציפים, " +
+    "ריהוט המשולב במסה וקשרי פנים־חוץ. הגריד התכנוני משמש כבסיס לארגון המבנה ומייצר קצב מרחבי " +
+    "המאפשר רצף של חוויות משתנות — מהשהייה השקטה ועד למפגשים ספונטניים. מערכת הגשרים והמעברים " +
+    "העיליים מאחה בין המסות ומעודדת מפגשים בלתי מתוכננים כחלק מחוויית הזמן והמרחב.";
+  const time_c1 =
+    `<div class="page page--flo-board" style="--accent:${accent.time}">
+       <img class="flo-board-img" src="${TIM}concept-board.webp" alt="${byKey.time.title} — עמוד תוכן 1">
+       <div class="time-board-textcover">
+         <h3 class="flo-board-title">${byKey.time.title}</h3>
+         <p class="flo-board-para">${time_intro_text}</p>
        </div>
-     </div>`,
-    accent.time
-  );
-  const time_c2 = contentPage(
-    "",
-    `<div class="grid grid--2">
-       ${fig(TIM + "render-courtyard.jpg", "הדמיה — חצר פנימית", "", accent.time)}
-       ${fig(TIM + "render-garden.jpg", "הדמיה — הגן והפרגולה", "", accent.time)}
-       ${fig(TIM + "render-plaza.jpg", "הדמיה — מבט רחוב", "", accent.time)}
-       ${fig(TIM + "render-dawn.jpg", "הדמיה — לפנות בוקר", "", accent.time)}
-     </div>`,
-    accent.time,
-    "page--content-flush"
-  );
-  const time_c3 = contentPage(
-    "",
-    `<div class="grid g-2up1">
-       ${fig(TIM + "elev-east.jpg", "חזית מזרחית פנימית", "fig--draw", accent.time)}
-       ${fig(TIM + "elev-west.jpg", "חזית מערבית פנימית", "fig--draw", accent.time)}
-       ${fig(TIM + "section-bb.jpg", "חתך ב־ב", "fig--draw", accent.time)}
-     </div>`,
-    accent.time,
-    "page--content-flush"
-  );
+       <button class="flo-hotspot" style="left:1.99%;top:5.5%;width:48.53%;height:32.73%"
+         data-hires="${TIM}schemes-plans.webp" data-cap="סטריאוטומי / טקטוני | סכמות קומות"
+         aria-label="סטריאוטומי טקטוני סכמות קומות" title="סטריאוטומי / טקטוני | סכמות קומות"></button>
+       <button class="flo-hotspot" style="left:2.32%;top:40.88%;width:95.27%;height:22.36%"
+         data-hires="${TIM}parti.webp" data-cap="פארטי | תהליך עיצוב המסה"
+         aria-label="פארטי תהליך עיצוב המסה" title="פארטי | תהליך עיצוב המסה"></button>
+       <button class="flo-hotspot" style="left:2.38%;top:65.26%;width:45.87%;height:29.28%"
+         data-hires="${TIM}elev-east-out.webp" data-cap="חזית מזרחית | 1:500"
+         aria-label="חזית מזרחית 1:500" title="חזית מזרחית 1:500"></button>
+       <button class="flo-hotspot" style="left:51.72%;top:65.29%;width:45.79%;height:29.24%"
+         data-hires="${TIM}elev-east-in.webp" data-cap="חזית מזרחית פנימית | 1:500"
+         aria-label="חזית מזרחית פנימית 1:500" title="חזית מזרחית פנימית 1:500"></button>
+     </div>`;
+  // c2 (page 13, left) — Iris's "תכנית קומת קרקע" board placed whole (full-bleed):
+  // the 1:500 ground-floor site plan fills the left, three renders stack on the right.
+  // Each is a hotspot opening its hi-res in the lightbox. No text overlay (baked board).
+  const time_c2 =
+    `<div class="page page--flo-board" style="--accent:${accent.time}">
+       <img class="flo-board-img" src="${TIM}plan-board.webp" alt="${byKey.time.title} — עמוד תוכן 2">
+       <button class="flo-hotspot" style="left:2.52%;top:5.54%;width:59.15%;height:89.28%"
+         data-hires="${TIM}plan-ground.webp" data-cap="תכנית קומת קרקע 00.00± | 1:500"
+         aria-label="תכנית קומת קרקע 1:500" title="תכנית קומת קרקע 00.00± 1:500"></button>
+       <button class="flo-hotspot" style="left:62.65%;top:5.62%;width:34.88%;height:27.58%"
+         data-hires="${TIM}view-inner.webp" data-cap="מבט פנים | כניסת אור ואוויר בין המסות הבנויות"
+         aria-label="מבט פנים כניסת אור ואוויר בין המסות הבנויות" title="מבט פנים | כניסת אור ואוויר בין המסות הבנויות"></button>
+       <button class="flo-hotspot" style="left:62.68%;top:35.65%;width:34.88%;height:27.62%"
+         data-hires="${TIM}view-passage.webp" data-cap="מבט מעבר ממתחם התחנה"
+         aria-label="מבט מעבר ממתחם התחנה" title="מבט מעבר ממתחם התחנה"></button>
+       <button class="flo-hotspot" style="left:62.68%;top:65.81%;width:34.88%;height:27.58%"
+         data-hires="${TIM}view-landscape.webp" data-cap="פיתוח נוף | קומת קרקע"
+         aria-label="פיתוח נוף קומת קרקע" title="פיתוח נוף | קומת קרקע"></button>
+     </div>`;
+  // c3 (page 13, right) — Iris's board (Artboard 19) placed whole (full-bleed): a 2×2 grid of
+  // the atrium render (TL), the typical-floor plan (TR), the tectonic bridge render (BL) and the
+  // east–west section (BR). Each is a hotspot opening its hi-res. No text overlay (baked board).
+  const time_c3 =
+    `<div class="page page--flo-board" style="--accent:${accent.time}">
+       <img class="flo-board-img" src="${TIM}typ-board.webp" alt="${byKey.time.title} — עמוד תוכן 3">
+       <button class="flo-hotspot" style="left:2.55%;top:5.5%;width:48.91%;height:48%"
+         data-hires="${TIM}view-atrium.webp" data-cap="מבט פנים לכיוון רחוב אילת | התנועה במרחב"
+         aria-label="מבט פנים לכיוון רחוב אילת התנועה במרחב" title="מבט פנים לכיוון רחוב אילת | התנועה במרחב"></button>
+       <button class="flo-hotspot" style="left:52.94%;top:5.66%;width:44.62%;height:47.76%"
+         data-hires="${TIM}plan-typical.webp" data-cap="תכנית קומה טיפוסית | קומה 1 +3.60 | 1:500"
+         aria-label="תכנית קומה טיפוסית קומה 1 1:500" title="תכנית קומה טיפוסית | קומה 1 +3.60 | 1:500"></button>
+       <button class="flo-hotspot" style="left:2.55%;top:53.58%;width:48.91%;height:41.23%"
+         data-hires="${TIM}view-bridge.webp" data-cap="מבט פנים | הטקטוני כמקום שוטטות וארעיות"
+         aria-label="מבט פנים הטקטוני כמקום שוטטות וארעיות" title="מבט פנים | הטקטוני כמקום שוטטות וארעיות"></button>
+       <button class="flo-hotspot" style="left:52.94%;top:53.58%;width:44.6%;height:41.23%"
+         data-hires="${TIM}section-ew.webp" data-cap="חתך א-א | מזרח-מערב | 1:500"
+         aria-label="חתך א-א מזרח-מערב 1:500" title="חתך א-א | מזרח-מערב | 1:500"></button>
+     </div>`;
   // c4 (page 13, left) — the whole "טיפוסי הדירה" board full-bleed (A3, transparent):
   // the four apartment typologies (axon + 1:100 plan) laid out in a 2×2 grid, each
   // carrying its baked "… | 1:100" caption. A hotspot over each opens its hi-res export.
