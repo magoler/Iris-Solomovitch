@@ -189,49 +189,82 @@
   //   cover-hero.jpg  — the street-elevation sketch                     → right page
   const urban_cover_img = `<div class="page page--coverbleed"><img class="page-bleed" src="${URB}cover-hero.jpg" alt="${byKey.urban.title} — נווה שאנן"></div>`;
   const urban_cover_title = `<div class="page page--coverbleed"><img class="page-bleed" src="${URB}cover-title.svg" alt="${byKey.urban.title}"></div>`;
-  const urban_c1 = contentPage(
-    byKey.urban.title,
-    `<div class="c1col">
-       <p class="proj-desc">מחקר על המרחב הציבורי, רוח המקום והחיבור שבין הקהילה, הסביבה והמסחר ברחוב
-         נווה שאנן. מפת הנולי ותכנית האב מציבות מבנה חדש לאורך הציר, לצד עקרונות תכנון להשבת החיים אל המדרחוב.</p>
-       <div class="grid grid--urban6">
-         ${fig(URB + "map-5000.jpg", "מפת המתחם 1:5,000", "fig--wide", accent.urban)}
-         ${fig(URB + "concept-2500.jpg", "מצב מוצע — תכנית אב 1:2,500", "fig--big", accent.urban)}
-         ${fig(URB + "massing.jpg", "אבולוציית המסה — קיים · קרקע · גבהים", "", accent.urban)}
-         ${fig(URB + "principles.jpg", "עקרונות תכנון", "", accent.urban)}
+  // c1 (page 6, right) — Iris's overview board (Artboard 13) placed whole (full-bleed):
+  // the planning-principles diagram grid (left), the Tel Aviv structure plan (middle) and the
+  // existing-conditions mapping (right). Live title + description sit over the baked top text
+  // (per the type spec). Each figure is a hotspot opening its hi-res.
+  const urban_intro_text =
+    "הפרויקט עוסק בהתחדשות מדרחוב נווה שאנן מתוך תפיסה שהמגוון התרבותי והקולינרי של השכונה הוא מנוע " +
+    "לצמיחה עירונית. מחקר ומיפוי חשפו את הפער בין הדימוי הציבורי של האזור לבין הפוטנציאל החברתי " +
+    "והקהילתי שבו, לצד מחסור בשטחים ירוקים, בהליכתיות ובתחושת ביטחון. מתוך כך פותחה אסטרטגיה המחברת " +
+    "בין מסעדנות אתנית, חקלאות עירונית ומרחבים קהילתיים למערכת אחת של ייצור, מפגש וצריכה — המחזקת את " +
+    "המדרחוב כמודל להתחדשות עירונית מבוססת קהילה, תרבות וזמן.";
+  const urban_c1 =
+    `<div class="page page--flo-board" style="--accent:${accent.urban}">
+       <img class="flo-board-img" src="${URB}overview-board.webp" alt="${byKey.urban.title} — עמוד תוכן 1">
+       <div class="urban-board-textcover">
+         <h3 class="flo-board-title">${byKey.urban.title}</h3>
+         <p class="flo-board-para">${urban_intro_text}</p>
        </div>
-     </div>`,
-    accent.urban
-  );
-  const urban_c2 = contentPage(
-    "",
-    `<div class="grid grid--urban7">
-       ${fig(URB + "render-pedestrian.jpg", "הדמיה — המדרחוב", "fig--hero", accent.urban)}
-       ${fig(URB + "render-facade.jpg", "הדמיה — חזית מסחרית", "", accent.urban)}
-       ${fig(URB + "siteplan.jpg", "תכנית המתחם", "", accent.urban)}
-     </div>`,
-    accent.urban,
-    "page--content-flush"
-  );
-  const urban_c3 = contentPage(
-    "",
-    `<div class="grid g-2up1">
-       ${fig(URB + "context.jpg", "מצב קיים — רחוב נווה שאנן", "", accent.urban)}
-       ${fig(URB + "mobility.jpg", "מפת תחבורה ונגישות 1:15,000", "", accent.urban)}
-       ${fig(URB + "nolli-color.jpg", "מפת נולי — דמות ורקע", "", accent.urban)}
-     </div>`,
-    accent.urban,
-    "page--content-flush"
-  );
-  const urban_c4 = contentPage(
-    "",
-    `<div class="grid stack-2">
-       ${fig(URB + "street-elevation.jpg", "רישום רחוב — חזית המדרחוב", "fig--draw", accent.urban)}
-       ${fig(URB + "section.jpg", "חתך רחוב", "fig--draw", accent.urban)}
-     </div>`,
-    accent.urban,
-    "page--content-flush"
-  );
+       <button class="flo-hotspot" style="left:1.85%;top:3.8%;width:26.81%;height:91.96%"
+         data-hires="${URB}principles-diagram.webp" data-cap="עקרונות תכנוניים"
+         aria-label="עקרונות תכנוניים" title="עקרונות תכנוניים"></button>
+       <button class="flo-hotspot" style="left:29.02%;top:26.48%;width:26.81%;height:63.7%"
+         data-hires="${URB}plan-telaviv.webp" data-cap="תכנית תל אביב | הקו הסגול והמערך הירוק"
+         aria-label="תכנית תל אביב" title="תכנית תל אביב | הקו הסגול והמערך הירוק"></button>
+       <button class="flo-hotspot" style="left:56.51%;top:26.48%;width:41.03%;height:68.17%"
+         data-hires="${URB}map-existing.webp" data-cap="מיפוי מצב קיים | נווה שאנן"
+         aria-label="מיפוי מצב קיים נווה שאנן" title="מיפוי מצב קיים | נווה שאנן"></button>
+     </div>`;
+  // c2 (page 7, left) — Iris's "מצב מוצע" board (Artboard 14) placed whole (full-bleed):
+  // two street elevations + the environment plan (left), the initial-concept diagram and
+  // the three Nolli figure-grounds (right). Each is a hotspot opening its hi-res. No overlay.
+  const urban_c2 =
+    `<div class="page page--flo-board" style="--accent:${accent.urban}">
+       <img class="flo-board-img" src="${URB}proposed-board.webp" alt="${byKey.urban.title} — עמוד תוכן 2">
+       <button class="flo-hotspot" style="left:2.46%;top:5.2%;width:48.15%;height:4.5%"
+         data-hires="${URB}elev-greenaxis.webp" data-cap="חזית הציר הירוק | רחוב ראש פינה"
+         aria-label="חזית הציר הירוק רחוב ראש פינה" title="חזית הציר הירוק | רחוב ראש פינה"></button>
+       <button class="flo-hotspot" style="left:2.46%;top:9.9%;width:48.15%;height:5.1%"
+         data-hires="${URB}elev-midrachov.webp" data-cap="חזית המדרחוב | רחוב נווה שאנן"
+         aria-label="חזית המדרחוב רחוב נווה שאנן" title="חזית המדרחוב | רחוב נווה שאנן"></button>
+       <button class="flo-hotspot" style="left:2.49%;top:14.96%;width:48.12%;height:79.69%"
+         data-hires="${URB}siteplan-proposed.webp" data-cap="תכנית סביבה | מצב מוצע"
+         aria-label="תכנית סביבה מצב מוצע" title="תכנית סביבה | מצב מוצע"></button>
+       <button class="flo-hotspot" style="left:50.64%;top:5.5%;width:48.85%;height:48.93%"
+         data-hires="${URB}concept-proposed.webp" data-cap="מצב מוצע ראשוני"
+         aria-label="מצב מוצע ראשוני" title="מצב מוצע ראשוני"></button>
+       <button class="flo-hotspot" style="left:50.64%;top:54.99%;width:46.92%;height:39.94%"
+         data-hires="${URB}nolli-plans.webp" data-cap="תכניות נולי | מצב קיים · קומת קרקע · גגות"
+         aria-label="תכניות נולי" title="תכניות נולי | מצב קיים · קומת קרקע · גגות"></button>
+     </div>`;
+  // c3 (page 8, right) — Iris's board (Artboard 15) placed whole (full-bleed): the
+  // "סופרפוזיציה" layered analysis (left) and the ground-floor masterplan (right). Two hotspots.
+  const urban_c3 =
+    `<div class="page page--flo-board" style="--accent:${accent.urban}">
+       <img class="flo-board-img" src="${URB}superpos-board.webp" alt="${byKey.urban.title} — עמוד תוכן 3">
+       <button class="flo-hotspot" style="left:2.49%;top:5.34%;width:27.83%;height:89.07%"
+         data-hires="${URB}superposition.webp" data-cap="סופרפוזיציה | שכבות המדרחוב"
+         aria-label="סופרפוזיציה שכבות המדרחוב" title="סופרפוזיציה | שכבות המדרחוב"></button>
+       <button class="flo-hotspot" style="left:34.77%;top:5.42%;width:62.85%;height:89.23%"
+         data-hires="${URB}plan-ground.webp" data-cap="תכנית קומת קרקע | מצב מוצע"
+         aria-label="תכנית קומת קרקע מצב מוצע" title="תכנית קומת קרקע | מצב מוצע"></button>
+     </div>`;
+  // c4 (page 8, left) — Iris's board (Artboard 16) placed whole (full-bleed): the roofs
+  // masterplan (left) and two perspective sketches (right). Each is a hotspot. No overlay.
+  const urban_c4 =
+    `<div class="page page--flo-board" style="--accent:${accent.urban}">
+       <img class="flo-board-img" src="${URB}innerworld-board.webp" alt="${byKey.urban.title} — עמוד תוכן 4">
+       <button class="flo-hotspot" style="left:2.52%;top:5.5%;width:62.78%;height:89.19%"
+         data-hires="${URB}plan-roofs.webp" data-cap="תכנית גגות | מצב מוצע"
+         aria-label="תכנית גגות מצב מוצע" title="תכנית גגות | מצב מוצע"></button>
+       <button class="flo-hotspot" style="left:66.92%;top:5.38%;width:30.62%;height:36.54%"
+         data-hires="${URB}view-innerworld.webp" data-cap="מבט אל העולם הפנימי"
+         aria-label="מבט אל העולם הפנימי" title="מבט אל העולם הפנימי"></button>
+       <button class="flo-hotspot" style="left:66.92%;top:41.96%;width:30.65%;height:52.61%"
+         data-hires="${URB}view-midrachov.webp" data-cap="מבט אל המדרחוב"
+         aria-label="מבט אל המדרחוב" title="מבט אל המדרחוב"></button>
+     </div>`;
 
   /* =====================================================================
    *  PROJECT 2 — Seeing the Sea (REAL)  — whole renders, never cropped

@@ -547,6 +547,17 @@ html, body {
 .time-board-textcover .flo-board-para {
   width: 554px; margin-top: 15px; color: #000; font-size: 13.6px; line-height: 19.4px;
 }
+/* מדרחוב overview board (page 1) — live title (top-right) + a wide justified
+   description over the baked text; the block clears the figures below (~20% height). */
+.urban-board-textcover {
+  position: absolute; top: 48px; right: 30px; width: 842px; height: 186px;
+  background: #fff; direction: rtl; text-align: right; overflow: hidden;
+  font-family: var(--font);
+}
+.urban-board-textcover .flo-board-title { color: #111; }
+.urban-board-textcover .flo-board-para {
+  width: 836px; margin-top: 12px; color: #1a1a1a; font-size: 13.2px; line-height: 18px;
+}
 
 /* ============================ LIGHTBOX =============================== */
 /* click affordance on every viewable asset */
