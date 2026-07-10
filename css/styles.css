@@ -164,7 +164,7 @@ html, body {
    Margins per template: content clears the band by the same gap the title keeps
    from the right edge (~32px); top margin >= the title's top offset (~48px). */
 .page--resume {
-  background: #fff url('../assets/backgrounds/cv-band.png') left top / auto 100% no-repeat;
+  background: #fff url('../assets/backgrounds/cv-band.png') left top / auto var(--page-h) no-repeat;
   /* top | right(title margin) | bottom | left(band ~185px + 32px gap) */
   padding: 48px 32px 40px 217px;
 }
@@ -186,13 +186,13 @@ html, body {
   font-size: 19px; font-weight: 800; margin: 2px 0 8px;
   padding-bottom: 5px; border-bottom: 1px solid var(--hair);
 }
-.cv__col > .cv__sec:not(:first-child) { margin-top: 14px; }
-.cv__item { display: flex; gap: 16px; margin-bottom: 8px; font-size: 15px; line-height: 1.42; break-inside: avoid; }
+.cv__col > .cv__sec:not(:first-child) { margin-top: 9px; }
+.cv__item { display: flex; gap: 16px; margin-bottom: 4px; font-size: 15px; line-height: 1.34; break-inside: avoid; }
 .cv__sec { break-after: avoid; }
 .cv__yr { flex: 0 0 92px; color: #888; font-weight: 500; }
 .cv__item ul { margin: 3px 0 0; padding-inline-start: 18px; }
 .cv__item li { margin: 1px 0; color: #333; }
-.cv__skills { margin: 0; padding-inline-start: 18px; font-size: 15px; line-height: 1.5; }
+.cv__skills { margin: 0; padding-inline-start: 18px; font-size: 15px; line-height: 1.4; }
 /* keep the Hebrew label a single unit on the right, so a Latin value (Revit…) can't merge into it */
 .cv__skills li b { unicode-bidi: isolate; }
 .cv__lang { font-size: 15px; color: #222; margin: 4px 0 0; }
