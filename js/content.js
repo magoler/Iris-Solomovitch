@@ -140,6 +140,7 @@
       </header>
       <div class="cv__cols">
         <section class="cv__col">
+          
           <h3 class="cv__sec">השכלה:</h3>
           <div class="cv__item"><span class="cv__yr">2026—הווה</span><div>תואר שני באדריכלות M.A באוניברסיטת תל אביב</div></div>
           <div class="cv__item"><span class="cv__yr">2022—הווה</span><div>תואר ראשון באדריכלות B.Arch באוניברסיטת תל אביב
@@ -150,6 +151,29 @@
           <div class="cv__item"><span class="cv__yr">2016—2019</span><div>בגרות מלאה טכנולוגית, מגמת הנדסת תוכנה, תיכון דה שליט, רחובות
             <ul><li>בוגרת כיתת מופ"ת מדעית: 5 יח"ל מתמטיקה | 5 יח"ל אנגלית | 5 יח"ל פיזיקה | 10 יח"ל מחשבים</li>
             <li>בעלת תעודת בגרות הצטיינות חברתית - התנדבות וסיוע בבתי ספר ברחובות</li></ul></div></div>
+        </section>
+        <section class="cv__col cv__col--split">
+          <div class="cv__group">
+            <h3 class="cv__sec">שירות צבאי:</h3>
+            <div class="cv__item"><span class="cv__yr">2019—2021</span><div>מפקדת ומדריכת תקשוב, בענף לוחמה מבוססת רשת וסייבר, בבה"ד 7 (שחרור בדרגת סמל)
+              <ul><li>פיתוח והובלת מערכי הדרכה טכנולוגיים למגוון יחידות צה"ל.</li>
+              <li>פיתוח אמצעי הדרכה עם מפתחי המערכות ולאחר מכן הטמעתן ביחידות הצבא.</li>
+              <li>ניהול אירועים מקצועיים, פיקוד על חיילים במהלך חפיפה לתפקיד.</li></ul></div></div>
+          </div>
+          <div class="cv__group">
+            <h3 class="cv__sec">יישומי מחשב:</h3>
+            <ul class="cv__skills">
+              <li><b>תכנון BIM:</b> Revit – שליטה גבוהה</li>
+              <li><b>תכנון CAD:</b> AutoCAD – שליטה גבוהה</li>
+              <li><b>תכנון פרמטרי:</b> Rhino – שליטה גבוהה | Grasshopper – שליטה טובה</li>
+              <li><b>גרפיקה:</b> Illustrator – שליטה טובה | Photoshop – ניסיון עבודה</li>
+              <li><b>רנדור והדמיות:</b> Lumion – שליטה טובה | D5 – ניסיון עבודה</li>
+              <li><b>שפות תכנות:</b> Python – היכרות | C# – היכרות</li>
+              <li><b>כללי:</b> Office – שליטה גבוהה</li>
+            </ul>
+          </div>
+        </section>
+        <section class="cv__col">
           <h3 class="cv__sec">ניסיון תעסוקתי:</h3>
           <div class="cv__item"><span class="cv__yr">2021—2022</span><div>אחראית הטמעת מערכת מידע, חברת ג'ון ברייס
             <ul><li>אחריות על הובלת תהליכי הטמעה בארגונים, העברת הדרכות והטמעות, פיתוח אמצעי הדרכה.</li>
@@ -157,22 +181,10 @@
             <li>ניהול קשרים עם מנהלים ולקוחות, ריכוז וניהול דו"חות מנהלים.</li></ul></div></div>
         </section>
         <section class="cv__col">
-          <h3 class="cv__sec">שירות צבאי:</h3>
-          <div class="cv__item"><span class="cv__yr">2019—2021</span><div>מפקדת ומדריכת תקשוב, בענף לוחמה מבוססת רשת וסייבר, בבה"ד 7 (שחרור בדרגת סמל)
-            <ul><li>פיתוח והובלת מערכי הדרכה טכנולוגיים למגוון יחידות צה"ל.</li>
-            <li>פיתוח אמצעי הדרכה עם מפתחי המערכות ולאחר מכן הטמעתן ביחידות הצבא.</li>
-            <li>ניהול אירועים מקצועיים, פיקוד על חיילים במהלך חפיפה לתפקיד.</li></ul></div></div>
-          <h3 class="cv__sec">יישומי מחשב:</h3>
-          <ul class="cv__skills">
-            <li><b>תכנון BIM:</b> Revit – שליטה גבוהה</li>
-            <li><b>תכנון CAD:</b> AutoCAD – שליטה גבוהה</li>
-            <li><b>גרפיקה:</b> Illustrator – שליטה טובה | Photoshop – ניסיון עבודה</li>
-            <li><b>רנדור והדמיות:</b> Lumion – שליטה טובה | D5 – ניסיון עבודה</li>
-            <li><b>שפות תכנות:</b> Python – היכרות | C# – היכרות</li>
-            <li><b>כללי:</b> Office – שליטה גבוהה</li>
-          </ul>
-          <h3 class="cv__sec">שפות:</h3>
-          <p class="cv__lang">עברית - שפת אם | אנגלית - ברמה גבוהה מאוד | רומנית - ברמה גבוהה מאוד</p>
+          <div class="cv__group">
+            <h3 class="cv__sec">שפות:</h3>
+            <p class="cv__lang">עברית - שפת אם | אנגלית - ברמה גבוהה מאוד | רומנית - ברמה גבוהה מאוד</p>
+          </div>
         </section>
       </div>
     </div>`;
@@ -312,48 +324,44 @@
        ${seaHot(39.07, 83.77, 58.47, 9.58, "section-ew.webp", "חתך א-א | מזרח-מערב | 1:1000")}
      </div>`;
 
-  // c2 (page 13) — the whole "עמוד תוכן 2" board full-bleed (no text overlay),
-  // hotspots open each sub-image in hi-res: 1936 context map + interior render
-  // (webp exports) and the upper/lower building plans (crisp vector, from תכניות סופי.pdf).
+  // c2 (page 13) — changed 2026-07-11 to the "שימור 3" board (same board as c4/page 4, per
+  // Iris's request — a deliberate duplicate for now). Full-bleed, no text overlay: existing-vs-vision
+  // panorama panel + perspective program axon across the top, three exterior renders along the bottom.
   const sea_c2 =
     `<div class="page page--flo-board" style="--accent:${accent.sea}">
-       <img class="flo-board-img" src="${SEA}board2.webp" alt="${byKey.sea.title} — עמוד תוכן 2">
-       ${seaHot(2.52, 5.54, 50.34, 39.35, "context-1936.webp", "תקריב על אזור ההתערבות ותווי הבינוי ההיסטורי משנת 1936")}
-       ${seaHot(2.52, 50.79, 46.67, 41.13, "interior-lagoon.webp", "חללי שיח | מבט אל הלגונה")}
-       ${seaHot(53.98, 5.58, 43.59, 59.3, "plan-upper.webp", "תכנית מפלס בינוי עליון | 1:500")}
-       ${seaHot(53.98, 68.21, 43.59, 25.14, "plan-lower.webp", "תכנית מפלס בינוי תחתון | 1:500")}
+       <img class="flo-board-img" src="${SEA}board4.webp" alt="${byKey.sea.title} — עמוד תוכן 2">
+       ${seaHot(2.50, 5.31, 47.29, 61.95, "c4-existing-vision.webp", "מצב קיים אל מול החזון")}
+       ${seaHot(51.46, 5.31, 46.25, 61.95, "c4-program.webp", "פרוגרמה פרספקטיבית")}
+       ${seaHot(2.50, 68.44, 29.79, 25.07, "c4-greenplaza.webp", "מבט מהגרין פלאזה אל הלגונה")}
+       ${seaHot(33.12, 68.44, 33.75, 25.07, "c4-upperlevel.webp", "מבט מדרך אל מומסארה | מפלס בינוי עליון | רחוב קדם")}
+       ${seaHot(67.92, 68.44, 29.79, 25.07, "c4-plaza.webp", "רחבה קהילתית | רחוב קדם")}
      </div>`;
 
-  // c3 (page 14) — PDF page 2: spatial-intervention sequence (6 panels, captions baked in)
-  const sea_c3 = `<div class="page page--sea-out sea14">
-      <div class="sea14-title">ניסוח פעולות ההתערבות במרחב | "פארק מדרון יפו"</div>
-      <div class="sea14-grid">
-        ${panelFig("s14-p1.jpg", 1)}${panelFig("s14-p4.jpg", 4)}
-        ${panelFig("s14-p2.jpg", 2)}${panelFig("s14-p5.jpg", 5)}
-        ${panelFig("s14-p3.jpg", 3)}${panelFig("s14-p6.jpg", 6)}
-      </div>
-    </div>`;
+  // c3 (page 14) — replaced 2026-07-11 with the redesigned "שימור 3" board (folder 085208).
+  // Full-bleed, no text overlay: big 1:500 upper-level floor plan fills the left; the aerial
+  // building view + the 1936 British map (with legend) stack down the right.
+  const sea_c3 =
+    `<div class="page page--flo-board" style="--accent:${accent.sea}">
+       <img class="flo-board-img" src="${SEA}p3-board.webp" alt="${byKey.sea.title} — עמוד תוכן 3">
+       ${seaHot(2.50, 5.31, 62.92, 87.61, "p3-plan.webp", "תכנית מפלס בינוי עליון | 1:500")}
+       ${seaHot(67.92, 5.31, 29.79, 43.36, "p3-aerial.webp", "מבט על | הבינוי בפרויקט")}
+       ${seaHot(67.92, 50.74, 29.79, 42.18, "p3-map1936.webp", "מיפוי בריטי משנת 1936")}
+     </div>`;
 
-  // c4 (page 15) — PDF page 3: axonometric, before/after sections, sketches, long section & elevations
-  const sea_c4 = `<div class="page page--sea-out sea15">
-      <div class="sea15-top">
-        <figure class="out sea15-axon"><img src="${SEA}s15-axon.jpg" alt="אקסונומטריה — מבני המכלול" loading="lazy"></figure>
-        <div class="sea15-sections">
-          ${outFig(SEA + "s15-before.jpg", "מצב קיים", "חסימת זרימת המים על ידי המסלעה הקיימת")}
-          ${outFig(SEA + "s15-after.jpg", "מצב חדש", "שימור הגשר הקיים ופתיחת המעבר לטובת זרימת המים ויצירת לגונה חדשה הצופה אל יפו")}
-        </div>
-        <div class="sea15-sketches">
-          <figure class="out"><img src="${SEA}s15-sk1.jpg" alt="" loading="lazy"></figure>
-          <figure class="out"><img src="${SEA}s15-sk2.jpg" alt="" loading="lazy"></figure>
-          <figure class="out"><img src="${SEA}s15-sk3.jpg" alt="" loading="lazy"></figure>
-        </div>
-      </div>
-      ${outFig(SEA + "s15-longsec.jpg", 'חתך א–א | <bdi>1:200</bdi>', null, "sea15-longsec")}
-      <div class="sea15-bottom">
-        ${outFig(SEA + "s15-east.jpg", "חזית מזרחית – מרחוב קדם", null, "sea15-east")}
-        ${outFig(SEA + "s15-bb.jpg", 'חתך ב–ב | <bdi>1:100</bdi>', null, "sea15-bb")}
-      </div>
-    </div>`;
+  // c4 (page 15) — replaced 2026-07-11 with the redesigned "שימור 4" board (folder 085214).
+  // Full-bleed, no text overlay: three interior renders stacked down the left (lagoon-view hall /
+  // marine exhibition / open hall), with the N-S section, Kedem-st elevation and the 1:300
+  // lower-level (marine gallery + kiosk) plan stacked on the right.
+  const sea_c4 =
+    `<div class="page page--flo-board" style="--accent:${accent.sea}">
+       <img class="flo-board-img" src="${SEA}p4-board.webp" alt="${byKey.sea.title} — עמוד תוכן 4">
+       ${seaHot(2.08, 5.31, 28.33, 26.55, "p4-lagoon.webp", "מבט פנים | חללי שיח - מבט אל הלגונה")}
+       ${seaHot(2.50, 36.58, 27.92, 22.42, "p4-gallery.webp", "מבט פנים | תערוכת קבע ימית")}
+       ${seaHot(2.50, 67.55, 27.92, 25.37, "p4-hall.webp", "מבט פנים | חללי שיח")}
+       ${seaHot(31.67, 5.31, 65.83, 23.01, "p4-section.webp", "חתך ב-ב | צפון-דרום | 1:250")}
+       ${seaHot(31.87, 31.56, 65.62, 21.24, "p4-elev.webp", "חזית רחוב קדם | 1:250")}
+       ${seaHot(31.67, 54.57, 66.04, 38.05, "p4-plan.webp", "תכנית מפלס בינוי תחתון | גלריה ימית וקיוסק +8.67 | 1:300")}
+     </div>`;
 
   /* =====================================================================
    *  PROJECT 3 — Time · Space Housing (placeholder, blue)
@@ -421,16 +429,16 @@
   const time_c3 =
     `<div class="page page--flo-board" style="--accent:${accent.time}">
        <img class="flo-board-img" src="${TIM}typ-board.webp" alt="${byKey.time.title} — עמוד תוכן 3">
-       <button class="flo-hotspot" style="left:2.55%;top:5.5%;width:48.91%;height:48%"
+       <button class="flo-hotspot" style="left:2.50%;top:5.31%;width:49.17%;height:49.56%"
          data-hires="${TIM}view-atrium.webp" data-cap="מבט פנים לכיוון רחוב אילת | התנועה במרחב"
          aria-label="מבט פנים לכיוון רחוב אילת התנועה במרחב" title="מבט פנים לכיוון רחוב אילת | התנועה במרחב"></button>
-       <button class="flo-hotspot" style="left:52.94%;top:5.66%;width:44.62%;height:47.76%"
+       <button class="flo-hotspot" style="left:52.92%;top:5.60%;width:44.79%;height:49.26%"
          data-hires="${TIM}plan-typical.webp" data-cap="תכנית קומה טיפוסית | קומה 1 +3.60 | 1:500"
          aria-label="תכנית קומה טיפוסית קומה 1 1:500" title="תכנית קומה טיפוסית | קומה 1 +3.60 | 1:500"></button>
-       <button class="flo-hotspot" style="left:2.55%;top:53.58%;width:48.91%;height:41.23%"
+       <button class="flo-hotspot" style="left:2.50%;top:55.16%;width:49.17%;height:38.05%"
          data-hires="${TIM}view-bridge.webp" data-cap="מבט פנים | הטקטוני כמקום שוטטות וארעיות"
          aria-label="מבט פנים הטקטוני כמקום שוטטות וארעיות" title="מבט פנים | הטקטוני כמקום שוטטות וארעיות"></button>
-       <button class="flo-hotspot" style="left:52.94%;top:53.58%;width:44.6%;height:41.23%"
+       <button class="flo-hotspot" style="left:52.92%;top:55.16%;width:44.79%;height:38.35%"
          data-hires="${TIM}section-ew.webp" data-cap="חתך א-א | מזרח-מערב | 1:500"
          aria-label="חתך א-א מזרח-מערב 1:500" title="חתך א-א | מזרח-מערב | 1:500"></button>
      </div>`;

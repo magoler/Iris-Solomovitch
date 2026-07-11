@@ -181,13 +181,22 @@ html, body {
 .cv__name { font-size: 40px; font-weight: 800; margin: 0; }
 .cv__contact { font-size: 15px; color: #555; margin-top: 6px; letter-spacing: .01em; }
 .cv__lead { font-size: 15px; line-height: 1.45; margin: 8px 0 0; max-width: 980px; color: #222; }
-.cv__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; }
+.cv__cols { display: grid; grid-template-columns: 1fr 1fr; column-gap: 46px; row-gap: 5px; }
 .cv__sec {
   font-size: 19px; font-weight: 800; margin: 2px 0 8px;
   padding-bottom: 5px; border-bottom: 1px solid var(--hair);
 }
 .cv__col > .cv__sec:not(:first-child) { margin-top: 9px; }
+/* 2x2 grid: ניסיון (r2 right) and שפות (r2 left) share a row = same line.
+   The split cell holds שירות צבאי (top) + יישומי מחשב; מחשב is auto-centred
+   in the free space so the gap above it (to צבאי) equals the gap below (to שפות). */
+.cv__col--split { display: flex; flex-direction: column; }
+.cv__col--split > .cv__group:last-child { margin-top: auto; margin-bottom: auto; }
+.cv__col--split .cv__group > .cv__sec { margin-top: 0; }
 .cv__item { display: flex; gap: 16px; margin-bottom: 4px; font-size: 15px; line-height: 1.34; break-inside: avoid; }
+/* each entry's title line is bold (like the "גרפיקה:" labels); its bullets stay regular */
+.cv__item > div { font-weight: 700; }
+.cv__item > div ul { font-weight: 400; }
 .cv__sec { break-after: avoid; }
 .cv__yr { flex: 0 0 92px; color: #888; font-weight: 500; }
 .cv__item ul { margin: 3px 0 0; padding-inline-start: 18px; }
