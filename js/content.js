@@ -235,13 +235,13 @@
   const urban_c2 =
     `<div class="page page--flo-board" style="--accent:${accent.urban}">
        <img class="flo-board-img" src="${URB}proposed-board.webp" alt="${byKey.urban.title} — עמוד תוכן 2">
-       <button class="flo-hotspot" style="left:2.46%;top:5.2%;width:48.15%;height:4.5%"
+       <button class="flo-hotspot" style="left:2.50%;top:5.70%;width:47.60%;height:4.90%"
          data-hires="${URB}elev-greenaxis.webp" data-cap="חזית הציר הירוק | רחוב ראש פינה"
          aria-label="חזית הציר הירוק רחוב ראש פינה" title="חזית הציר הירוק | רחוב ראש פינה"></button>
-       <button class="flo-hotspot" style="left:2.46%;top:9.9%;width:48.15%;height:5.1%"
+       <button class="flo-hotspot" style="left:2.50%;top:14.45%;width:47.60%;height:4.90%"
          data-hires="${URB}elev-midrachov.webp" data-cap="חזית המדרחוב | רחוב נווה שאנן"
          aria-label="חזית המדרחוב רחוב נווה שאנן" title="חזית המדרחוב | רחוב נווה שאנן"></button>
-       <button class="flo-hotspot" style="left:2.49%;top:14.96%;width:48.12%;height:79.69%"
+       <button class="flo-hotspot" style="left:2.49%;top:22.17%;width:48.10%;height:71.20%"
          data-hires="${URB}siteplan-proposed.webp" data-cap="תכנית סביבה | מצב מוצע"
          aria-label="תכנית סביבה מצב מוצע" title="תכנית סביבה | מצב מוצע"></button>
        <button class="flo-hotspot" style="left:50.64%;top:5.5%;width:48.85%;height:48.93%"
@@ -271,10 +271,10 @@
        <button class="flo-hotspot" style="left:2.52%;top:5.5%;width:62.78%;height:89.19%"
          data-hires="${URB}plan-roofs.webp" data-cap="תכנית גגות | מצב מוצע"
          aria-label="תכנית גגות מצב מוצע" title="תכנית גגות | מצב מוצע"></button>
-       <button class="flo-hotspot" style="left:66.92%;top:5.38%;width:30.62%;height:36.54%"
+       <button class="flo-hotspot" style="left:66.92%;top:7.36%;width:30.62%;height:41.81%"
          data-hires="${URB}view-innerworld.webp" data-cap="מבט אל העולם הפנימי"
          aria-label="מבט אל העולם הפנימי" title="מבט אל העולם הפנימי"></button>
-       <button class="flo-hotspot" style="left:66.92%;top:41.96%;width:30.65%;height:52.61%"
+       <button class="flo-hotspot" style="left:66.92%;top:57.00%;width:30.65%;height:38.00%"
          data-hires="${URB}view-midrachov.webp" data-cap="מבט אל המדרחוב"
          aria-label="מבט אל המדרחוב" title="מבט אל המדרחוב"></button>
      </div>`;

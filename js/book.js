@@ -139,7 +139,15 @@
   /* ---------- chrome: counter, arrow state, TOC active ---------- */
   function updateChrome() {
     const n = book.spreads.length;
-    counter.textContent = `${idx + 1} / ${n}`;
+    // show the actual page folios currently open (e.g. "36-37"), not the spread index
+    const sp = book.spreads[idx];
+    if (sp.single) {
+      counter.textContent = String(sp.page.no);
+    } else {
+      const lo = Math.min(sp.right.no, sp.left.no);
+      const hi = Math.max(sp.right.no, sp.left.no);
+      counter.textContent = `${hi}-${lo}`;
+    }
     btnNext.disabled = idx >= n - 1;
     btnPrev.disabled = idx <= 0;
     // hash (without scroll jump)
@@ -164,9 +172,8 @@
   function buildToc() {
     const rows = book.projects
       .map((p, i) => `<li><button data-jump="${p.key}">
-        <span class="tocp__num">${String(i + 1).padStart(2, "0")}</span>
+        <span class="tocp__num" style="color:${p.accent}">${String(i + 1).padStart(2, "0")}</span>
         <span class="tocp__t"><b>${p.title}</b><em>${p.sub}</em></span>
-        <span class="tocp__dot" style="background:${p.accent}"></span>
       </button></li>`)
       .join("");
     tocPanel.innerHTML = `
