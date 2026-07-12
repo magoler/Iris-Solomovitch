@@ -82,6 +82,40 @@
     stage.querySelectorAll(".spread").forEach(fit);
   }
 
+  /* ---------- preload adjacent spreads ----------
+     Only the current spread is ever in the DOM, so its board images (2–6 MB)
+     download the moment you turn to it. To make page-turns feel instant we
+     warm the browser cache for the neighbouring spreads while the reader is
+     looking at the current one. Runs on idle so it never delays the current
+     spread's own paint. */
+  const _preloaded = new Set();
+  const whenIdle = window.requestIdleCallback
+    ? (fn) => window.requestIdleCallback(fn, { timeout: 900 })
+    : (fn) => setTimeout(fn, 250);
+  function spreadImgSrcs(sp) {
+    if (!sp) return [];
+    const htmls = sp.single ? [sp.page.html] : [sp.right.html, sp.left.html];
+    const out = [];
+    for (const h of htmls) {
+      const re = /\bsrc="([^"]+)"/g;
+      let m;
+      while ((m = re.exec(h))) out.push(m[1]);
+    }
+    return out;
+  }
+  function preloadAround(i) {
+    for (const t of [i - 1, i + 1]) {
+      if (t < 0 || t >= book.spreads.length) continue;
+      for (const src of spreadImgSrcs(book.spreads[t])) {
+        if (_preloaded.has(src)) continue;
+        _preloaded.add(src);
+        const im = new Image();
+        im.decoding = "async";
+        im.src = src;
+      }
+    }
+  }
+
   /* ---------- render with page-turn animation ---------- */
   function render(target, dir) {
     target = Math.max(0, Math.min(book.spreads.length - 1, target));
@@ -97,6 +131,7 @@
       idx = target;
       updateChrome();
       animating = false;
+      whenIdle(() => preloadAround(idx));
     };
 
     if (reduceMotion || !old) {
@@ -105,6 +140,7 @@
       idx = target;
       updateChrome();
       animating = false;
+      whenIdle(() => preloadAround(idx));
       return;
     }
 
