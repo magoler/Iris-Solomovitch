@@ -568,58 +568,40 @@
   const floHot = (l, t, w, h, src, cap) =>
     `<button class="flo-hotspot" style="left:${l}%;top:${t}%;width:${w}%;height:${h}%"
        data-hires="${FLO}${src}" data-cap="${cap}" aria-label="${cap}" title="${cap}"></button>`;
-  // Live text set over the board's top-right area (replaces the baked-in text),
-  // styled to match the board's own title + justified RTL paragraph.
-  const florentin_text =
-    "הפרויקט מציע התחדשות למערב שכונת פלורנטין מתוך רצון לשמר ולהעצים את אופייה הייחודי. " +
-    "נקודת המוצא היא התבוננות בשכונה כבמה עירונית פתוחה, שבה המלאכות, הגרפיטי, החומריות החשופה " +
-    "והבינוי המאולתר יוצרים מופע אורבני מתמשך. בהשראת עולם התיאטרון והקרקס פותחה שפה תכנונית " +
-    "ההופכת את ההליכה ברחוב לחוויה דינמית. התכנון מתבסס על התערבויות מדורגות השומרות על המרקם " +
-    "הקיים, ומייצר מערכת של רחובות, סמטאות ופיאצלות המעודדת שוטטות, מפגשים וחיבור בין מסחר, " +
-    "מלאכה, תרבות ומגורים. המבנים החדשים ממשיכים את השפה התעשייתית והחשופה של פלורנטין, תוך " +
-    "הפיכת האדריכלות עצמה לחלק מהמופע העירוני. הפרויקט מציע מרחב גמיש, שבו הזהות המקומית אינה " +
-    "נשמרת כזיכרון בלבד, אלא ממשיכה להתפתח כחלק בלתי נפרד מחיי השכונה.";
+  // Rebuilt 2026-07-12 as Iris's redesigned "עמוד תוכן 1" board (title + justified
+  // description baked into the board's top-right, so no live .flo-textcover overlay).
   const florentin_c1 =
     `<div class="page page--flo-board" style="--accent:${accent.florentin}">
        <img class="flo-board-img" src="${FLO}board.webp" alt="${byKey.florentin.title} — עמוד תוכן 1">
-       <div class="flo-textcover">
-         <h3 class="flo-board-title">${byKey.florentin.title}</h3>
-         <p class="flo-board-para">${florentin_text}</p>
-       </div>
-       ${floHot(2.5, 5.5, 45.96, 27.35, "three-s.webp", "שלושת ה-Sים התכנוניים")}
-       ${floHot(2.5, 34.42, 45.96, 59.05, "context.webp", "קונטקסט מרחבי ושלבי ההגעה למופע הפלורנטיני")}
-       ${floHot(50, 34.42, 47.5, 17.62, "billboard.webp", "מצב מוצע | בילבורד מערבי | רחוב הנגרים")}
-       ${floHot(49.92, 55.63, 47.62, 37.85, "section.webp", "חתך מקומי | 1:250")}
+       ${floHot(2.62, 5.41, 46.42, 27.36, "three-s.webp", "שלושת ה-Sים התכנוניים")}
+       ${floHot(2.62, 34.46, 46.43, 59.12, "context.webp", "קונטקסט מרחבי ושלבי ההגעה למופע הפלורנטיני")}
+       ${floHot(50, 34.46, 47.62, 17.23, "billboard.webp", "מצב מוצע | בילבורד מערבי | רחוב הנגרים")}
+       ${floHot(50, 54.73, 47.62, 38.85, "section.webp", "חתך מקומי | 1:250")}
      </div>`;
+  // Rebuilt 2026-07-12 as Iris's redesigned "עמוד תוכן 2" board (red panel): two
+  // maps — נולי בינוי (existing-vs-proposed massing) left · פרוגרמה/ארטיזניה right.
   const florentin_c2 =
     `<div class="page page--flo-board" style="--accent:${accent.florentin}">
        <img class="flo-board-img" src="${FLO}board2.webp" alt="${byKey.florentin.title} — עמוד תוכן 2">
-       ${floHot(2.49, 5.54, 32.95, 26.68, "bill-east.webp", "בילבורד מזרחי")}
-       ${floHot(2.52, 36.38, 32.89, 23.2, "bill-west2.webp", "בילבורד מערבי 2")}
-       ${floHot(2.49, 64.29, 32.95, 28.98, "courtyard.webp", "מבט רחוב אל חצר הפרינג'")}
-       ${floHot(39.84, 5.5, 57.73, 86, "plan.webp", "תכנית קומת קרקע | 1:1000")}
+       ${floHot(3.67, 6.5, 44.51, 82, "p2-nolli.webp", "מצב מוצע | נולי בינוי, במות הפרינג' וסימטאות הטיזרים")}
+       ${floHot(52.16, 6.5, 43.9, 82, "p2-program.webp", "פרוגרמה | ארטיזניה")}
      </div>`;
-  const florentin_c3 = contentPage(
-    "",
-    `<div class="grid g-2up1">
-       ${fig(null, "חתך רוחב", "fig--draw", accent.florentin)}
-       ${fig(null, "חתך אורך", "fig--draw", accent.florentin)}
-       ${fig(null, "חזית ראשית", "fig--draw", accent.florentin)}
-     </div>`,
-    accent.florentin,
-    "page--content-flush"
-  );
-  const florentin_c4 = contentPage(
-    "",
-    `<div class="grid grid--2">
-       ${fig(null, "תכנית — קומת קרקע", "fig--draw", accent.florentin)}
-       ${fig(null, "תכנית — קומה טיפוסית", "fig--draw", accent.florentin)}
-       ${fig(null, "פרט — מעטפת ובמה 1:10", "fig--draw", accent.florentin)}
-       ${fig(null, "תכנית מתחם", "fig--draw", accent.florentin)}
-     </div>`,
-    accent.florentin,
-    "page--content-flush"
-  );
+  const florentin_c3 =
+    `<div class="page page--flo-board" style="--accent:${accent.florentin}">
+       <img class="flo-board-img" src="${FLO}board3.webp" alt="${byKey.florentin.title} — עמוד תוכן 3">
+       ${floHot(2.52, 8.63, 58.45, 82.66, "p3-plan.webp", "תכנית קומת קרקע 00.00+ | 1:1000")}
+       ${floHot(64.61, 5.54, 35.36, 26.09, "p3-bill-east.webp", "הפרולוג למופע הפלורנטיני | הבילבורד המזרחי | רחוב אברבנאל")}
+       ${floHot(64.61, 35.63, 35.36, 23.87, "p3-bill-west.webp", "הפרולוג למופע הפלורנטיני | הבילבורד המערבי | רחוב הנגרים")}
+       ${floHot(64.61, 62.35, 35.36, 30.09, "p3-fringe.webp", "מבט רחוב אל חצר הפרינג'")}
+     </div>`;
+  const florentin_c4 =
+    `<div class="page page--flo-board" style="--accent:${accent.florentin}">
+       <img class="flo-board-img" src="${FLO}board4.webp" alt="${byKey.florentin.title} — עמוד תוכן 4">
+       ${floHot(39.1, 5.5, 60.87, 85.79, "p4-plan.webp", "תכנית קומה 1 4.00+ | 1:1000")}
+       ${floHot(2.52, 5.5, 36.55, 29.93, "p4-apartment.webp", "מבט מדירה אל המופע הפלורנטיני")}
+       ${floHot(2.52, 37.02, 36.55, 26.29, "p4-nightlife.webp", "מבט חיי לילה אל החצר העילית")}
+       ${floHot(2.52, 65.32, 36.55, 27.12, "p4-circulation.webp", "מערכת התנועה החשופה בחצר הפנימית")}
+     </div>`;
 
   /* =====================================================================
    *  ASSEMBLE SPREADS  (RTL: right = lower page no., left = higher)
