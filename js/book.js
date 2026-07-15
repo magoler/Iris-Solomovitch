@@ -225,13 +225,8 @@
     const W = lbImg.clientWidth, H = lbImg.clientHeight;      // base (contain) size
     const Sw = lbStage.clientWidth, Sh = lbStage.clientHeight;
     if (!W || !H) return;
-    // minimap sized to the image aspect, capped, and pinned to the image's bottom-left corner.
-    // Cap scales with the smaller viewport dimension so it stays modest on phones
-    // (desktop keeps the 150×170 ceiling; a landscape phone gets ~2/3 of that).
-    const vmin = Math.min(window.innerWidth, window.innerHeight);
-    const MAXW = Math.min(150, Math.round(vmin * 0.26));
-    const MAXH = Math.min(170, Math.round(vmin * 0.30));
-    const INSET = vmin < 500 ? 8 : 12;
+    // minimap sized to the image aspect, capped, and pinned to the image's bottom-left corner
+    const MAXW = 150, MAXH = 170, INSET = 12;
     let mW = MAXW, mH = MAXW * H / W;
     if (mH > MAXH) { mH = MAXH; mW = MAXH * W / H; }
     lbMap.style.width = mW + "px";
@@ -391,9 +386,6 @@
     viewport.addEventListener("touchstart", touchStart, { passive: true });
     viewport.addEventListener("touchend", touchEnd, { passive: true });
     window.addEventListener("resize", fitAll);
-    // rotating a phone can fire orientationchange before the viewport settles —
-    // re-fit on the next frame so the spread rescales to the new dimensions.
-    window.addEventListener("orientationchange", () => requestAnimationFrame(fitAll));
     document.addEventListener("click", (e) => {
       // clicks on the in-page TOC list (page 2) and name button
       const j = e.target.closest("[data-jump]");
