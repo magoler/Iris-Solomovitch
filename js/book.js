@@ -35,8 +35,13 @@
     const wrap = document.createElement("div");
     wrap.className = "page-slot";
     wrap.innerHTML = page.html;
-    // per-project paper tint: paint the .page field behind its transparent board
-    if (page.bg && wrap.firstElementChild) wrap.firstElementChild.style.background = page.bg;
+    // per-project paper tint: paint the .page field behind its transparent board.
+    // Cover-spread pages (the full-bleed cover image + title) keep their own white
+    // field, so the tint applies to the content boards only.
+    if (page.bg && wrap.firstElementChild &&
+        !wrap.firstElementChild.classList.contains("page--coverbleed")) {
+      wrap.firstElementChild.style.background = page.bg;
+    }
     if (showNo) {
       const pageNo = document.createElement("span");
       pageNo.className = "page-no";

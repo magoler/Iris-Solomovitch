@@ -91,7 +91,7 @@
     { key: "sea",       title: "לראות את הים",   sub: "סטודיו שימור | בהנחיית פרופ' אדר' אמנון בר-אור | שנה ד' סמסטר א'",            accent: "#209092", num: "#209092" },
     { key: "time",      title: "Space Time",    sub: "סטודיו מגורים | בהנחיית אדר' דפנה מתוק ואדר' לאונרדו קליכמן | שנה ג' סמסטר ב'", accent: "#34409A", num: "#34409A" },
     { key: "maryam",    title: "מרי-ם",         sub: "עיצוב פנים | בהנחיית אדר' רוני אלרואי | שנה ד' סמסטר א'",                      accent: "#E4AA24", num: "#E4AA24" },
-    { key: "process",   title: "תהליך החשיבה",  sub: "",                                                                          accent: "#404040", num: "#404040" },
+    { key: "process",   title: "תהליך החשיבה",  sub: "סקיצות, סכמות ומחשבות על הפרויקטים",                                          accent: "#404040", num: "#404040" },
   ];
   const accent = Object.fromEntries(projects.map((p) => [p.key, p.accent]));
   // Per-project page background (warm paper tint behind the transparent boards).
@@ -103,7 +103,7 @@
   );
   // מופע פלורנטין ("the show") — a theatre red-curtain fills every page behind the boards.
   bgByAccent[accent.florentin] =
-    "#3a0c10 url('assets/projects/florentin/content-bg.webp?v=2') center / cover no-repeat";
+    "#3a0c10 url('assets/projects/florentin/content-bg.webp?v=3') center / cover no-repeat";
   // Look up a project's TOC title/subtitle by key so covers stay in sync with the TOC.
   const byKey = Object.fromEntries(projects.map((p) => [p.key, p]));
 
@@ -630,7 +630,16 @@
   // page 1 (right of cover spread) — the title cover image (title baked in)
   const process_title =
     `<div class="page page--coverbleed"><img class="page-bleed" src="${PRC}cover.webp?v=2" alt="${byKey.process.title}"></div>`;
-  const process_cover_blank = processBlank(); // page 2 — left of the cover spread
+  // page 2 (left of cover spread) — מאסף פלורנטין process board
+  // (block study TL · vision collages TC/TR · section BL · axonometric BR)
+  const process_cover_blank =
+    `<div class="page page--flo-board">
+       <img class="flo-board-img" src="${PRC}p2-board.webp?v=2" alt="${byKey.process.title} — פלורנטין">
+       ${prcHot(2, 5, 28, 53, "p2-block.webp", "חקר הבלוק הפלורנטיני לפי תכניות היסטוריות")}
+       ${prcHot(33, 13, 65, 45, "p2-collage.webp", "קולאז'ים של חזון הפרויקט")}
+       ${prcHot(1.5, 62, 40.5, 33, "p2-section.webp", "חתך ראשוני")}
+       ${prcHot(45, 62, 53, 33, "p2-axon.webp", "סקיצת התערבות ראשונית")}
+     </div>`;
   // page 3 — process board (green-axis sketch TL · catalog TR · models BL · fab-lab BR)
   const process_c1 =
     `<div class="page page--flo-board">
@@ -640,7 +649,15 @@
        ${prcHot(1.5, 49, 51, 46, "p3-models.webp", "מודלים רעיוניים")}
        ${prcHot(62, 49, 37.5, 44, "p3-fablab.webp", "הכנת מודל חזית פרספקטיבית")}
      </div>`;
-  const process_c2 = processBlank();          // page 4 — blank for now
+  // page 4 — לראות את הים process board (sketch TL · superposition TR · spirit BL · movement BR)
+  const process_c2 =
+    `<div class="page page--flo-board">
+       <img class="flo-board-img" src="${PRC}p4-board.webp?v=2" alt="${byKey.process.title}">
+       ${prcHot(2, 3, 31, 38, "p4-sketch.webp", "סקיצות התערבות ראשונית בסמוך לקו הים")}
+       ${prcHot(38, 10, 60, 43, "p4-superpos.webp", "סופרפוזיציה | ניתוח אתר ההתערבות ושכונת עג'מי")}
+       ${prcHot(1.5, 46, 48.5, 48, "p4-spirit.webp", "סקיצות רוח המקום")}
+       ${prcHot(50, 55, 48, 39, "p4-movement.webp", "תנועה במתחם ההתערבות")}
+     </div>`;
   // page 5 — Space Time process board (plans left · sketch top-right · analysis bottom-right)
   const process_c3 =
     `<div class="page page--flo-board">
