@@ -91,13 +91,24 @@
     { key: "sea",       title: "לראות את הים",   sub: "סטודיו שימור | בהנחיית פרופ' אדר' אמנון בר-אור | שנה ד' סמסטר א'",            accent: "#209092", num: "#209092" },
     { key: "time",      title: "Space Time",    sub: "סטודיו מגורים | בהנחיית אדר' דפנה מתוק ואדר' לאונרדו קליכמן | שנה ג' סמסטר ב'", accent: "#34409A", num: "#34409A" },
     { key: "maryam",    title: "מרי-ם",         sub: "עיצוב פנים | בהנחיית אדר' רוני אלרואי | שנה ד' סמסטר א'",                      accent: "#E4AA24", num: "#E4AA24" },
+    { key: "process",   title: "תהליך החשיבה",  sub: "",                                                                          accent: "#404040", num: "#404040" },
   ];
   const accent = Object.fromEntries(projects.map((p) => [p.key, p.accent]));
+  // Per-project page background (warm paper tint behind the transparent boards).
+  // Keyed by project so every page of a project shares one field; keyed again by
+  // accent below so the assembly can look it up from each spread's `acc`.
+  const tint = { urban: "#e8d2dc", sea: "#e6daca", time: "#efe3d2", maryam: "#e7d8c2" };
+  const bgByAccent = Object.fromEntries(
+    Object.entries(tint).map(([k, c]) => [accent[k], c])
+  );
+  // מופע פלורנטין ("the show") — a theatre red-curtain fills every page behind the boards.
+  bgByAccent[accent.florentin] =
+    "#3a0c10 url('assets/projects/florentin/content-bg.webp?v=2') center / cover no-repeat";
   // Look up a project's TOC title/subtitle by key so covers stay in sync with the TOC.
   const byKey = Object.fromEntries(projects.map((p) => [p.key, p]));
 
   // Spread index of each project's cover (also drives the jump targets below).
-  const coverSpread = { florentin: 2, urban: 5, sea: 8, time: 11, maryam: 14 };
+  const coverSpread = { florentin: 2, urban: 5, sea: 8, time: 11, maryam: 14, process: 17 };
   // Page numbers a project occupies. The cover is 1 page and every later spread is
   // 2 pages, so the right (lower) page of spread s is 2·s; a project = cover spread + 2
   // content spreads → 6 pages. (Cover=1 and back are counted but their folio is hidden.)
@@ -572,23 +583,24 @@
   // description baked into the board's top-right, so no live .flo-textcover overlay).
   const florentin_c1 =
     `<div class="page page--flo-board" style="--accent:${accent.florentin}">
-       <img class="flo-board-img" src="${FLO}board.webp" alt="${byKey.florentin.title} — עמוד תוכן 1">
+       <img class="flo-board-img" src="${FLO}board.webp?v=3" alt="${byKey.florentin.title} — עמוד תוכן 1">
        ${floHot(2.62, 5.41, 46.42, 27.36, "three-s.webp", "שלושת ה-Sים התכנוניים")}
        ${floHot(2.62, 34.46, 46.43, 59.12, "context.webp", "קונטקסט מרחבי ושלבי ההגעה למופע הפלורנטיני")}
        ${floHot(50, 34.46, 47.62, 17.23, "billboard.webp", "מצב מוצע | בילבורד מערבי | רחוב הנגרים")}
        ${floHot(50, 54.73, 47.62, 38.85, "section.webp", "חתך מקומי | 1:250")}
      </div>`;
-  // Rebuilt 2026-07-12 as Iris's redesigned "עמוד תוכן 2" board (red panel): two
-  // maps — נולי בינוי (existing-vs-proposed massing) left · פרוגרמה/ארטיזניה right.
+  // Rebuilt 2026-07-21 as Iris's redesigned "עמוד תוכן 2" board on a BLACK field
+  // (the board art is transparent — the page supplies the black). Two maps:
+  // נולי בינוי (existing-vs-proposed massing) left · פרוגרמה/ארטיזניה right.
   const florentin_c2 =
-    `<div class="page page--flo-board" style="--accent:${accent.florentin}">
-       <img class="flo-board-img" src="${FLO}board2.webp" alt="${byKey.florentin.title} — עמוד תוכן 2">
-       ${floHot(3.67, 6.5, 44.51, 82, "p2-nolli.webp", "מצב מוצע | נולי בינוי, במות הפרינג' וסימטאות הטיזרים")}
-       ${floHot(52.16, 6.5, 43.9, 82, "p2-program.webp", "פרוגרמה | ארטיזניה")}
+    `<div class="page page--flo-board page--flo-black" style="--accent:${accent.florentin}">
+       <img class="flo-board-img" src="${FLO}board2.webp?v=2" alt="${byKey.florentin.title} — עמוד תוכן 2">
+       ${floHot(3.37, 12.2, 45.15, 79, "p2-nolli.webp", "מצב מוצע | נולי בינוי, במות הפרינג' וסימטאות הטיזרים")}
+       ${floHot(51.8, 12.2, 45.72, 79, "p2-program.webp", "פרוגרמה | ארטיזניה")}
      </div>`;
   const florentin_c3 =
     `<div class="page page--flo-board" style="--accent:${accent.florentin}">
-       <img class="flo-board-img" src="${FLO}board3.webp" alt="${byKey.florentin.title} — עמוד תוכן 3">
+       <img class="flo-board-img" src="${FLO}board3.webp?v=2" alt="${byKey.florentin.title} — עמוד תוכן 3">
        ${floHot(2.52, 8.63, 58.45, 82.66, "p3-plan.webp", "תכנית קומת קרקע 00.00+ | 1:1000")}
        ${floHot(64.61, 5.54, 35.36, 26.09, "p3-bill-east.webp", "הפרולוג למופע הפלורנטיני | הבילבורד המזרחי | רחוב אברבנאל")}
        ${floHot(64.61, 35.63, 35.36, 23.87, "p3-bill-west.webp", "הפרולוג למופע הפלורנטיני | הבילבורד המערבי | רחוב הנגרים")}
@@ -596,17 +608,60 @@
      </div>`;
   const florentin_c4 =
     `<div class="page page--flo-board" style="--accent:${accent.florentin}">
-       <img class="flo-board-img" src="${FLO}board4.webp" alt="${byKey.florentin.title} — עמוד תוכן 4">
+       <img class="flo-board-img" src="${FLO}board4.webp?v=2" alt="${byKey.florentin.title} — עמוד תוכן 4">
        ${floHot(39.1, 5.5, 60.87, 85.79, "p4-plan.webp", "תכנית קומה 1 4.00+ | 1:1000")}
        ${floHot(2.52, 5.5, 36.55, 29.93, "p4-apartment.webp", "מבט מדירה אל המופע הפלורנטיני")}
        ${floHot(2.52, 37.02, 36.55, 26.29, "p4-nightlife.webp", "מבט חיי לילה אל החצר העילית")}
        ${floHot(2.52, 65.32, 36.55, 27.12, "p4-circulation.webp", "מערכת התנועה החשופה בחצר הפנימית")}
      </div>`;
 
+  /* ---------------------------------------------------------------------
+   *  PROJECT — תהליך החשיבה (design-thinking process). Added at the end.
+   *  Cover spread: RIGHT = the title/sketch cover image, LEFT blank. Then
+   *  two content spreads holding "process boards" (Space Time · מרי-ם); each
+   *  board's sub-images are hotspots that open the hi-res in the lightbox.
+   * ------------------------------------------------------------------- */
+  const PROC_BG = "#404040"; // dark grey theme colour
+  const PRC = "assets/projects/process/";
+  const processBlank = () => `<div class="page" style="background:${PROC_BG}"></div>`;
+  const prcHot = (l, t, w, h, src, cap) =>
+    `<button class="flo-hotspot" style="left:${l}%;top:${t}%;width:${w}%;height:${h}%"
+       data-hires="${PRC}${src}?v=2" data-cap="${cap}" aria-label="${cap}" title="${cap}"></button>`;
+  // page 1 (right of cover spread) — the title cover image (title baked in)
+  const process_title =
+    `<div class="page page--coverbleed"><img class="page-bleed" src="${PRC}cover.webp?v=2" alt="${byKey.process.title}"></div>`;
+  const process_cover_blank = processBlank(); // page 2 — left of the cover spread
+  // page 3 — process board (green-axis sketch TL · catalog TR · models BL · fab-lab BR)
+  const process_c1 =
+    `<div class="page page--flo-board">
+       <img class="flo-board-img" src="${PRC}p3-board.webp?v=2" alt="${byKey.process.title}">
+       ${prcHot(1.5, 3, 36, 39, "p3-sketch.webp", "סקיצה ראשונית לציר הירוק")}
+       ${prcHot(39, 8.5, 60, 38, "p3-catalog.webp", "מבחר עמודים מתוך הקטלוג")}
+       ${prcHot(1.5, 49, 51, 46, "p3-models.webp", "מודלים רעיוניים")}
+       ${prcHot(62, 49, 37.5, 44, "p3-fablab.webp", "הכנת מודל חזית פרספקטיבית")}
+     </div>`;
+  const process_c2 = processBlank();          // page 4 — blank for now
+  // page 5 — Space Time process board (plans left · sketch top-right · analysis bottom-right)
+  const process_c3 =
+    `<div class="page page--flo-board">
+       <img class="flo-board-img" src="${PRC}st-board.webp?v=2" alt="${byKey.process.title} — Space Time">
+       ${prcHot(1, 11, 31, 78, "st-plans.webp", "סקיצות תוכניות | Space Time")}
+       ${prcHot(34, 4, 39, 34, "st-sketch.webp", "סקיצת חתך פרספקטיבי | Space Time")}
+       ${prcHot(33, 40, 66, 56, "st-analysis.webp", "אנליזה פרמטרית ואקלימית | Space Time")}
+     </div>`;
+  // page 6 — מרי-ם process board (sketch+model top-left · models bottom-left · plan right)
+  const process_c4 =
+    `<div class="page page--flo-board">
+       <img class="flo-board-img" src="${PRC}mar-board.webp?v=2" alt="${byKey.process.title} — מרי-ם">
+       ${prcHot(1, 2, 52, 47, "mar-sketch.webp", "סקיצה ומודל חיפוי | מרי-ם")}
+       ${prcHot(1, 57, 40, 38, "mar-models.webp", "מודלים | מרי-ם")}
+       ${prcHot(52, 7, 47, 84, "mar-plan.webp", "סקיצת תוכנית פנים | מרי-ם")}
+     </div>`;
+
   /* =====================================================================
    *  ASSEMBLE SPREADS  (RTL: right = lower page no., left = higher)
    * =================================================================== */
-  const P = (no, html, acc) => ({ no, html, accent: acc || null });
+  const P = (no, html, acc, bg) => ({ no, html, accent: acc || null, bg: bg || null });
 
   // Each project = 3 spreads (cover + 2 content). Page numbers auto-increment so
   // adding/removing spreads never requires hand-renumbering.
@@ -631,13 +686,17 @@
     { right: maryam_cover_img, left: maryam_cover_title, acc: accent.maryam },
     { right: maryam_c1, left: maryam_c2, acc: accent.maryam },
     { right: maryam_c3, left: maryam_c4, acc: accent.maryam },
+    { right: process_title, left: process_cover_blank, acc: accent.process }, // מהלך החשיבה — cover (title on right)
+    { right: process_c1, left: process_c2, acc: accent.process },
+    { right: process_c3, left: process_c4, acc: accent.process },
     { single: true, html: backPage },                               // back
   ];
-  const spreads = defs.map((d) =>
-    d.single
+  const spreads = defs.map((d) => {
+    const bg = d.acc ? bgByAccent[d.acc] || null : null; // tint per project (florentin → none)
+    return d.single
       ? { single: true, page: P(++_n, d.html) }
-      : { right: P(++_n, d.right, d.acc), left: P(++_n, d.left, d.acc) }
-  );
+      : { right: P(++_n, d.right, d.acc, bg), left: P(++_n, d.left, d.acc, bg) };
+  });
 
   // jump targets: project key -> spread index of its cover; "resume" -> spread 1
   const jumps = { resume: 1 };

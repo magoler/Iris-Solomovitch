@@ -35,6 +35,8 @@
     const wrap = document.createElement("div");
     wrap.className = "page-slot";
     wrap.innerHTML = page.html;
+    // per-project paper tint: paint the .page field behind its transparent board
+    if (page.bg && wrap.firstElementChild) wrap.firstElementChild.style.background = page.bg;
     if (showNo) {
       const pageNo = document.createElement("span");
       pageNo.className = "page-no";
