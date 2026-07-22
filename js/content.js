@@ -97,7 +97,8 @@
   // Per-project page background (warm paper tint behind the transparent boards).
   // Keyed by project so every page of a project shares one field; keyed again by
   // accent below so the assembly can look it up from each spread's `acc`.
-  const tint = { urban: "#e8d2dc", sea: "#e6daca", time: "#efe3d2", maryam: "#e7d8c2" };
+  // מדרחוב (urban) is deliberately absent — its boards sit on plain white paper.
+  const tint = { sea: "#e6daca", time: "#efe3d2", maryam: "#e7d8c2" };
   const bgByAccent = Object.fromEntries(
     Object.entries(tint).map(([k, c]) => [accent[k], c])
   );
