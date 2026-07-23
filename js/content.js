@@ -104,7 +104,7 @@
   );
   // מופע פלורנטין ("the show") — a theatre red-curtain fills every page behind the boards.
   bgByAccent[accent.florentin] =
-    "#3a0c10 url('assets/projects/florentin/content-bg.webp?v=3') center / cover no-repeat";
+    "#8a1418 url('assets/projects/florentin/content-bg.webp?v=4') center / cover no-repeat";
   // Look up a project's TOC title/subtitle by key so covers stay in sync with the TOC.
   const byKey = Object.fromEntries(projects.map((p) => [p.key, p]));
 
